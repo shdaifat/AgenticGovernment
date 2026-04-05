@@ -1,0 +1,92 @@
+================================================================
+RCTF FORMULA — Quick Reference Card
+AI Prompt Engineering for JEDCO Staff
+Training: Agentic Government — JEDCO Staff Workshop
+================================================================
+
+What is the RCTF Formula?
+----------------------------------------------------------------
+R = Role      — Who should the AI be?
+C = Context   — What background information does it need?
+T = Task      — What exactly should it do?
+F = Format    — How should it present the result?
+
+================================================================
+Golden Rule: The clearer your prompt, the better the answer.
+================================================================
+
+================================================================
+Example 1 — Tamkeen Program (Capacity Building)
+================================================================
+
+→ Starting prompt:
+  "Write a report about a company"
+
+✅ RCTF prompt:
+  R: You are a JEDCO evaluator specializing in the Tamkeen program.
+  C: Al-Amal Food Industries, 15 employees, est. 2019,
+     applied to Tamkeen for digital marketing capacity building.
+     Paid-up capital: 50,000 JOD. Sector: food manufacturing.
+  T: Evaluate the company's eligibility for Tamkeen based on JEDCO criteria:
+     - Is the company officially registered?
+     - Is the employee count within program limits?
+     - Is the sector among supported sectors?
+     Give a final recommendation: ELIGIBLE / NOT ELIGIBLE / NEEDS REVIEW.
+  F: Table showing each criterion with result (Yes/No), then recommendation.
+
+================================================================
+Example 2 — Tattweer Program (Business Development)
+================================================================
+
+→ Starting prompt:
+  "Is this application good?"
+
+✅ RCTF prompt:
+  R: You are a JEDCO technical evaluator applying Tattweer rules strictly.
+  C: Zahraa Textiles, operating license expires 31/12/2025,
+     expected contract signing September 2025, implementation period 12 months.
+     Requesting 25,000 JOD for production equipment upgrade.
+  T: The operating license must be valid throughout the 12-month
+     implementation period. Does this company PASS or FAIL this requirement?
+     Answer with one word first, then explain.
+  F: One word on the first line, then explanation in a paragraph.
+
+Expected result: Does not meet requirement — license expires before implementation ends
+
+================================================================
+Example 3 — Start Business Program
+================================================================
+
+→ Starting prompt:
+  "Write a rejection letter"
+
+✅ RCTF prompt:
+  R: You are the Start Business program manager at JEDCO.
+  C: Applicant: Ahmad Mohammad, street food restaurant project in Irbid,
+     requesting 10,000 JOD. Evaluation found: commercial registration
+     not attached, business plan incomplete (no financial feasibility study).
+  T: Write a formal Arabic letter informing the applicant of rejection.
+     Include:
+     - Applicant name and program name
+     - Clear reasons for rejection
+     - Steps the applicant can take to reapply
+     - Professional and respectful tone
+  F: Full formal letter in JEDCO format (header, date, signature).
+
+================================================================
+Quick Tips
+================================================================
+
+1. Always start with Role (R) — this sets the AI's "personality"
+2. Give real numbers and dates in Context (C) — don't say "some company"
+3. Be specific in Task (T) — "evaluate 5 criteria" beats "evaluate the app"
+4. Specify Format (F) — if you don't, you get a random format
+5. If the result isn't good: add more detail, don't repeat the same prompt
+
+================================================================
+Security Reminder
+================================================================
+⚠️ Do NOT enter real applicant data into the AI
+⚠️ Use mock/training data only
+⚠️ The system runs locally — no data leaves the machine
+================================================================

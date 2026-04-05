@@ -1,0 +1,176 @@
+================================================================
+JEDCO PROGRAMS — ELIGIBILITY & GRANT CRITERIA REFERENCE
+المؤسسة الأردنية لتطوير المشاريع الاقتصادية — ملخص معايير الأهلية
+Source: jedco.gov.jo (scraped April 2026)
+================================================================
+
+1. START BUSINESS — اعمل مشروعك
+   For: NEW startups (individuals, not existing businesses)
+   ----------------------------------------------------------------
+   TARGET:         Jordanian individuals aged 21+ from any governorate
+   SECTORS:        Industry, crafts, agriculture, services — all governorates
+   PRIORITY:       High-value 5 sectors / tech & digital / tourism / agri / creative
+   GRANT AMOUNT:   Up to 50,000 JOD (non-refundable)
+   JEDCO SHARE:    Up to 70% of total project cost
+   APPLICANT SHARE: Minimum 30% of total project cost
+   TIMELINE:       1 year from signing agreement
+   ANNUAL TARGET:  40 projects per year
+   TOTAL BUDGET:   2,000,000 JOD/year (government funded)
+   APPLICATION:    Sept 1 – Oct 31 each year (online only)
+
+   ELIGIBILITY CHECKLIST:
+   [✓] Jordanian nationality, age 21+
+   [✓] Relevant experience/knowledge in proposed business field
+   [✓] Financial capacity to cover 30% share (proven by bank statement)
+   [✓] Business idea not yet registered (new startup only)
+
+   REQUIRED DOCUMENTS:
+   - Online application form (via jedco.gov.jo portal)
+   - Copy of national ID
+   - Detailed budget with Action Plan (timetable)
+   - Proof of financial capacity:
+     * Bank statement (last 3 months) OR
+     * Property ownership document OR
+     * Personal guarantee from first-degree relative
+   - (Commercial registration — obtained AFTER initial approval)
+
+   APPROVED COSTS:
+   ✓ Site rental costs
+   ✓ Infrastructure development
+   ✓ Machinery, production lines, equipment generating income
+   ✓ Interior/exterior fit-out
+   ✓ Installation and maintenance of equipment
+   ✓ Packaging and labeling
+   ✓ E-commerce setup and digital marketing tools
+   ✓ Transport vehicles (directly linked to project)
+
+   EXCLUDED COSTS:
+   ✗ Permanent employee salaries
+   ✗ Land/building acquisition
+   ✗ Loan repayments
+   ✗ Raw materials
+   ✗ All taxes (income, customs, sales tax)
+   ✗ Costs incurred before signing the agreement
+
+   SELECTION PRIORITIES:
+   → Projects with technology/innovation component
+   → Projects with high employment creation potential
+   → Projects tied to each governorate's comparative advantage
+
+================================================================
+
+2. TATTWEER — تطوير
+   For: EXISTING SMEs (already operating businesses)
+   ----------------------------------------------------------------
+   TARGET:         Existing micro, small, and medium enterprises
+   SECTORS:        Industrial, service, craft, agricultural — all Jordan
+   PRIORITY:       High-value 5 sectors, tech/digital, green economy
+   GRANT AMOUNT:   Up to 50,000 JOD (non-refundable)
+   JEDCO SHARE:    Up to 70% of total eligible project cost
+   APPLICANT SHARE: Minimum 30%
+   TIMELINE:       Maximum 1 year from signing
+   ANNUAL TARGET:  20+ projects per year
+   TOTAL BUDGET:   1,000,000 JOD/year (government funded)
+   APPLICATION:    Sept 1 – Oct 31 (online only)
+
+   ELIGIBILITY CHECKLIST:
+   [✓] Registered with official Jordanian authorities
+   [✓] Privately owned (must be private sector)
+   [✓] Classified as MSME (micro/small/medium enterprise)
+   [✓] JEDCO share request does not exceed 70% of total project cost
+   [✓] Business is in an eligible sector (no tobacco, alcohol, cement, mining)
+
+   REQUIRED DOCUMENTS:
+   - Online application form
+   - Detailed budget with Action Plan timetable
+   - Updated commercial registration (showing establishment date, partners, signatories)
+   - AUDITED financial statements for last TWO fiscal years
+   - Bank account statement (last 6 months)
+   - 3 comparative price quotes for major equipment
+   - Valid operating license from relevant authority
+
+   APPROVED COSTS:
+   ✓ Computer systems and software (ERP, CRM, etc.)
+   ✓ Operational/marketing/admin automation
+   ✓ Transport vehicles and operational equipment
+   ✓ Energy-saving and waste treatment systems
+   ✓ Project infrastructure development
+   ✓ Digital transformation and e-commerce
+   ✓ Green economy initiatives
+   ✓ Packaging and design improvements
+   ✓ Quality certifications (ISO, etc.)
+   ✓ Workforce training tied to the project
+
+   EXCLUDED COSTS:
+   ✗ Loss provisions or contingent liabilities
+   ✗ Permanent employee salaries and wages
+   ✗ Accrued interest
+   ✗ Existing loan repayments
+   ✗ Costs incurred before signing the agreement
+   ✗ Currency exchange losses
+   ✗ Raw materials
+   ✗ All taxes
+
+   SELECTION PRIORITIES:
+   → Projects with high economic or environmental impact
+   → Innovative/creative projects
+   → Projects providing competitive advantage in the local region
+
+================================================================
+
+3. TAMKEEN — تمكين (CURRENTLY INACTIVE — previous round ended 2024)
+   For: Existing SMEs — technology & green economy focus
+   ----------------------------------------------------------------
+   TARGET:         MSMEs across all economic sectors; all Jordan governorates
+   EXCLUDED:       Tobacco, alcohol, cement, mining industries
+   MIN EMPLOYEES:  5 staff minimum
+   GRANT AMOUNT:   Up to 50,000 JOD (non-refundable)
+   JEDCO SHARE:    Up to 70%
+   APPLICANT SHARE: Minimum 30%
+   TIMELINE:       12 months from signing
+   TARGET COUNT:   30 projects in 2024
+
+   SPECIAL FOCUS:
+   - Smart/emerging technologies (AR, VR, blockchain, IoT, AI)
+   - Green economy transition
+   - Digital transformation of operations
+
+   OWNERSHIP CONDITION: 75%+ privately owned
+
+   REQUIRED DOCUMENTS (similar to Tattweer, plus):
+   - Updated commercial registration
+   - Detailed budget
+   - Proof of financial capacity
+   - (No audited financials explicitly required — lighter documentation)
+
+================================================================
+
+COMMON RULES ACROSS ALL PROGRAMS
+----------------------------------------------------------------
+- All applications are ONLINE ONLY via jedco.gov.jo portal
+- No paper/PDF application forms issued by JEDCO
+- All grants are NON-REFUNDABLE (منحة غير مستردة)
+- JEDCO covers max 70% — applicant MUST contribute minimum 30%
+- Maximum grant per project: 50,000 JOD
+- Implementation period: maximum 12 months from agreement signing
+- Field visits may be conducted as part of the review process
+- Results announced on a rolling basis as applications are evaluated
+
+REVIEW PROCESS (all programs):
+1. Official announcement + awareness workshops
+2. Online application portal opens
+3. JEDCO receives applications electronically
+4. Administrative review (documents completeness check)
+5. Technical evaluation committee review
+6. Field visits (if required)
+7. Announcement of selected projects
+8. Agreement signing with beneficiaries
+9. Implementation begins
+10. Progress monitoring + final disbursement
+
+================================================================
+NOTE FOR TRAINERS: These criteria are sourced directly from
+jedco.gov.jo service guide pages (دليل الخدمات), April 2026.
+Use the mock applications in this folder for the AnythingLLM
+Block 3 demo — upload both files + this reference sheet.
+================================================================

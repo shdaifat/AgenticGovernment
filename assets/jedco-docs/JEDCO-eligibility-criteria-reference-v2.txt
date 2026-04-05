@@ -1,0 +1,474 @@
+================================================================
+JEDCO PROGRAMS — COMPREHENSIVE ELIGIBILITY & EVALUATION REFERENCE
+المؤسسة الأردنية لتطوير المشاريع الاقتصادية
+Source: Official JEDCO PDFs + jedco.gov.jo Service Guide (April 2026)
+  - الالية_العامة_المستخدمة: Official 3-page evaluation methodology PDF
+  - العرض_التوضيحي_للبرنامج: Official 22-page program presentation PDF
+  - دليل الخدمات: Service guide pages (all programs)
+================================================================
+
+IMPORTANT NOTE FOR AI EVALUATION:
+This document contains the ACTUAL criteria used by JEDCO evaluators.
+The AI uses these criteria to prepare a preliminary assessment.
+The officer reviews and confirms all results.
+Apply them strictly. Any application that violates a hard eligibility
+condition must be marked FAIL regardless of other strengths.
+
+================================================================
+PART A: JEDCO OFFICIAL EVALUATION METHODOLOGY
+(Source: الالية_العامة — applies to ALL programs)
+================================================================
+
+A.1 THREE EVALUATION STAGES (used for all programs)
+------------------------------------------------------
+Stage 1: ADMINISTRATIVE & FINANCIAL EVALUATION
+  - Verify application meets program eligibility conditions
+  - Verify company eligibility (sector, size, ownership, age)
+  - Verify financial support request eligibility
+  - Verify project aligns with program objectives
+  - Analyze company financial position using audited statements
+  - Processing rate: 33 applications/working day (admin check)
+    (source: JEDCO official evaluation methodology)
+                     13 applications/working day (financial eval)
+
+Stage 2: TECHNICAL EVALUATION
+  - Assess degree to which project aligns with program objectives
+  - Analyze export/market opportunities in target countries
+  - Review project description and opportunity-seeking approach
+  - Evaluate sustainability and impact (company level + national)
+  - TWO evaluators assess each application independently
+  - They meet to discuss, reconcile marks, and flag differences
+  - Applications with major scoring discrepancies are re-evaluated
+  - Processing rate: 2 applications/working day
+
+Stage 3: FIELD VISITS
+  - Visit company premises to verify declared data
+  - Review company past performance: sales growth, production capacity
+  - Inspect facilities and production lines
+  - Review the export product for market fitness
+  - Interview sales & marketing team: English, computer skills, experience
+  - Check promotional materials and current tools
+  - Processing rate: 2 visits/working day
+
+Stage 4: FINAL BUDGET REVIEW & CONTRACT PREPARATION
+  - Technical evaluator reviews project budget for program compliance
+  - All line items checked for eligibility
+  - Budget totals verified for arithmetic errors
+  - Final audit by Grants Department + Internal Control
+  - Contracts prepared: include application form, budget, procurement rules
+
+A.2 EVALUATION COMMITTEE STRUCTURE
+------------------------------------------------------
+- Chaired by: JEDCO Executive Director
+- Members: Internal Control representative
+- Admin/Financial Evaluation Committee: teams of 2 evaluators per application
+- Technical Evaluation Committee: teams of 2 engineers per application
+
+A.3 FINAL SCORING LOGIC
+------------------------------------------------------
+- Each technical evaluator scores independently
+- Consensus score = average of the two evaluators' scores
+- Final technical score = consensus score + financial evaluation score
+- Applications ranked from highest to lowest score
+- Minimum passing score threshold set based on:
+  * Number of applications received
+  * Available budget envelope
+  * Overall quality of the applicant pool
+
+================================================================
+PART B: EXPORT SUPPORT PROGRAM (دعم الشركات الصناعية للتصدير)
+(Most detailed criteria available — model for all programs)
+================================================================
+
+B.1 PROGRAM OVERVIEW
+------------------------------------------------------
+Full name: برنامج دعم الشركات الصناعية من أجل التصدير لأول مرة
+           (Industrial Export Support — First Time Exporters)
+Director: د. بشار الزعبي, Industry Support Directorate
+Vision: Create a competitive Jordanian industrial sector in global markets
+
+B.2 GRANT FINANCIAL TERMS
+------------------------------------------------------
+Grant ceiling:         40,000 JOD per company
+Funding ratio:         Max 70% of total project cost
+  CONSTRAINT: JEDCO's share of buildings + equipment + supplies
+              must NOT exceed 20,000 JOD and NOT exceed 50% of total grant
+Payment Schedule:
+  First installment:   80% of grant — paid UPFRONT at contract signing
+                       (against court guarantee + bank cheque for full amount)
+  Final installment:   20% of grant — paid at project closure after
+                       all activities completed and financial closure done
+
+B.3 ELIGIBILITY CONDITIONS (HARD DISQUALIFIERS)
+------------------------------------------------------
+A company is INELIGIBLE if ANY of the following apply:
+
+  ✗ Not an industrial company
+  ✗ Not registered with Ministry of Industry, Trade & Supply
+  ✗ IS a public shareholding company (شركة مساهمة عامة)
+  ✗ Company age < 2 years before application date
+  ✗ Ownership is NOT 100% private sector
+  ✗ Value-added of main products < 35% (per Ministry calculation)
+     (exception: companies that have never exported before)
+  ✗ Employees < 5 or > 250 (per Social Security records at time of application)
+  ✗ Company lacks financial viability (profitability + liquidity)
+     per last 2 years of audited financial statements
+  ✗ For pharma/cosmetics/food/chemical sectors:
+     not registered with Jordan Food & Drug Administration
+  ✗ Previously benefited from this program in Rounds 1 or 2
+
+PRIORITY (not disqualifying, but boosts ranking):
+  ★ Company has NEVER exported before (given highest priority)
+  ★ Annual exports < 200,000 JOD in any of last 3 years
+  ★ Total sales between 200,000 – 3,000,000 JOD (2019 reference year)
+
+B.4 ELIGIBLE ACTIVITIES (WHAT THE GRANT COVERS)
+------------------------------------------------------
+CAPACITY BUILDING (Productive):
+  ✓ Machinery, equipment, devices
+  ✓ Computer equipment and computerized systems
+  ✓ Rental of offices/distribution centers/warehouses in export markets
+  ✓ Prototypes of new products
+  ✓ Sample shipments (max 150 kg / target export country)
+  ✓ Shipping costs and insurance for first export order
+
+ADMINISTRATIVE CAPACITY BUILDING:
+  ✓ Promotional materials: brochures, packaging design, label design
+  ✓ Consulting services: training, coaching, export coaching, market studies
+  ✓ B2B meeting organization
+  ✓ Product registration in target export countries
+  ✓ International trade fair participation (booth + sample shipping)
+  ✓ E-store creation and digital campaigns
+  ✓ Technical certifications
+  ✓ Travel for marketing in target markets
+
+B.5 INELIGIBLE COSTS (HARD EXCLUSIONS FROM BUDGET)
+------------------------------------------------------
+  ✗ Any cost incurred BEFORE contract signing date
+  ✗ Any cost incurred AFTER contract end date
+  ✗ Currency exchange losses
+  ✗ Taxes and government fees (customs stamps only)
+  ✗ Salaries / payroll
+  ✗ Raw materials (except materials used in manufacturing prototype products)
+  ✗ Furniture and vehicles
+  ✗ Consulting fees for managing the grant itself
+  ✗ Land, building purchases, and vehicle purchases
+  ✗ Promotional items: pens, mugs, agendas, etc.
+  ✗ Provisions for future potential losses or liabilities
+  ✗ Costs already covered by another program or project
+
+B.6 REQUIRED DOCUMENTS (3 paper copies + 1 electronic each)
+------------------------------------------------------
+  □ Company registration certificate (Ministry of Industry)
+      — must show founding date and authorized signatories
+  □ Valid operating license (رخصة مهن سارية المفعول)
+  □ Customs declarations for top 3 export products
+      (waived for companies that have never exported)
+  □ Social Security enrollment record (last 3 months)
+  □ Audited financial statements — last 2 fiscal years
+  □ Company national ID copy
+  □ Export plan (خطة تصدير)
+  □ Food & Drug Administration registration (pharma/food/cosmetics only)
+
+B.7 APPLICATION PROCESS (TWO PHASES)
+------------------------------------------------------
+Phase 1: Export Catalyst Camp (مخيم تحفيز التصدير)
+  - Online application
+  - Training sessions covering:
+    * Export readiness self-assessment
+    * Identifying international market opportunities
+    * Packaging, labeling, pricing, shipping, Incoterms
+    * HS codes, rules of origin, value-added calculation
+    * Tariffs, technical certifications
+    * EU Pan-Euro-Med rules of origin agreement
+    * Export financing, insurance, managing overseas payments
+    * Preparing an export plan
+  - Only companies passing Phase 1 are invited to Phase 2
+
+Phase 2: Grant Application
+  - Submit detailed project proposal + budget
+  - Submit all required documents
+  - Full technical + financial + field evaluation
+
+B.8 TIMELINE
+------------------------------------------------------
+Promotional activities (launch):               2 months
+Service contracting + e-form development:      2 months
+Application intake period:                     2 months from launch event
+Training sessions (camp):                      1 week
+Phase 2 application intake:                    2 months
+Evaluation and selection:                      per budget/applications volume
+Implementation period per company:            3 months minimum – 12 months maximum
+
+================================================================
+PART C: TATTWEER PROGRAM (برنامج تطوير)
+(Business Development / Existing SME Expansion)
+================================================================
+
+C.1 OVERVIEW
+------------------------------------------------------
+Target: Existing Jordanian SMEs seeking to expand or modernize
+Grant ceiling: Up to 50,000 JOD
+Funding ratio: 70% of total project cost (applicant covers 30%)
+Implementation period: 12 months from contract signing
+
+C.2 KEY ELIGIBILITY CONDITIONS
+------------------------------------------------------
+  ✓ Existing registered business (not a new startup)
+  ✓ Jordanian-majority ownership
+  ✗ Public shareholding companies excluded
+  ✓ Operating license must be valid throughout implementation period
+     (12 months from contract signing — CRITICAL compliance check)
+  ✓ Financial viability demonstrated via audited statements
+  ✓ Must not have benefited from the same program previously
+
+OPERATING LICENSE TRAP:
+  If contract signed September 2026 → project ends September 2027
+  License expiring December 2026 → LICENSE EXPIRES DURING PROJECT
+  This means the application does not meet this condition — must be classified as ineligible or license renewed first
+
+C.3 ELIGIBLE ACTIVITIES
+------------------------------------------------------
+  ✓ Machinery and production equipment upgrades
+  ✓ ERP / business management systems
+  ✓ Quality certifications (ISO 9001, ISO 14001, etc.)
+  ✓ Product development
+  ✓ Market access and export readiness investments
+  ✓ Staff training (technical and managerial)
+
+C.4 REQUIRED DOCUMENTS
+------------------------------------------------------
+  □ Commercial registration certificate
+  □ Valid operating license (رخصة مهن)
+  □ Audited financial statements (last 2 years)
+  □ Detailed project proposal and action plan
+  □ Budget breakdown
+  □ Social Security employee records
+
+================================================================
+PART D: START BUSINESS PROGRAM (اعمل مشروعك)
+(New Business Startup Grants)
+================================================================
+
+D.1 OVERVIEW
+------------------------------------------------------
+Target: New entrepreneurs starting their first business
+Grant: Non-refundable grant (منحة غير مستردة)
+Grant ceiling: Up to 35,000 JOD
+Funding ratio: 70% (entrepreneur covers 30%)
+Directorate: New Enterprises Directorate (مديرية المشاريع الناشئة)
+Location: Can be submitted at JEDCO branches in:
+  Amman, Irbid, Ajloun, Madaba, Karak, Mafraq, and Ma'an
+
+D.2 KEY ELIGIBILITY CONDITIONS
+------------------------------------------------------
+  ✓ Jordanian nationality
+  ✓ Age 18 or older
+  ✓ Has a viable and economically feasible business idea
+  ✓ Has academic/technical qualifications in the project field
+  ✓ Must attend "Start Your Own Business" training course
+  ✓ Project to be implemented in any governorate
+  ✓ Project must be productive or service-oriented
+  ✗ Purely commercial/retail projects excluded
+  ✓ Enterprise must be < 2 years old at time of application
+
+D.3 REQUIRED DOCUMENTS (at application stage)
+------------------------------------------------------
+  □ Business incubator enrollment application
+  □ Business plan (خطة عمل)
+  □ Financial disbursement schedule (جدول الصرف المالي)
+  □ CV / résumé
+  □ National ID
+
+POST-GRANT DOCUMENTS (after approval):
+  □ Business registration at Ministry of Industry & Trade
+     (must be registered in the beneficiary's name)
+  □ Dedicated bank account for the grant + chequebook
+  □ Court guarantee (كفالة عدلية)
+
+D.4 APPLICATION WINDOWS
+------------------------------------------------------
+Last week of: April, August, and December each year
+
+D.5 PROCESSING TIMELINE
+------------------------------------------------------
+Evaluation completion: under 2 months from application deadline
+During implementation (1 year):
+  - Disbursement requests submitted monthly from the 1st
+  - Financial transactions completed within 14 working days
+
+================================================================
+PART E: TAMKEEN PROGRAM (تمكين)
+(Employment Support)
+================================================================
+
+E.1 OVERVIEW
+------------------------------------------------------
+Target: Companies creating new Jordanian employment
+Focus: Subsidizing wages and training costs to reduce unemployment
+Geographic coverage: All Jordan governorates
+
+E.2 KEY ELIGIBILITY CONDITIONS
+------------------------------------------------------
+  ✓ Company registered and operating legally
+  ✓ Committed to hiring Jordanian nationals
+  ✓ Salary for supported employees at or above minimum wage
+  ✓ Employee enrolled in Social Security within 30 days of hiring
+  ✓ Company not in arrears with Social Security or tax authorities
+
+E.3 SUPPORT STRUCTURE
+------------------------------------------------------
+  - Wage subsidy for newly hired Jordanians (partial, time-limited)
+  - Training costs coverage for new hires
+  - Duration: typically 6-12 months per employee
+
+================================================================
+PART F: E-COMMERCE SUPPORT PROGRAM
+(برنامج دعم الشركات الصغيرة ومتناهية الصغر في التجارة الإلكترونية)
+================================================================
+
+F.1 OVERVIEW
+------------------------------------------------------
+Target: Micro and small businesses transitioning to e-commerce
+Support: Technical assistance + financial grant for digital setup
+
+F.2 ELIGIBILITY
+------------------------------------------------------
+  ✓ Small or micro enterprise (< 5 employees typically)
+  ✓ Jordanian-owned
+  ✓ Not yet selling online or has minimal online presence
+  ✓ Committed to completing digital training program
+
+================================================================
+PART G: HOME BUSINESS SUPPORT (دعم وتنمية الأعمال من المنزل)
+(Currently CLOSED — for reference only)
+================================================================
+
+G.1 ELIGIBLE HOME BUSINESS TYPES
+------------------------------------------------------
+  ✓ Intellectual professions: admin/tax consulting, studies, interior design,
+    graphic design, fashion design, garden design, jewelry, translation,
+    architectural drawing, accounting, auditing, online sales
+  ✓ Handicrafts
+  ✓ Small production activities
+  ✓ Personal services
+
+G.2 SUPPORT STRUCTURE
+------------------------------------------------------
+  - Training and coaching: 2 months
+  - Non-refundable grant for business costs including registration fees: 1.5 months
+  - Networking with marketing/logistics entities: 6 months
+  - Total program duration: 1 year
+
+================================================================
+PART H: STARTUP INCUBATOR GRANTS (منح/قروض حاضنات الأعمال)
+(Currently STOPPED — for reference only)
+================================================================
+
+H.1 ELIGIBILITY
+------------------------------------------------------
+  ✓ Jordanian nationality
+  ✓ Age 18+
+  ✓ Has viable business idea
+  ✓ Academic/technical qualifications in the field
+  ✓ Completed "Foundations of Self-Employment" training course
+  ✓ Project to be implemented in any governorate
+  ✓ Project must be productive or service-based (no retail)
+
+H.2 REQUIRED DOCUMENTS
+------------------------------------------------------
+  □ Incubator enrollment application (submitted in person at JEDCO branch)
+  □ Business plan
+  □ Financial disbursement schedule
+  □ CV / résumé
+
+POST-GRANT:
+  □ Business registered at Ministry in beneficiary's name
+  □ Dedicated grant bank account + chequebook
+  □ Court guarantee (كفالة عدلية)
+
+Intake windows: Last week of April, August, and December
+Evaluation time: Under 2 months from deadline
+Branches: Irbid, Ajloun, Madaba, Karak, Mafraq, Ma'an
+
+================================================================
+PART I: CROSS-PROGRAM AUTOMATION ANALYSIS
+(What AI can check automatically vs. what requires human review)
+================================================================
+
+FULLY AUTOMATABLE (rule-based, deterministic):
+  ✓ Document completeness check (present vs. required list)
+  ✓ Operating license expiry date vs. project end date
+  ✓ Company type exclusion (public shareholding)
+  ✓ Employee count range check (5–250 for Export program)
+  ✓ Grant amount calculation (70% of cost, subject to ceiling)
+  ✓ Ineligible cost line items in budget
+  ✓ Submission window compliance (application received in window?)
+  ✓ Duplicate application check (same company, same program, same cycle)
+  ✓ Company age check (< 2 years = ineligible for Tattweer)
+
+AI-ASSISTED (LLM analysis, human confirms):
+  ✓ Sector classification → priority vs. low-priority vs. excluded
+  ✓ Value-added estimation from business description
+  ✓ Financial viability assessment from stated revenue/employees
+  ✓ Export potential assessment (Export program)
+  ✓ Business plan quality scoring
+  ✓ Project-program alignment scoring
+  ✓ Risk flag identification (vague milestones, unrealistic budgets)
+
+HUMAN ONLY (institutional judgment, legal accountability):
+  ✗ Final INVITE/REJECT decision for borderline cases
+  ✗ Field visit scheduling and conduct
+  ✗ Contract negotiation and modification
+  ✗ Budget line-item negotiation
+  ✗ Committee deliberation on appeals
+
+================================================================
+PART J: SCORING RUBRIC FOR AI EVALUATION
+(Based on JEDCO's published evaluation model — approximate weights)
+================================================================
+
+FOR TATTWEER / EXPORT SUPPORT PROGRAMS:
+
+CRITERION                   | MAX  | DESCRIPTION
+----------------------------|------|----------------------------------
+1. Administrative check      |  P/F | PASS/FAIL only — no partial credit
+   - All docs present        |      |
+   - No hard disqualifiers   |      |
+
+2. Financial position        |  25  | Profitability, liquidity, co-investment
+                             |      | capacity, own funds ratio
+   Excellent (stable, growing)|25   |
+   Good (profitable, adequate)|15-24|
+   Marginal (breakeven)      | 5-14 |
+   Weak/Insolvent            |  0-4 |
+
+3. Technical/project quality |  40  | Alignment with objectives, market
+                             |      | opportunity, implementation plan
+   Strong with evidence      |30-40 |
+   Good, some gaps           |15-29 |
+   Vague, weak plan          | 5-14 |
+   No real substance         |  0-4 |
+
+4. Sector priority           |  20  | Priority sectors score higher
+   ICT, pharma, food manuf.  |15-20 |
+   Textiles, chemicals, paper| 8-14 |
+   General manufacturing     | 3-7  |
+   Excluded (retail/trading) |  0   | → Ineligible
+
+5. National impact           |  15  | Employment creation, exports,
+                             |      | rural development, women/youth
+   High (6+ jobs, export)    |10-15 |
+   Moderate (2-5 jobs)       | 4-9  |
+   Minimal                   | 0-3  |
+
+TOTAL                        | 100  |
+INVITE threshold             |  ≥70 |
+HUMAN REVIEW band            | 50-69|
+FLAG REJECT (officer confirms) |  <50 | 
+Ineligible (any disqualifier) |   0  | Regardless of other scores
+
+================================================================
+END OF REFERENCE DOCUMENT
+Last updated: April 2026 — from official JEDCO PDFs
+================================================================
