@@ -174,8 +174,14 @@ def load_applications(docs_dir: str) -> list:
 
 
 # ── Ollama caller ─────────────────────────────────────────────────────────────
+def _strip_think(text: str) -> str:
+    """Remove <think>...</think> blocks produced by Qwen3 thinking mode."""
+    import re
+    return re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
+
+
 def call_ollama(system: str, user: str, model: str = OLLAMA_MODEL,
-                temperature: float = 0.1, max_tokens: int = 500) -> str:
+                temperature: float = 0.1, max_tokens: int = 1500) -> str:
     payload = {
         "model": model,
         "messages": [
@@ -188,7 +194,7 @@ def call_ollama(system: str, user: str, model: str = OLLAMA_MODEL,
     try:
         r = requests.post(OLLAMA_URL, json=payload, timeout=180)
         r.raise_for_status()
-        return r.json()["message"]["content"].strip()
+        return _strip_think(r.json()["message"]["content"])
     except requests.exceptions.ConnectionError:
         print("\nERROR: Ollama not running. Start it with: ollama serve")
         sys.exit(1)
@@ -299,7 +305,7 @@ def run_stage1(app: dict, criteria: str, mode: str,
                workspace_slug: str = "", api_key: str = ""):
     """Administrative & financial check."""
     prompt = STAGE1_ADMIN_PROMPT.format(
-        criteria=criteria[:3000],  # truncate to fit context window
+        criteria=criteria[:12000],  # include program-specific sections
         application=app["text"][:2500],
     )
     if mode == "anythingllm":
@@ -313,7 +319,7 @@ def run_stage2(app: dict, criteria: str, mode: str,
                workspace_slug: str = "", api_key: str = ""):
     """Technical & financial scoring."""
     prompt = STAGE2_SCORING_PROMPT.format(
-        criteria=criteria[:3000],
+        criteria=criteria[:12000],
         application=app["text"][:2500],
     )
     if mode == "anythingllm":
