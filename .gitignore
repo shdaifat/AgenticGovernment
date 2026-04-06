@@ -63,3 +63,5 @@ desktop.ini
 # === Logs ===
 *.log
 logs/
+results.html
+results.json
