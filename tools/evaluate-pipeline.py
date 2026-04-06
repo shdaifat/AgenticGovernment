@@ -347,6 +347,7 @@ def run_final_summary(app: dict, s1: dict, s2: dict, s1_raw: str, s2_raw: str,
 def evaluate_application(app: dict, criteria: str, args) -> dict:
     app_id = app["id"]
     name = app["name"][:30]
+    t_start = time.time()
 
     print(f"\n{'─'*60}")
     print(f"  Application : {app_id}")
@@ -355,38 +356,51 @@ def evaluate_application(app: dict, criteria: str, args) -> dict:
 
     # Stage 1 — Admin check
     print(f"  Stage 1     : Administrative check...", end=" ", flush=True)
+    t1 = time.time()
     s1, s1_raw = run_stage1(app, criteria, args.mode,
                             getattr(args, "workspace", ""),
                             getattr(args, "api_key", ""))
     s1_result = s1.get("stage1_result", "INCOMPLETE")
-    print(f"{s1_result}")
+    print(f"{s1_result} ({time.time()-t1:.1f}s)")
 
     if s1.get("license_issue") and s1["license_issue"] not in ("لا يوجد", "none", "None", "?", ""):
         print(f"  ⚠ License   : {s1['license_issue']}")
 
-    # Stage 2 — Scoring (skip if hard FAIL in stage 1)
-    if s1_result == "FAIL":
+    # Stage 2 — Scoring
+    # Only skip if sector is excluded or ownership is non-Jordanian (true hard disqualifiers).
+    # License issues and missing docs are FLAGS for officer review — still score the application.
+    sector_ok = s1.get("sector_eligible", "نعم")
+    ownership_ok = s1.get("ownership_ok", "نعم")
+    hard_fail = (s1_result == "FAIL" and
+                 (sector_ok in ("لا", "No", "no") or ownership_ok in ("لا", "No", "no")))
+
+    if hard_fail:
         s2 = {"financial_score": 0, "technical_score": 0, "sector_score": 0,
               "impact_score": 0, "total_score": 0, "recommendation": "REJECT",
-              "strengths": "—", "weaknesses": "فشل في التقييم الإداري", "flags": s1.get("stage1_notes", "")}
-        s2_raw = "Skipped — Stage 1 FAIL"
+              "strengths": "—", "weaknesses": "رفض إداري قاطع", "flags": s1.get("stage1_notes", "")}
+        s2_raw = "Skipped — hard disqualifier"
         summary = f"REJECT: {s1.get('stage1_notes', 'رفض إداري')}"
-        print(f"  Stage 2     : SKIPPED (hard fail)")
+        print(f"  Stage 2     : SKIPPED (hard disqualifier)")
     else:
         print(f"  Stage 2     : Technical scoring...", end=" ", flush=True)
+        t2 = time.time()
         s2, s2_raw = run_stage2(app, criteria, args.mode,
                                 getattr(args, "workspace", ""),
                                 getattr(args, "api_key", ""))
-        print(f"score={s2['total_score']}/100 → {s2['recommendation']}")
+        print(f"score={s2['total_score']}/100 → {s2['recommendation']} ({time.time()-t2:.1f}s)")
 
         if args.summary:
             print(f"  Summary     : Generating...", end=" ", flush=True)
+            t3 = time.time()
             summary = run_final_summary(app, s1, s2, s1_raw, s2_raw, args.mode,
                                         getattr(args, "workspace", ""),
                                         getattr(args, "api_key", ""))
-            print("done")
+            print(f"done ({time.time()-t3:.1f}s)")
         else:
             summary = ""
+
+    total_secs = round(time.time() - t_start, 1)
+    print(f"  Total time  : {total_secs}s")
 
     return {
         "app_id": app_id,
@@ -412,6 +426,7 @@ def evaluate_application(app: dict, criteria: str, args) -> dict:
         "weaknesses": s2.get("weaknesses", ""),
         "flags": s2.get("flags", ""),
         "final_summary": summary,
+        "processing_time_sec": total_secs,
         # Ground truth (hidden from reviewers in production)
         "ground_truth_flaw": app.get("ground_truth_flaw", ""),
     }
@@ -506,6 +521,10 @@ def main():
         w.writeheader()
         w.writerows(results)
 
+    # Write HTML report
+    html_path = os.path.splitext(args.output)[0] + ".html"
+    write_html_report(results, html_path, OLLAMA_MODEL)
+
     # Summary table
     invite = [r for r in results if r["recommendation"] == "INVITE"]
     review = [r for r in results if r["recommendation"] == "REVIEW"]
@@ -531,7 +550,109 @@ def main():
             print(f"  ✗ {r['applicant'][:30]} — {reason[:60]}")
 
     print(f"\nResults saved to: {args.output}")
-    print(f"\nNext: open {os.path.basename(args.output)} in Excel for the ranked shortlist")
+    print(f"HTML report    : {html_path}")
+    print(f"\nNext: open {os.path.basename(html_path)} in your browser for the ranked shortlist")
+
+
+def write_html_report(results: list, output_path: str, model: str):
+    """Write a styled Arabic HTML report for the evaluation results."""
+    from datetime import datetime
+
+    rec_color = {"INVITE": "#1a7f37", "REVIEW": "#9a6700", "REJECT": "#cf222e"}
+    rec_bg    = {"INVITE": "#dafbe1", "REVIEW": "#fff8c5", "REJECT": "#ffebe9"}
+    rec_ar    = {"INVITE": "مقبول ✓",  "REVIEW": "للمراجعة ◎", "REJECT": "غير مؤهل ✗"}
+    s1_ar     = {"PASS": "اجتاز", "FAIL": "لم يجتاز", "INCOMPLETE": "ناقص"}
+
+    invite = [r for r in results if r["recommendation"] == "INVITE"]
+    review = [r for r in results if r["recommendation"] == "REVIEW"]
+    reject = [r for r in results if r["recommendation"] == "REJECT"]
+
+    def row_html(r):
+        rc = rec_color.get(r["recommendation"], "#333")
+        rb = rec_bg.get(r["recommendation"], "#fff")
+        s1 = s1_ar.get(r["s1_result"], r["s1_result"])
+        license_flag = ""
+        issue = r.get("s1_license_issue", "")
+        if issue and issue not in ("لا يوجد", "none", "None", "?", "", "غير محدد", "[لا يوجد]"):
+            license_flag = f'<br><span style="color:#9a6700;font-size:0.85em">⚠ {issue}</span>'
+        return f"""
+        <tr style="background:{rb}">
+          <td style="text-align:center;font-weight:bold">{r['rank']}</td>
+          <td>{r['applicant']}<br><small style="color:#666">{r['app_id']} — {r['program']}</small></td>
+          <td style="text-align:center">{s1}{license_flag}</td>
+          <td style="text-align:center;font-size:1.2em;font-weight:bold">{r['total_score_100']}<small>/100</small></td>
+          <td style="text-align:center;font-weight:bold;color:{rc}">{rec_ar.get(r['recommendation'], r['recommendation'])}</td>
+          <td style="font-size:0.9em">{r.get('strengths','—')}</td>
+          <td style="text-align:center;color:#57606a;font-size:0.9em">{r.get('processing_time_sec','—')}s</td>
+          <td style="font-size:0.9em">{r.get('final_summary','')[:200]}</td>
+        </tr>"""
+
+    rows_html = "\n".join(row_html(r) for r in results)
+    now = datetime.now().strftime("%Y-%m-%d %H:%M")
+
+    html = f"""<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>تقرير تقييم طلبات JEDCO</title>
+<style>
+  body {{ font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background:#f6f8fa; color:#24292f; margin:0; padding:24px; direction:rtl; }}
+  .header {{ background:#0969da; color:#fff; padding:24px 32px; border-radius:8px; margin-bottom:24px; }}
+  .header h1 {{ margin:0 0 4px 0; font-size:1.6em; }}
+  .header p {{ margin:0; opacity:0.85; font-size:0.95em; }}
+  .stats {{ display:flex; gap:16px; margin-bottom:24px; flex-wrap:wrap; }}
+  .stat {{ flex:1; min-width:120px; background:#fff; border-radius:8px; padding:16px 20px; border:1px solid #d0d7de; text-align:center; }}
+  .stat .num {{ font-size:2em; font-weight:bold; }}
+  .stat.invite .num {{ color:#1a7f37; }}
+  .stat.review .num {{ color:#9a6700; }}
+  .stat.reject .num {{ color:#cf222e; }}
+  .stat .label {{ font-size:0.9em; color:#57606a; margin-top:4px; }}
+  table {{ width:100%; border-collapse:collapse; background:#fff; border-radius:8px; overflow:hidden; border:1px solid #d0d7de; box-shadow:0 1px 3px rgba(0,0,0,0.1); }}
+  th {{ background:#f6f8fa; padding:12px 16px; text-align:right; font-size:0.9em; color:#57606a; border-bottom:2px solid #d0d7de; }}
+  td {{ padding:12px 16px; border-bottom:1px solid #d0d7de; vertical-align:top; }}
+  tr:last-child td {{ border-bottom:none; }}
+  tr:hover td {{ background:rgba(0,0,0,0.02); }}
+  .footer {{ margin-top:20px; font-size:0.8em; color:#57606a; text-align:center; }}
+  @media print {{ body {{ background:#fff; padding:0; }} .header {{ border-radius:0; }} }}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>تقرير تقييم الطلبات الآلي — JEDCO</h1>
+  <p>النموذج: {model} &nbsp;|&nbsp; التاريخ: {now} &nbsp;|&nbsp; عدد الطلبات: {len(results)}</p>
+</div>
+
+<div class="stats">
+  <div class="stat invite"><div class="num">{len(invite)}</div><div class="label">مقبول للمقابلة</div></div>
+  <div class="stat review"><div class="num">{len(review)}</div><div class="label">يحتاج مراجعة</div></div>
+  <div class="stat reject"><div class="num">{len(reject)}</div><div class="label">غير مؤهل</div></div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>المتقدم</th>
+      <th>الفحص الإداري</th>
+      <th>الدرجة</th>
+      <th>التوصية</th>
+      <th>نقاط القوة</th>
+      <th>الوقت</th>
+      <th>الملخص</th>
+    </tr>
+  </thead>
+  <tbody>
+{rows_html}
+  </tbody>
+</table>
+
+<p class="footer">مادة تدريبية — TRAINING USE ONLY — جميع البيانات وهمية &nbsp;|&nbsp; JEDCO AI Workshop 2026</p>
+</body>
+</html>"""
+
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write(html)
 
 
 if __name__ == "__main__":
