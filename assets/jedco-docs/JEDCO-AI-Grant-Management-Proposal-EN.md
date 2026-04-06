@@ -1,13 +1,13 @@
-================================================================
-PROPOSAL: AI-POWERED GRANT MANAGEMENT SYSTEM
+# Proposal: AI-Powered Grant Management System
+
+> **Training Material** — Hypothetical proposal for workshop demonstration purposes only.
+> Figures and timelines are illustrative. A proper scoping workshop is needed before any real budget is prepared.
 Submitted to: Jordan Enterprise Development Corporation (JEDCO)
 Prepared by: [Your Name / Organization]
 Date: April 2026
 Classification: TRAINING MATERIAL — Hypothetical proposal for workshop demonstration
-================================================================
 
-EXECUTIVE SUMMARY
-----------------------------------------------------------------
+### Executive Summary
 JEDCO processes hundreds to thousands of grant applications per
 program cycle across programs including Start Business, Tattweer,
 and Tamkeen. As application volumes grow, staff can benefit from
@@ -23,9 +23,7 @@ The system handles routine administrative steps so program
 officers can focus on what they do best: field visits,
 applicant interviews, and expert evaluation of complex cases.
 
-================================================================
-1. OPPORTUNITY
-----------------------------------------------------------------
+## 1. OPPORTUNITY
 1.1 Where AI Can Help
 - During high-volume cycles, AI can assist with initial document
   verification so officers focus on evaluation and applicant engagement
@@ -48,9 +46,7 @@ applicant interviews, and expert evaluation of complex cases.
 - Faster processing demonstrates JEDCO's continued commitment to a
   responsive and high-quality service for applicants
 
-================================================================
-2. PROPOSED SOLUTION
-================================================================
+## 2. PROPOSED SOLUTION
 
 2.1 System Overview
 An AI assistant that supports JEDCO officers across the full
@@ -61,24 +57,22 @@ All processing occurs on JEDCO-owned servers.
 No application data is sent to external cloud services.
 The system supports Arabic natively.
 
-----------------------------------------------------------------
 2.2 Pipeline Stages
-----------------------------------------------------------------
 
-STAGE 1: INTAKE & DOCUMENT VERIFICATION
+#### STAGE 1: INTAKE & DOCUMENT VERIFICATION
   - Applicant submits application via existing JEDCO portal
   - System automatically checks required documents checklist
     (commercial registration, financial statements, IDs, etc.)
   - Incomplete applications are flagged and a draft notification
     is prepared for officer review and sending
 
-STAGE 2: ASSISTED ELIGIBILITY SCREENING
+#### STAGE 2: ASSISTED ELIGIBILITY SCREENING
   - AI reads application against program eligibility rules
   - Flags hard disqualifiers (excluded sectors, expired licenses,
     non-Jordanian ownership, etc.)
   - Flagged applications sent to officer for quick confirm/override
 
-STAGE 3: MULTI-CRITERIA SCORING
+#### STAGE 3: MULTI-CRITERIA SCORING
   - Qualifying applications are scored 0-100 against weighted criteria:
     * Sector priority (20%)
     * Employment creation (25%)
@@ -89,7 +83,7 @@ STAGE 3: MULTI-CRITERIA SCORING
   - Officers review and confirm scores, or adjust them with documented
     reasoning — all adjustments are recorded for audit purposes
 
-STAGE 4: RANKING & SHORTLISTING
+#### STAGE 4: RANKING & SHORTLISTING
   - Applications ranked by total score descending
   - System auto-generates shortlist for top-N positions
     (N = budget envelope ÷ average grant size)
@@ -98,7 +92,7 @@ STAGE 4: RANKING & SHORTLISTING
     flagged for mandatory human review
   - Committee receives ranked list, not raw applications
 
-STAGE 5: INVITATION & CONTRACT GENERATION
+#### STAGE 5: INVITATION & CONTRACT GENERATION
   - Draft invitation notifications prepared for officer approval before sending
   - Contract generated from pre-approved template, populated with:
     * Applicant details
@@ -107,7 +101,7 @@ STAGE 5: INVITATION & CONTRACT GENERATION
     * Reporting deadlines
   - Legal review of contracts remains with JEDCO legal team
 
-STAGE 6: PROGRESS MONITORING
+#### STAGE 6: PROGRESS MONITORING
   - System sends automated progress report requests every 4 weeks
   - Beneficiary submits structured report via web form
   - AI reads report and produces summary per project:
@@ -117,7 +111,7 @@ STAGE 6: PROGRESS MONITORING
   - Officers receive one-page summary per project, not raw reports
   - Non-responsive beneficiaries flagged for officer follow-up after 2 weeks
 
-STAGE 7: FINAL EVALUATION & CLOSURE
+#### STAGE 7: FINAL EVALUATION & CLOSURE
   - At contract end, AI compares actual vs target KPIs:
     * Employment numbers
     * Production capacity
@@ -127,9 +121,7 @@ STAGE 7: FINAL EVALUATION & CLOSURE
   - Recommendation generated: FULL CLOSURE / PARTIAL / FLAG FOR AUDIT
   - Closure officer reviews recommendation, approves or escalates
 
-================================================================
-3. TECHNOLOGY STACK
-================================================================
+## 3. TECHNOLOGY STACK
 
 All components are open source or commercially available.
 All can be deployed on-premise on JEDCO infrastructure.
@@ -146,9 +138,7 @@ Web Interface       | React / Next.js   | Officer dashboard
 API Layer           | FastAPI (Python)  | Backend services
 Hosting             | On-premise server | JEDCO internal server
 
-================================================================
-4. HARDWARE REQUIREMENTS
-================================================================
+## 4. HARDWARE REQUIREMENTS
 
 MINIMUM (for up to 1,000 applications/cycle):
   - Server: 32GB RAM, 8-core CPU, 1TB SSD
@@ -167,18 +157,14 @@ CLOUD ALTERNATIVE (if on-premise GPU not available):
   - Data residency: configurable to Jordan
   - Cost: ~$0.01-0.03 per application reviewed (estimate)
 
-================================================================
-5. ARABIC LANGUAGE SUPPORT
-================================================================
+## 5. ARABIC LANGUAGE SUPPORT
 - Qwen2.5:7B is Arabic-native, trained on large Arabic corpus
 - Supports Modern Standard Arabic (MSA) and mixed dialect input
 - Application forms, prompts, reports, and outputs can be
   fully in Arabic
 - Officer dashboard can be bilingual (Arabic/English)
 
-================================================================
-6. DATA PRIVACY & SECURITY
-================================================================
+## 6. DATA PRIVACY & SECURITY
 - All application data stored in JEDCO-controlled database
 - No data transmitted to external AI providers
 - AI model runs entirely on JEDCO hardware
@@ -186,11 +172,9 @@ CLOUD ALTERNATIVE (if on-premise GPU not available):
 - Full audit log: every AI recommendation + officer action recorded
 - Compliant with Jordanian data protection law requirements
 
-================================================================
-7. IMPLEMENTATION ROADMAP
-================================================================
+## 7. IMPLEMENTATION ROADMAP
 
-PHASE 1 — PILOT (3 months)
+#### PHASE 1 — PILOT (3 months)
   - Install and configure AI stack on test server
   - Load one year of historical applications (anonymized)
   - Validate scoring rubric against known outcomes
@@ -198,22 +182,20 @@ PHASE 1 — PILOT (3 months)
   - Run one program cycle (e.g., Tattweer) in parallel with
     existing process — compare outcomes
 
-PHASE 2 — CONTROLLED ROLLOUT (3 months)
+#### PHASE 2 — CONTROLLED ROLLOUT (3 months)
   - Deploy for one program in production (intake + screening only)
   - Officers retain full override authority on all decisions
   - Collect officer feedback — refine scoring weights
   - Integrate with existing JEDCO application portal API
 
-PHASE 3 — FULL PIPELINE (6 months)
+#### PHASE 3 — FULL PIPELINE (6 months)
   - Activate all 7 stages for priority programs
   - Onboard remaining program officers
   - Integrate progress reporting module
   - Produce first AI-generated closure reports
   - External audit of AI decision consistency
 
-================================================================
-8. ESTIMATED BENEFITS
-================================================================
+## 8. ESTIMATED BENEFITS
 
 WHAT CHANGES                        | HOW AI HELPS
 ------------------------------------|-------------------------------------------
@@ -224,9 +206,7 @@ Progress report summaries           | AI drafts one-page summary; officer review
 Disqualifier detection              | AI highlights potential issues for officer
 Closure evaluation                  | AI calculates KPIs; officer approves
 
-================================================================
-9. BUDGET ESTIMATE (INDICATIVE)
-================================================================
+## 9. BUDGET ESTIMATE (INDICATIVE)
 
 ITEM                            | COST (JOD)
 --------------------------------|------------------
@@ -242,27 +222,21 @@ TOTAL ESTIMATE                  | 40,000 - 69,000 JOD
 Note: Figures are indicative. Detailed quote to follow scoping.
 Comparable cloud-based solution: 80,000-120,000 JOD/year recurring.
 
-================================================================
-10. NEXT STEPS
-================================================================
-1. Schedule a technical demonstration for JEDCO IT and
+## 10. NEXT STEPS
+## 1. Schedule a technical demonstration for JEDCO IT and
    program management teams (2 hours)
-2. Share access to working prototype (demo laptop, local setup)
-3. Sign NDA and provide anonymized historical application sample
-4. Conduct scoping workshop to define phase 1 scope
-5. Issue formal RFP or direct contract based on JEDCO procedures
+## 2. Share access to working prototype (demo laptop, local setup)
+## 3. Sign NDA and provide anonymized historical application sample
+## 4. Conduct scoping workshop to define phase 1 scope
+## 5. Issue formal RFP or direct contract based on JEDCO procedures
 
-================================================================
-CONTACT
-----------------------------------------------------------------
+### Contact
 For questions about this proposal or to schedule a demonstration:
 [Your Name]
 [Your Title]
 [Email] | [Phone]
-================================================================
 
-APPENDIX A: SAMPLE SCORING RUBRIC (Tattweer Program)
-------------------------------------------------------
+#### APPENDIX A: SAMPLE SCORING RUBRIC (Tattweer Program)
 CRITERION               | WEIGHT | 1-2 (low) | 5 (mid) | 9-10 (high)
 ------------------------|--------|-----------|---------|----------------
 Sector priority         | 20%    | Low-value | Mixed   | Top 5 sectors
@@ -273,8 +247,7 @@ Innovation component    | 20%    | None      | Partial | Core to project
 Financial capacity      | 20%    | Weak      | Adequate| Strong + co-inv.
 Documentation quality   | 15%    | Incomplete| Partial | Complete + clear
 
-APPENDIX B: PILOT PROGRAM SUGGESTED — TATTWEER CYCLE 2026
-----------------------------------------------------------
+#### APPENDIX B: PILOT PROGRAM SUGGESTED — TATTWEER CYCLE 2026
 - Use real Tattweer 2026 applications (with applicant consent)
 - Run AI pipeline alongside manual review team (blind comparison)
 - Measure: agreement rate between AI preliminary assessment and evaluator
@@ -283,6 +256,4 @@ APPENDIX B: PILOT PROGRAM SUGGESTED — TATTWEER CYCLE 2026
 - Target: 85%+ agreement on INVITE/REJECT decisions
 - Success gate for Phase 2 activation
 
-================================================================
-END OF PROPOSAL
-================================================================
+### End Of Proposal

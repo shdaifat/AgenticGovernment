@@ -1,21 +1,16 @@
-================================================================
-BLOCK 5 — PC AGENT LIVE DEMO SCRIPT
+# Block 5 — PC Agent Live Demo Script
 AI-Powered Grant Application Pipeline
 Training: Agentic Government @ JEDCO
 Duration: 20 minutes
-================================================================
 
 TRAINER SETUP (before the session)
-----------------------------------------------------------------
 - Ollama running: qwen3:8b loaded
 - AnythingLLM open with JEDCO Application Review workspace (also using qwen3:8b)
 - This script open on second monitor
 - n8n running locally at http://localhost:5678 (optional)
 - assets/jedco-docs/ files uploaded to AnythingLLM
 
-================================================================
 NARRATIVE (say this to the audience)
-----------------------------------------------------------------
 "JEDCO receives hundreds — sometimes thousands — of applications
 every program cycle. Staff expertise is most valuable in interviews,
 field visits, and complex decisions. What if an AI assistant could
@@ -25,9 +20,7 @@ so staff can focus on the work that truly needs their judgment?
 Let me show you what that looks like — running entirely
 on this laptop, no cloud, no data leaving the room."
 
-================================================================
-STAGE 1 — INTAKE & DOCUMENT CHECK (3 min)
-----------------------------------------------------------------
+#### STAGE 1 — INTAKE & DOCUMENT CHECK (3 min)
 WHAT TO SHOW:
   Open AnythingLLM → JEDCO Application Review workspace
 
@@ -41,15 +34,13 @@ EXPECTED OUTPUT:
   - Start Business: missing commercial registration (intentional)
   - Tattweer: all present (but license issue hidden for now)
 
-TRAINER TALKING POINT:
+**TRAINER TALKING POINT:**
   "In seconds, the AI scanned both applications and produced a
   document checklist. This is the initial administrative check
   the AI handles first — so the officer can direct their attention
   straight to evaluation and the cases that need expert judgment."
 
-================================================================
-STAGE 2 — ELIGIBILITY SCORING (5 min)
-----------------------------------------------------------------
+#### STAGE 2 — ELIGIBILITY SCORING (5 min)
 WHAT TO SHOW:
   Same workspace, new prompt
 
@@ -58,11 +49,11 @@ TYPE THIS PROMPT:
   (Zahraa Textiles) against the following criteria. Give a score
   out of 10 for each, then a total out of 50:
 
-  1. Sector priority (high-value 5 sectors)
-  2. Employment creation potential
-  3. Innovation / technology component
-  4. Financial capacity of applicant
-  5. Completeness and quality of documentation
+## 1. Sector priority (high-value 5 sectors)
+## 2. Employment creation potential
+## 3. Innovation / technology component
+## 4. Financial capacity of applicant
+## 5. Completeness and quality of documentation
 
   Show scores as a table. Then give a final recommendation:
   INVITE / REVIEW / REJECT"
@@ -71,16 +62,14 @@ EXPECTED OUTPUT:
   Scored table + recommendation. Should score high on sector
   (textiles = high-value) and employment, medium on innovation.
 
-TRAINER TALKING POINT:
+**TRAINER TALKING POINT:**
   "This scoring rubric is based on JEDCO's own published selection
   priorities. The AI applies the same criteria every time,
   giving the officer a consistent starting point.
   The human reviewer then validates the score and adds their
   professional judgment — context the AI simply cannot have."
 
-================================================================
-STAGE 3 — HIDDEN ISSUE DETECTION (4 min)
-----------------------------------------------------------------
+#### STAGE 3 — HIDDEN ISSUE DETECTION (4 min)
 WHAT TO SHOW:
   Demonstrate the difference between vague and precise prompting
 
@@ -98,21 +87,18 @@ EXPECTED RESULT:
   Prompt 1: general — AI returns overview without checking the license timeline
   Prompt 2: FAIL — clear reasoning about expiry during implementation
 
-TRAINER TALKING POINT:
+**TRAINER TALKING POINT:**
   "Same AI. Same documents. Different prompt — completely different
   result. This is why prompt engineering is a professional skill,
   not a trick. In government work, catching every compliance detail
   matters — and AI can help double-check. The quality of your
   question determines the quality of the answer."
 
-================================================================
-================================================================
-STAGE 3B — RAG vs DIRECT: WHY ARCHITECTURE MATTERS (3 min)
-----------------------------------------------------------------
+#### STAGE 3B — RAG vs DIRECT: WHY ARCHITECTURE MATTERS (3 min)
 WHAT TO SHOW:
   Live comparison — same question, same model, two different methods
 
-STEP 1: Ask AnythingLLM (RAG mode):
+#### STEP 1: Ask AnythingLLM (RAG mode):
   Open AnythingLLM → JEDCO Application Review workspace
   TYPE: "What is the minimum number of employees required for the
          Tattweer program?"
@@ -122,13 +108,13 @@ STEP 1: Ask AnythingLLM (RAG mode):
   (Tested result: "Not found in the provided context" — even
   though the answer IS in the uploaded document)
 
-STEP 2: Run direct Ollama pipeline:
+#### STEP 2: Run direct Ollama pipeline:
   python tools/evaluate-pipeline.py --model qwen3:8b --limit 2
 
   EXPECTED: Catches license issue, correct scoring, precise answers
   because the FULL criteria text is injected into every prompt.
 
-TRAINER TALKING POINT:
+**TRAINER TALKING POINT:**
   "Look at what just happened. Same model — qwen3:8b. Same
   document. Two different results.
 
@@ -148,9 +134,7 @@ TRAINER TALKING POINT:
   For AI-assisted compliance checks that officers review,
   direct injection gives more reliable results."
 
-================================================================
-STAGE 4 — AUTOMATED RANKING CONCEPT (3 min)
-----------------------------------------------------------------
+#### STAGE 4 — AUTOMATED RANKING CONCEPT (3 min)
 WHAT TO SHOW:
   Explain the ranking pipeline (no live demo needed — use diagram)
 
@@ -171,9 +155,7 @@ PIPELINE VISUAL (draw or show):
     → Middle 200: DETAILED OFFICER REVIEW (expert judgment)
     → Remainder: AI drafts response, officer batch-reviews before sending
 
-================================================================
-STAGE 5 — PROGRESS REPORTING AUTOMATION (3 min)
-----------------------------------------------------------------
+#### STAGE 5 — PROGRESS REPORTING AUTOMATION (3 min)
 WHAT TO SHOW:
   Open n8n OR describe the workflow concept
 
@@ -195,9 +177,7 @@ SAMPLE PROMPT (show in AnythingLLM):
   JOD of 35,000 JOD approved. Is this project on track?
   Flag any risks. Output: ON TRACK / AT RISK / CRITICAL"
 
-================================================================
-STAGE 6 — PROGRAM CLOSURE EVALUATION (2 min)
-----------------------------------------------------------------
+#### STAGE 6 — PROGRAM CLOSURE EVALUATION (2 min)
 WHAT TO SHOW:
   Final evaluation concept
 
@@ -214,14 +194,12 @@ SAMPLE PROMPT:
   Score overall project completion (%) and financial completion (%).
   Recommend: FULL CLOSURE / PARTIAL CLOSURE / FLAG FOR AUDIT"
 
-TRAINER TALKING POINT:
+**TRAINER TALKING POINT:**
   "The AI produces a consistent closure assessment for every project.
   Staff validate and sign off. The audit trail is complete and
   every project gets the same thorough review."
 
-================================================================
 CLOSING MESSAGE (1 min)
-----------------------------------------------------------------
 "Everything you just saw ran on this laptop.
 No internet connection. No cloud. No subscription.
 Your documents never left this room.
@@ -231,9 +209,7 @@ AI is a tool JEDCO staff can choose to use when it helps.
 The key skill is knowing how to ask the right questions —
 and that’s something JEDCO evaluators already excel at."
 
-================================================================
-DEMO FILES USED
-----------------------------------------------------------------
+### Demo Files Used
 - assets/jedco-docs/mock-application-tattweer-AR.txt
 - assets/jedco-docs/mock-application-start-business-AR.txt
 - assets/jedco-docs/JEDCO-eligibility-criteria-reference.txt
@@ -244,4 +220,3 @@ KEY DEMO INSIGHT (Stage 3B):
   AnythingLLM (RAG) missed minimum employee count → "Not found"
   Direct Ollama pipeline (full context injection) → "Minimum 5 employees"
   Same model. Same document. Architecture determines accuracy.
-================================================================

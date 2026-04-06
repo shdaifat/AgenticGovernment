@@ -1,23 +1,16 @@
-================================================================
-RCTF FORMULA — Quick Reference Card
+# RCTF Formula — Quick Reference Card
 AI Prompt Engineering for JEDCO Staff
 Training: Agentic Government — JEDCO Staff Workshop
-================================================================
 
 What is the RCTF Formula?
-----------------------------------------------------------------
 R = Role      — Who should the AI be?
 C = Context   — What background information does it need?
 T = Task      — What exactly should it do?
 F = Format    — How should it present the result?
 
-================================================================
 Golden Rule: The clearer your prompt, the better the answer.
-================================================================
 
-================================================================
 Example 1 — Tamkeen Program (Capacity Building)
-================================================================
 
 → Starting prompt:
   "Write a report about a company"
@@ -34,9 +27,7 @@ Example 1 — Tamkeen Program (Capacity Building)
      Give a final recommendation: ELIGIBLE / NOT ELIGIBLE / NEEDS REVIEW.
   F: Table showing each criterion with result (Yes/No), then recommendation.
 
-================================================================
 Example 2 — Tattweer Program (Business Development)
-================================================================
 
 → Starting prompt:
   "Is this application good?"
@@ -53,9 +44,7 @@ Example 2 — Tattweer Program (Business Development)
 
 Expected result: Does not meet requirement — license expires before implementation ends
 
-================================================================
 Example 3 — Start Business Program
-================================================================
 
 → Starting prompt:
   "Write a rejection letter"
@@ -73,20 +62,15 @@ Example 3 — Start Business Program
      - Professional and respectful tone
   F: Full formal letter in JEDCO format (header, date, signature).
 
-================================================================
 Quick Tips
-================================================================
 
-1. Always start with Role (R) — this sets the AI's "personality"
-2. Give real numbers and dates in Context (C) — don't say "some company"
-3. Be specific in Task (T) — "evaluate 5 criteria" beats "evaluate the app"
-4. Specify Format (F) — if you don't, you get a random format
-5. If the result isn't good: add more detail, don't repeat the same prompt
+## 1. Always start with Role (R) — this sets the AI's "personality"
+## 2. Give real numbers and dates in Context (C) — don't say "some company"
+## 3. Be specific in Task (T) — "evaluate 5 criteria" beats "evaluate the app"
+## 4. Specify Format (F) — if you don't, you get a random format
+## 5. If the result isn't good: add more detail, don't repeat the same prompt
 
-================================================================
 Security Reminder
-================================================================
 ⚠️ Do NOT enter real applicant data into the AI
 ⚠️ Use mock/training data only
 ⚠️ The system runs locally — no data leaves the machine
-================================================================
