@@ -49,6 +49,39 @@ set PATH=%PATH%;%LOCALAPPDATA%\Programs\Ollama
 
 ---
 
+## Step 2b — Interactive Testing (Manual Mode)
+
+**Before we automate, let's test manually — like using ChatGPT:**
+
+1. Start an interactive chat session:
+   ```
+   ollama run qwen3:8b
+   ```
+
+2. The prompt appears (`>>>`) — now you can type naturally:
+   ```
+   >>> You are a JEDCO evaluator. What are the minimum requirements for the Tattweer program?
+   ```
+
+3. Ollama responds with full context ✅
+
+4. Try another query:
+   ```
+   >>> A company has 3 employees. Can it apply to Tattweer?
+   ```
+
+5. Experiment with different prompts to see how phrasing affects answers
+
+6. To exit: type `/bye`
+
+**This is what we'll automate next** — instead of typing manually for each application, Python will:
+- Read documents automatically
+- Send prompts to Ollama
+- Collect answers
+- Format them into reports
+
+---
+
 ## Step 3 — Verify Python Installation
 
 1. Open **Command Prompt** or **PowerShell**

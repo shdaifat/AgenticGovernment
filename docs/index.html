@@ -254,6 +254,27 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
       </div>
     </div>
 
+    <!-- SLIDE 7b: TEST MANUALLY FIRST -->
+    <div class="swiper-slide">
+      <h2>Test Manually First<br>(Like Using ChatGPT)</h2>
+      <p>Before automating, let's test the AI manually:</p>
+      <pre>ollama run qwen3:8b</pre>
+      <p class="small">This opens an interactive chat. Now type naturally:</p>
+      <div class="good" style="font-size: clamp(0.7rem, 1.6vw, 0.88rem); margin-top: 0.5em;">
+        <strong>&gt;&gt;&gt;</strong> You are a JEDCO evaluator. Does this company with 3 employees qualify for Tattweer?<br><br>
+        <strong>Qwen3:</strong> No, Tattweer requires a minimum of 5 employees. This company falls short of the eligibility criteria.
+      </div>
+      <p style="margin-top: 1em;"><strong>This works!</strong> The AI answers correctly. But now imagine:</p>
+      <ul>
+        <li>100 applications to evaluate</li>
+        <li>Type the same prompt 100 times?</li>
+        <li>Copy-paste answers into a spreadsheet?</li>
+      </ul>
+      <p style="font-size: clamp(1rem, 2.2vw, 1.2rem); font-weight: bold; color: var(--orange); margin-top: 0.6em;">
+        This is why we automate →
+      </p>
+    </div>
+
     <!-- SLIDE 8: MOCK DATA -->
     <div class="swiper-slide">
       <h2><span class="step">3</span> We Had No Data — So We Made It</h2>
@@ -377,6 +398,39 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
         ⚠️ Start Business flagged: license validity not confirmed for full period.<br>
         ✅ Tattweer: all docs present, high score on sector + employment.
       </p>
+    </div>
+
+    <!-- SLIDE 12b: MANUAL TO AUTOMATED -->
+    <div class="swiper-slide center">
+      <h2>What We Just Automated</h2>
+      <p>Remember testing manually with Ollama?</p>
+      <div class="split" style="text-align: center; gap: 20px; margin: 1.2em 0;">
+        <div style="flex: 1;">
+          <h3 class="accent">Manual (What You Did)</h3>
+          <div style="background: #fadbd8; padding: 15px; border-radius: 8px;">
+            <div style="font-size: 1.2em; margin: 8px 0;">💻</div>
+            Open Ollama chat<br>
+            <div style="font-size: 0.9em; margin-top: 4px;">Type prompts</div><br>
+            Read answers<br>
+            Copy to spreadsheet<br>
+            × 100 applications = <strong>hours</strong>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--green);">→<br>AUTOMATE<br>→</div>
+        <div style="flex: 1;">
+          <h3 class="highlight">Automated (What Python Does)</h3>
+          <div style="background: #eafaf1; padding: 15px; border-radius: 8px;">
+            <div style="font-size: 1.2em; margin: 8px 0;">⚡</div>
+            Read 100 applications<br>
+            <div style="font-size: 0.9em; margin-top: 4px;">Send same prompts to Ollama</div><br>
+            Collect all answers<br>
+            Format into reports<br>
+            × 100 applications = <strong>minutes</strong>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top: 1em;"><strong>Same tests. Same AI. Same logic.</strong><br>
+      <span class="small">Python just removes the manual repetition.</span></p>
     </div>
 
     <!-- SLIDE 13: REPORTS -->

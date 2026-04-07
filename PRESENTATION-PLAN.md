@@ -59,7 +59,7 @@
 
 ---
 
-### ACT 2: HOW WE BUILT IT — STEP BY STEP (8 slides)
+### ACT 2: HOW WE BUILT IT — STEP BY STEP (10 slides)
 
 #### Slide 6 — Step 1: Install the AI Brain
 - Download Ollama (ollama.com) — 5 minutes
@@ -73,6 +73,23 @@
 - Open the chat panel → start giving instructions
 - **Visual:** VS Code with Copilot chat panel open
 - **Talking point:** "This is Agent 1. You talk to it. It writes code."
+
+#### Slide 7b — Test Manually First (Like Using ChatGPT)
+- **Before automating, let's verify the AI works for evaluation tasks**
+- Open Ollama interactive mode: `ollama run qwen3:8b`
+- Test with a natural question:
+  ```
+  >>> You are a JEDCO evaluator. Does this company with 3 employees 
+      qualify for Tattweer?
+  ```
+- Ollama responds correctly: "No, Tattweer requires minimum 5 employees..."
+- **The problem we're trying to solve:**
+  - This works great! But now imagine:
+  - 100 applications to evaluate
+  - Type the same prompt 100 times?
+  - Copy-paste answers into a spreadsheet?
+- **Transition:** "This is why we automate →"
+- **Talking point:** "Manual testing proves the concept. Now let's eliminate the repetition."
 
 #### Slide 8 — Step 3: We Had No Data — So We Made It
 - Real JEDCO applications are confidential
@@ -159,6 +176,19 @@
   Score: 93/100 → INVITE
   ```
 - **Talking point:** "We verify against known answers. The mock applications have intentional issues — we check if the AI catches them."
+
+#### Slide 12b — What We Just Automated
+- **Visualization:** Side-by-side comparison
+  ```
+  MANUAL (What you did)          →  AUTOMATE  →        AUTOMATED (What Python does)
+  • Open Ollama chat                               • Read 100 applications
+  • Type prompts                                   • Send same prompts to Ollama
+  • Read answers                                   • Collect all answers
+  • Copy to spreadsheet                            • Format into reports
+  × 100 apps = HOURS                              × 100 apps = MINUTES
+  ```
+- **Key insight:** Same tests. Same AI. Same logic. Python just removes manual repetition.
+- **Talking point:** "Remember when we tested it manually with ChatGPT-style interaction? This Python pipeline does exactly that — but 100 times automatically. The intelligence is the same. The speed is different."
 
 #### Slide 13 — Step 8: Generate Reports
 - Pipeline produces:
