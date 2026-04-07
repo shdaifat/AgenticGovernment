@@ -208,13 +208,13 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
       <h2><span class="step">1</span> Install the AI Brain</h2>
       <div class="split">
         <div>
-          <h3>Download Ollama</h3>
+          <h3>Download &amp; Install Ollama</h3>
           <p>Visit <strong>ollama.com</strong> → download → install. Takes 5 minutes.</p>
-          <h3>Pull the Model</h3>
-          <pre>ollama pull qwen3:8b</pre>
-          <p class="small">Downloads a 5.2 GB AI model to your computer. ~10 min.</p>
-          <h3>Test It</h3>
-          <pre>ollama run qwen3:8b "ما هي شروط برنامج تطوير؟"</pre>
+          <h3>Download the AI Model</h3>
+          <p>Open Ollama → go to <strong>Models</strong> → search <strong>qwen3:8b</strong> → click <strong>Download</strong>.</p>
+          <p class="small">~5.2 GB · downloads once, runs forever · no internet needed after.</p>
+          <h3>Start Chatting</h3>
+          <p>Select <strong>Qwen3 8B</strong> from the model list → open the chat → type your question.</p>
         </div>
         <div class="center">
           <div class="box" style="max-width:100%; padding: 20px;">
@@ -223,7 +223,7 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
             The AI runs on <em>your</em> computer.<br>
             <span class="highlight">Nothing goes to the internet.</span>
           </div>
-          <div class="placeholder">🎥 Video: Installing Ollama — coming soon</div>
+          <a href="https://ollama.com" target="_blank" rel="noopener" style="display:inline-block; margin-top: 12px; padding: 10px 20px; background: var(--blue); color: white; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: clamp(0.8rem, 1.8vw, 1rem);">🌐 ollama.com — Download Here</a>
         </div>
       </div>
     </div>
@@ -258,9 +258,15 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
     <div class="swiper-slide">
       <h2>Test Manually First<br>(Like Using ChatGPT)</h2>
       <p>Before automating, let's test the AI manually:</p>
-      <pre>ollama run qwen3:8b</pre>
-      <p class="small">This opens an interactive chat. Now type naturally:</p>
-      <img src="images/ollama-interactive-test.png" style="max-width: 100%; max-height: 300px; border-radius: 8px; margin: 1em 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" alt="Ollama interactive chat test">
+      <div style="background: #eaf2f8; border-left: 4px solid var(--blue); padding: 10px 14px; border-radius: 6px; margin: 0.5em 0; font-size: clamp(0.75rem, 1.7vw, 0.92rem);">
+        🖥️ Open <strong>Ollama</strong> → select <strong>Qwen3 8B</strong> → type in the chat box
+      </div>
+      <p class="small">Just like ChatGPT — type your question, press Enter:</p>
+      <div class="rtl" style="background: #1e1e2e; color: #cdd6f4; padding: 12px 16px; border-radius: 8px; margin: 0.6em 0; font-family: 'Cascadia Code', Consolas, monospace; font-size: clamp(0.8rem, 1.8vw, 1rem); border-left: 4px solid var(--green);">
+        أنت مسؤول تقييم في JEDCO.<br>
+        شركة عمرها 18 شهر. هل تستوفي شرط السن (الحد الأدنى سنتان)؟
+      </div>
+      <img src="images/ollama-interactive-test.png" style="max-width: 30%; height: auto; border-radius: 8px; margin: 1em 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: block;" alt="Ollama interactive chat test">
       <p style="margin-top: 1em;"><strong>This works!</strong> The AI answers correctly. Arabic questions, JEDCO logic, all working. But now imagine:</p>
       <ul>
         <li>100 applications to evaluate</li>
