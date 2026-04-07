@@ -92,3 +92,62 @@ secrets/     # ⚠️ Gitignored — never commit credentials here
 - [ ] Upload `assets/jedco-docs/` files to AnythingLLM workspace
 - [ ] Run smoke test: `ollama run qwen3:8b "مرحبا، ما هو دورك؟"`
 - [ ] See [`tools/setup-guide-AR.md`](tools/setup-guide-AR.md) or [`tools/setup-guide-EN.md`](tools/setup-guide-EN.md) for full instructions
+
+## Roadmap — Web Application Portal
+
+A self-service portal where applicants upload their application directly and receive AI-assisted pre-screening before officer review.
+
+### Phase 1 — Upload & Document Check (MVP)
+- [ ] Web form: applicant uploads application PDF + supporting documents
+- [ ] Automatic document checklist — flags missing files before submission
+- [ ] Applicant receives confirmation email with checklist status
+- [ ] Officer dashboard: view incoming applications, sorted by completeness
+- **Tech:** FastAPI backend + React frontend, hosted on JEDCO internal server
+
+### Phase 2 — AI Pre-Screening
+- [ ] Uploaded application auto-evaluated against program eligibility criteria
+- [ ] AI generates preliminary score + flags (same pipeline as `evaluate-pipeline.py`)
+- [ ] Officer sees: application, AI score, flagged issues — side by side
+- [ ] Officer confirms, adjusts, or overrides each AI recommendation
+- [ ] Full audit trail: every AI output + officer action logged
+- **Tech:** Ollama API integration, PostgreSQL for application data
+
+### Phase 3 — Applicant Tracking & Status
+- [ ] Applicant portal: check application status (received → under review → decision)
+- [ ] Automated notifications at each stage (email / SMS)
+- [ ] Officer can request missing documents directly through the portal
+- [ ] Applicant uploads corrections without resubmitting the full application
+
+### Phase 4 — Post-Award Monitoring
+- [ ] Beneficiary submits progress reports through the portal
+- [ ] AI reads report and generates project status summary for the officer
+- [ ] Dashboard: all active projects, color-coded (on track / at risk / critical)
+- [ ] Closure evaluation auto-generated when contract period ends
+
+### Architecture Overview
+```
+┌─────────────┐     ┌──────────────┐     ┌─────────────┐
+│  Applicant  │────▶│  Web Portal  │────▶│  Officer     │
+│  (browser)  │     │  FastAPI +   │     │  Dashboard   │
+│             │◀────│  React       │◀────│  (review +   │
+│  uploads +  │     │              │     │   decide)    │
+│  tracks     │     └──────┬───────┘     └─────────────┘
+│  status     │            │
+└─────────────┘     ┌──────▼───────┐
+                    │  AI Engine   │
+                    │  Ollama +    │
+                    │  qwen3:8b    │
+                    │  (local)     │
+                    └──────┬───────┘
+                    ┌──────▼───────┐
+                    │  PostgreSQL  │
+                    │  (all data   │
+                    │   on-prem)   │
+                    └──────────────┘
+```
+
+### Key Principles
+- **All data stays on JEDCO infrastructure** — no external cloud
+- **AI assists, officer decides** — every AI output requires human confirmation
+- **Arabic-first UI** — RTL layout, Arabic labels, bilingual option
+- **Audit trail** — every action logged for transparency and accountability
