@@ -49,30 +49,38 @@ set PATH=%PATH%;%LOCALAPPDATA%\Programs\Ollama
 
 ---
 
-## Step 3 — Install AnythingLLM
+## Step 3 — Verify Python Installation
 
-1. Open browser: **https://anythingllm.com/download**
-2. Select **Windows** and click **Download**
-3. Run `AnythingLLMDesktop.exe`
-4. Follow installer steps
-5. After opening the app:
-   - Select **Ollama** as the LLM Provider
-   - URL: `http://localhost:11434`
-   - Select model: **qwen3:8b**
-   - Click **Save**
+1. Open **Command Prompt** or **PowerShell**
+2. Type:
+   ```
+   python --version
+   ```
+   Should show Python 3.8 or higher
+
+3. Install required packages:
+   ```
+   pip install requests
+   ```
 
 ---
 
-## Step 4 — Create Workspace and Upload Documents
+## Step 4 — Test the Evaluation Pipeline
 
-1. In AnythingLLM, click **New Workspace**
-2. Name it: `JEDCO Application Review`
-3. Click the upload icon
-4. Upload these files from `assets/jedco-docs/`:
-   - `JEDCO-eligibility-criteria-reference-v2.txt`
-   - `mock-application-start-business-AR.txt`
-   - `mock-application-tattweer-AR.txt`
-5. Wait for document embedding to complete
+1. Navigate to the project folder:
+   ```
+   cd c:\Projects\AgenticGovernment
+   ```
+
+2. Run the evaluation pipeline to test all components:
+   ```
+   python tools/evaluate-pipeline.py --model qwen3:8b --summary
+   ```
+
+3. Expected output:
+   - Process 1–2 applications from `assets/jedco-docs/`
+   - Generate `results.json`, `results.html`, `results.pdf`
+   - Show scores and recommendations
 
 ---
 
@@ -84,17 +92,12 @@ ollama run qwen3:8b "You are a JEDCO evaluator. What are the Tattweer program re
 ```
 → Should respond with program information ✅
 
-### Test 2: AnythingLLM
-- Open `JEDCO Application Review` workspace
-- Type: "What documents are required for the Tattweer program?"
-→ Should respond based on uploaded documents ✅
-
-### Test 3: Automated pipeline (optional)
+### Test 2: Evaluation pipeline
 ```
 cd c:\Projects\AgenticGovernment
-python tools/evaluate-pipeline.py --model qwen3:8b --limit 2
+python tools/evaluate-pipeline.py --model qwen3:8b --limit 2 --summary
 ```
-→ Should show evaluation for 2 applications ✅
+→ Should generate a ranked report with scores and flags ✅
 
 ---
 

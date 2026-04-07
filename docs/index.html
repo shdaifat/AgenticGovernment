@@ -4,676 +4,547 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI-Powered Grant Review — Built from Scratch</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 <style>
-  :root {
-    --jedco-blue: #1a5276;
-    --jedco-green: #27ae60;
-    --jedco-red: #c0392b;
-    --jedco-orange: #e67e22;
-    --jedco-gray: #7f8c8d;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --blue: #1a5276;
+  --green: #27ae60;
+  --red: #c0392b;
+  --orange: #e67e22;
+  --gray: #7f8c8d;
+  --light: #f8f9fa;
+}
+body { font-family: 'Segoe UI', Tahoma, sans-serif; color: #2c3e50; }
+
+.swiper {
+  width: 100%;
+  height: 100vh;
+  background: white;
+}
+
+.swiper-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  padding: 5vh 8vw;
+  overflow-y: auto;
+}
+
+.swiper-slide:nth-child(even) { background: var(--light); }
+
+h1 { font-size: clamp(1.4rem, 4vw, 2.5rem); color: var(--blue); margin-bottom: 0.3em; }
+h2 { font-size: clamp(1.1rem, 3vw, 1.8rem); color: var(--blue); margin-bottom: 0.4em; }
+h3 { font-size: clamp(0.9rem, 2.5vw, 1.2rem); color: var(--green); margin-bottom: 0.3em; }
+p, li { font-size: clamp(0.8rem, 2vw, 1.05rem); line-height: 1.5; }
+ul, ol { padding-left: 1.2em; margin: 0.5em 0; }
+li { margin: 0.25em 0; }
+.small { font-size: clamp(0.65rem, 1.5vw, 0.8rem); color: var(--gray); }
+.center { text-align: center; }
+
+.tags { margin: 0.8em 0; }
+.tag { display: inline-block; padding: 4px 14px; border-radius: 20px; font-size: clamp(0.65rem, 1.5vw, 0.85rem); font-weight: 600; margin: 3px; }
+.tag-free { background: #d5f5e3; color: #1e8449; }
+.tag-local { background: #d6eaf8; color: #1a5276; }
+.tag-ai { background: #fdebd0; color: #b9770e; }
+
+.boxes { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 1em 0; }
+.box { background: white; border: 2px solid var(--blue); border-radius: 10px; padding: 14px 16px; text-align: center; flex: 1 1 140px; max-width: 200px; }
+.box.red { border-color: var(--red); }
+.box .icon { font-size: 1.8em; margin-bottom: 4px; }
+.box strong { display: block; font-size: clamp(0.75rem, 1.8vw, 0.95rem); }
+.box .sub { font-size: clamp(0.6rem, 1.3vw, 0.75rem); color: var(--gray); }
+
+.flow { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px; margin: 1em 0; }
+.flow .box { flex: 0 1 auto; max-width: 160px; min-width: 80px; padding: 10px; }
+.flow .arrow { color: var(--green); font-weight: bold; font-size: 1.3em; }
+
+table { border-collapse: collapse; width: 100%; max-width: 700px; margin: 0.8em auto; font-size: clamp(0.7rem, 1.7vw, 0.9rem); }
+th { background: var(--blue); color: white; padding: 6px 10px; text-align: left; }
+td { padding: 5px 10px; border-bottom: 1px solid #ddd; }
+tr:nth-child(even) { background: #f4f6f7; }
+.highlight { color: var(--green); font-weight: bold; }
+.warn { color: var(--red); font-weight: bold; }
+.accent { color: var(--orange); font-weight: bold; }
+
+pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8px; overflow-x: auto; font-size: clamp(0.7rem, 1.5vw, 0.85rem); margin: 0.5em 0; font-family: 'Cascadia Code', Consolas, monospace; }
+
+.split { display: flex; gap: 16px; margin: 0.8em 0; }
+.split > div { flex: 1; }
+@media (max-width: 600px) { .split { flex-direction: column; } }
+
+.bad { background: #fdedec; border-left: 4px solid var(--red); padding: 10px; border-radius: 4px; margin: 0.4em 0; }
+.good { background: #eafaf1; border-left: 4px solid var(--green); padding: 10px; border-radius: 4px; margin: 0.4em 0; }
+.fix { background: #fef9e7; border-left: 4px solid var(--orange); padding: 10px; border-radius: 4px; margin: 0.5em 0; font-size: clamp(0.7rem, 1.6vw, 0.88rem); }
+
+.step { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: var(--blue); color: white; font-weight: bold; font-size: 0.85rem; margin-right: 8px; flex-shrink: 0; }
+
+.big { font-size: clamp(2rem, 6vw, 4rem); font-weight: 800; color: var(--blue); }
+
+.placeholder { background: #eee; border: 2px dashed #ccc; border-radius: 8px; padding: 20px; text-align: center; color: #aaa; font-size: clamp(0.65rem, 1.4vw, 0.8rem); margin: 0.6em auto; max-width: 450px; }
+
+.rtl { direction: rtl; text-align: right; }
+
+/* Swiper controls */
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--blue);
+  background: rgba(255, 255, 255, 0.7);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: rgba(26, 82, 118, 0.2);
+}
+
+.swiper-pagination-bullet {
+  background: var(--blue);
+  opacity: 0.5;
+}
+.swiper-pagination-bullet-active {
+  background: var(--blue);
+  opacity: 1;
+}
+
+@media (max-width: 600px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
   }
-  .reveal { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-  .reveal h1, .reveal h2, .reveal h3 { color: var(--jedco-blue); font-weight: 700; }
-  .reveal h1 { font-size: 2.2em; }
-  .reveal h2 { font-size: 1.6em; }
-  .reveal h3 { font-size: 1.2em; color: var(--jedco-green); }
-  .reveal p, .reveal li { font-size: 0.75em; line-height: 1.6; }
-  .reveal .small { font-size: 0.6em; color: var(--jedco-gray); }
-  .reveal table { font-size: 0.65em; margin: 0.5em auto; border-collapse: collapse; }
-  .reveal table th { background: var(--jedco-blue); color: white; padding: 8px 14px; }
-  .reveal table td { padding: 6px 14px; border-bottom: 1px solid #ddd; }
-  .reveal table tr:nth-child(even) { background: #f4f6f7; }
-  .reveal pre { font-size: 0.55em; background: #2c3e50; color: #ecf0f1; border-radius: 8px; padding: 16px; text-align: left; }
-  .reveal code { font-family: 'Cascadia Code', 'Fira Code', Consolas, monospace; }
-  .reveal .highlight { color: var(--jedco-green); font-weight: bold; }
-  .reveal .warn { color: var(--jedco-red); font-weight: bold; }
-  .reveal .accent { color: var(--jedco-orange); font-weight: bold; }
-  .tag-box { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.6em; font-weight: bold; margin: 2px; }
-  .tag-free { background: #d5f5e3; color: #1e8449; }
-  .tag-local { background: #d6eaf8; color: #1a5276; }
-  .tag-ai { background: #fdebd0; color: #b9770e; }
-  .big-number { font-size: 3em; font-weight: 800; color: var(--jedco-blue); line-height: 1; }
-  .diagram-box { background: #f8f9fa; border: 2px solid var(--jedco-blue); border-radius: 12px; padding: 20px; display: inline-block; margin: 8px; text-align: center; font-size: 0.7em; }
-  .arrow { font-size: 1.5em; color: var(--jedco-green); vertical-align: middle; margin: 0 8px; }
-  .side-by-side { display: flex; gap: 20px; align-items: flex-start; }
-  .side-by-side > div { flex: 1; }
-  .bad-box { background: #fdedec; border-left: 4px solid var(--jedco-red); padding: 12px; border-radius: 4px; text-align: left; }
-  .good-box { background: #eafaf1; border-left: 4px solid var(--jedco-green); padding: 12px; border-radius: 4px; text-align: left; }
-  .fix-box { background: #fef9e7; border-left: 4px solid var(--jedco-orange); padding: 12px; border-radius: 4px; text-align: left; margin: 8px 0; font-size: 0.65em; }
-  .rtl { direction: rtl; text-align: right; font-family: 'Segoe UI', Tahoma, 'Arabic Transparent', sans-serif; }
-  .step-num { display: inline-block; width: 40px; height: 40px; line-height: 40px; border-radius: 50%; background: var(--jedco-blue); color: white; font-weight: bold; font-size: 0.8em; text-align: center; margin-right: 10px; }
-  .video-placeholder { background: #eee; border: 2px dashed #bbb; border-radius: 8px; padding: 40px; text-align: center; color: #999; font-size: 0.7em; margin: 10px auto; max-width: 500px; }
-  .reveal .slides section { padding: 20px 40px; }
+}
 </style>
 </head>
 <body>
-<div class="reveal">
-<div class="slides">
 
-<!-- ============================================================ -->
-<!-- SLIDE 1: TITLE -->
-<!-- ============================================================ -->
-<section>
-  <h1>How We Built an AI-Powered<br>Grant Review System</h1>
-  <h3>From Zero — No Subscriptions, No Cloud, Just a Laptop</h3>
-  <br>
-  <p>
-    <span class="tag-box tag-free">100% Free Tools</span>
-    <span class="tag-box tag-local">100% Local Data</span>
-    <span class="tag-box tag-ai">AI-Assisted, Human-Decided</span>
-  </p>
-  <br>
-  <p class="small">JEDCO — Jordan Enterprise Development Corporation &nbsp;|&nbsp; April 2026</p>
-</section>
+<div class="swiper">
+  <div class="swiper-wrapper">
 
-<!-- ============================================================ -->
-<!-- SLIDE 2: WHAT WE STARTED WITH -->
-<!-- ============================================================ -->
-<section>
-  <h2>What We Started With</h2>
-  <br>
-  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
-    <div class="diagram-box">
-      <div style="font-size: 2em;">💻</div>
-      <strong>A Regular Laptop</strong><br>
-      <span class="small">Intel i7 · 16 GB RAM · NVIDIA RTX 2060</span>
-    </div>
-    <div class="diagram-box" style="border-color: var(--jedco-red);">
-      <div style="font-size: 2em;">❌</div>
-      <strong>No AI Tools</strong><br>
-      <span class="small">No ChatGPT · No subscriptions · No cloud</span>
-    </div>
-    <div class="diagram-box" style="border-color: var(--jedco-red);">
-      <div style="font-size: 2em;">📄</div>
-      <strong>No Data</strong><br>
-      <span class="small">Real applications are confidential</span>
-    </div>
-    <div class="diagram-box" style="border-color: var(--jedco-red);">
-      <div style="font-size: 2em;">💰</div>
-      <strong>No Budget</strong><br>
-      <span class="small">$0 spent on AI services</span>
-    </div>
-  </div>
-  <br>
-  <p class="small">Starting point: a blank computer with Windows 11 — nothing else.</p>
-</section>
-
-<!-- ============================================================ -->
-<!-- SLIDE 3: WHAT WE ENDED WITH -->
-<!-- ============================================================ -->
-<section>
-  <h2>What We Built</h2>
-  <br>
-  <p>A working system that:</p>
-  <ul>
-    <li>📄 <strong>Reads</strong> grant applications in Arabic</li>
-    <li>✅ <strong>Checks</strong> documents against eligibility criteria</li>
-    <li>📊 <strong>Scores</strong> applications using JEDCO's own rubric</li>
-    <li>⚠️ <strong>Flags</strong> compliance issues (expired licenses, missing docs)</li>
-    <li>📋 <strong>Produces</strong> a ranked report with recommendations</li>
-  </ul>
-  <br>
-  <p>
-    <span class="tag-box tag-local">Runs on this laptop</span>
-    <span class="tag-box tag-local">No internet needed</span>
-    <span class="tag-box tag-local">Data never leaves the room</span>
-  </p>
-  <br>
-  <div class="video-placeholder">📸 Screenshot of results.html report goes here<br><em>(add image later)</em></div>
-</section>
-
-<!-- ============================================================ -->
-<!-- SLIDE 4: AN AGENT BUILT AN AGENT -->
-<!-- ============================================================ -->
-<section>
-  <h2>The Key Insight</h2>
-  <h1 style="margin: 20px 0;">An Agent Built an Agent</h1>
-  <br>
-  <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px;">
-    <div class="diagram-box" style="background: #eaf2f8;">
-      <div style="font-size: 1.5em;">👤</div>
-      <strong>YOU</strong><br>
-      Plain language<br>instructions
-    </div>
-    <span class="arrow">→</span>
-    <div class="diagram-box" style="background: #d5f5e3;">
-      <div style="font-size: 1.5em;">🤖</div>
-      <strong>Agent 1: Copilot</strong><br>
-      Writes code from<br>your instructions
-    </div>
-    <span class="arrow">→</span>
-    <div class="diagram-box" style="background: #fdebd0;">
-      <div style="font-size: 1.5em;">⚙️</div>
-      <strong>Agent 2: Pipeline</strong><br>
-      Reads applications<br>scores &amp; reports
-    </div>
-    <span class="arrow">→</span>
-    <div class="diagram-box" style="background: #fadbd8;">
-      <div style="font-size: 1.5em;">📋</div>
-      <strong>Report</strong><br>
-      Human reviews<br>and decides
-    </div>
-  </div>
-  <br>
-  <p><strong>You didn't write code.</strong> You wrote instructions. The AI agent wrote the code that powers the AI evaluation.</p>
-</section>
-
-<!-- ============================================================ -->
-<!-- SLIDE 5: EVERYTHING IS FREE -->
-<!-- ============================================================ -->
-<section>
-  <h2>Everything Is Free</h2>
-  <br>
-  <table>
-    <thead>
-      <tr><th>Tool</th><th>What It Does</th><th>Cost</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><strong>VS Code</strong></td><td>Code editor — your workspace</td><td><span class="highlight">Free</span></td></tr>
-      <tr><td><strong>GitHub Copilot Free</strong></td><td>Coding agent — writes code from instructions</td><td><span class="highlight">Free</span></td></tr>
-      <tr><td><strong>Ollama</strong></td><td>Runs AI models locally on your computer</td><td><span class="highlight">Free</span></td></tr>
-      <tr><td><strong>Qwen3 8B</strong></td><td>Arabic + English language model (5.2 GB)</td><td><span class="highlight">Free</span></td></tr>
-      <tr><td><strong>Python</strong></td><td>Runs the evaluation pipeline</td><td><span class="highlight">Free</span></td></tr>
-      <tr><td><strong>Git + GitHub</strong></td><td>Hosts and shares the project</td><td><span class="highlight">Free</span></td></tr>
-    </tbody>
-  </table>
-  <br>
-  <p><span class="big-number">$0</span></p>
-  <p class="small">Total cost of AI tools used in this project</p>
-</section>
-
-<!-- ============================================================ -->
-<!-- SLIDE 6: STEP 1 — INSTALL THE AI BRAIN -->
-<!-- ============================================================ -->
-<section>
-  <h2><span class="step-num">1</span> Install the AI Brain</h2>
-  <br>
-  <div class="side-by-side">
-    <div>
-      <h3>Download Ollama</h3>
-      <p>Visit <strong>ollama.com</strong> → download → install<br>Takes 5 minutes.</p>
-      <h3>Pull the Model</h3>
-      <pre><code>ollama pull qwen3:8b</code></pre>
-      <p class="small">Downloads a 5.2 GB AI model to your computer.<br>Takes ~10 minutes on a fast connection.</p>
-      <h3>Test It</h3>
-      <pre><code>ollama run qwen3:8b "ما هي شروط برنامج تطوير؟"</code></pre>
-    </div>
-    <div>
-      <div class="diagram-box" style="padding: 30px;">
-        <div style="font-size: 3em;">🧠</div>
-        <br>
-        <strong>Ollama + Qwen3</strong><br><br>
-        This is the AI brain.<br>
-        It runs on <em>your</em> computer.<br>
-        <span class="highlight">Nothing goes to the internet.</span>
+    <!-- SLIDE 1: TITLE -->
+    <div class="swiper-slide center">
+      <h1>How We Built an AI-Powered<br>Grant Review System</h1>
+      <h3>From Zero — No Subscriptions, No Cloud, Just a Laptop</h3>
+      <div class="tags">
+        <span class="tag tag-free">100% Free Tools</span>
+        <span class="tag tag-local">100% Local Data</span>
+        <span class="tag tag-ai">AI-Assisted, Human-Decided</span>
       </div>
+      <p class="small">JEDCO — Jordan Enterprise Development Corporation | April 2026</p>
     </div>
-  </div>
-  <div class="video-placeholder">🎥 Video: Installing Ollama — coming soon</div>
-</section>
 
-<!-- ============================================================ -->
-<!-- SLIDE 7: STEP 2 — INSTALL THE BUILDER -->
-<!-- ============================================================ -->
-<section>
-  <h2><span class="step-num">2</span> Install the Builder (Copilot)</h2>
-  <br>
-  <div class="side-by-side">
-    <div>
-      <p><strong>VS Code</strong> is a free code editor by Microsoft.</p>
-      <p><strong>GitHub Copilot</strong> is an AI assistant that lives inside VS Code.</p>
-      <br>
-      <h3>Setup (5 minutes)</h3>
-      <ol>
-        <li>Download VS Code → <strong>code.visualstudio.com</strong></li>
-        <li>Install the GitHub Copilot extension</li>
-        <li>Sign in with a free GitHub account</li>
-        <li>Open the chat panel → start talking</li>
-      </ol>
-      <br>
-      <p>This is <strong>Agent 1</strong>. You tell it what you want in plain English or Arabic. It writes the code.</p>
-    </div>
-    <div>
-      <div class="video-placeholder" style="padding: 60px 20px;">
-        📸 Screenshot: VS Code with Copilot chat panel<br><br>
-        <em>You type: "Create a Python script that reads JEDCO applications and scores them"</em><br><br>
-        <em>Copilot writes the entire script</em>
+    <!-- SLIDE 2: STARTING POINT -->
+    <div class="swiper-slide">
+      <h2>What We Started With</h2>
+      <div class="boxes">
+        <div class="box"><div class="icon">💻</div><strong>A Regular Laptop</strong><div class="sub">Intel i7 · 16 GB RAM · NVIDIA RTX 2060</div></div>
+        <div class="box red"><div class="icon">❌</div><strong>No AI Tools</strong><div class="sub">No ChatGPT · No subscriptions</div></div>
+        <div class="box red"><div class="icon">📄</div><strong>No Data</strong><div class="sub">Real applications are confidential</div></div>
+        <div class="box red"><div class="icon">💰</div><strong>No Budget</strong><div class="sub">$0 for AI services</div></div>
       </div>
+      <p class="small center">Starting point: a blank computer with Windows — nothing else.</p>
     </div>
-  </div>
-</section>
 
-<!-- ============================================================ -->
-<!-- SLIDE 8: STEP 3 — WE HAD NO DATA -->
-<!-- ============================================================ -->
-<section>
-  <h2><span class="step-num">3</span> We Had No Data — So We Made It</h2>
-  <br>
-  <div class="side-by-side">
-    <div>
-      <h3 style="color: var(--jedco-orange);">The Prompt We Gave</h3>
-      <div class="good-box" style="font-size: 0.6em;">
-        "Create a realistic mock application for JEDCO's Start Business program.
-        Include: applicant data, project description, budget table in JOD,
-        action plan, expected economic impact, and document checklist.
-        All in Arabic. Use fake names and numbers. Match JEDCO's actual form."
-      </div>
-    </div>
-    <div>
-      <h3 style="color: var(--jedco-blue);">What the AI Created</h3>
-      <div class="rtl" style="font-size: 0.55em; background: #f8f9fa; padding: 12px; border-radius: 8px; max-height: 280px; overflow-y: auto;">
-        <strong>اسم المشروع:</strong> مصنع البسطة — خط إنتاج حلويات أردنية تقليدية معلّبة<br>
-        <strong>القطاع:</strong> صناعي — صناعات غذائية<br>
-        <strong>الموقع:</strong> منطقة الحسن الصناعية، إربد<br>
-        <strong>الإجمالي:</strong> ٥٠,٠٠٠ دينار<br>
-        <strong>المنحة المطلوبة (٧٠%):</strong> ٣٥,٠٠٠ دينار<br>
-        <strong>فرص العمل:</strong> ٦ موظفين<br>
-        <strong>المبيعات المتوقعة:</strong> ٨٥,٠٠٠ دينار (سنة ١)<br>
-        <br>
-        <em>+ جدول تنفيذ + وثائق مرفقة + إقرار...</em>
-      </div>
-    </div>
-  </div>
-  <br>
-  <p>Real applications are confidential. The AI created <strong>realistic mock data</strong> matching JEDCO's actual format — so we could build and test the system safely.</p>
-</section>
-
-<!-- ============================================================ -->
-<!-- SLIDE 9: STEP 4 — FEED IT THE RULES -->
-<!-- ============================================================ -->
-<section>
-  <h2><span class="step-num">4</span> Feed It Your Rules</h2>
-  <br>
-  <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;">
-    <div class="diagram-box">
-      <div style="font-size: 1.5em;">📑</div>
-      JEDCO Official<br>Program PDFs
-    </div>
-    <span class="arrow">+</span>
-    <div class="diagram-box">
-      <div style="font-size: 1.5em;">📋</div>
-      Eligibility<br>Criteria
-    </div>
-    <span class="arrow">+</span>
-    <div class="diagram-box">
-      <div style="font-size: 1.5em;">⚖️</div>
-      Scoring<br>Rubric
-    </div>
-    <span class="arrow">→</span>
-    <div class="diagram-box" style="background: #eaf2f8;">
-      <div style="font-size: 1.5em;">📖</div>
-      <strong>Structured<br>Reference Doc</strong>
-    </div>
-  </div>
-  <br>
-  <p><strong>The AI doesn't invent rules.</strong> It applies <em>your</em> rules to <em>your</em> applications.</p>
-  <br>
-  <div style="font-size: 0.6em; background: #f8f9fa; padding: 12px; border-radius: 8px; text-align: left; max-width: 700px; margin: auto;">
-    <strong>Example criteria fed to the AI:</strong><br>
-    ✗ Company age &lt; 2 years → ineligible<br>
-    ✗ Employees &lt; 5 or &gt; 250 → ineligible<br>
-    ✗ Operating license must be valid throughout 12-month implementation<br>
-    ★ Company never exported before → highest priority<br>
-    Score: Financial (25) + Technical (40) + Sector (20) + Impact (15) = 100
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- SLIDE 10: STEP 5 — FIXING REAL PROBLEMS -->
-<!-- ============================================================ -->
-<section>
-  <h2><span class="step-num">5</span> It Didn't Work Perfectly — We Fixed It</h2>
-  <p class="small">Every problem had a solution. This is normal — even experts iterate.</p>
-  <br>
-  <div class="fix-box">
-    <strong class="accent">Problem 1: AI thinking out loud</strong><br>
-    Qwen3 wraps internal reasoning in <code>&lt;think&gt;...&lt;/think&gt;</code> tags.<br>
-    <strong>Before:</strong> <code>&lt;think&gt;Let me analyze...&lt;/think&gt; Score: 80</code><br>
-    <strong>Fix:</strong> Added code to strip <code>&lt;think&gt;</code> blocks → clean output.
-  </div>
-  <div class="fix-box">
-    <strong class="accent">Problem 2: Inconsistent format</strong><br>
-    Sometimes "Score: 80/100", sometimes "80 points", sometimes a paragraph.<br>
-    <strong>Fix:</strong> Demanded JSON output → <code>{"score": 80, "recommendation": "INVITE"}</code>
-  </div>
-  <div class="fix-box">
-    <strong class="accent">Problem 3: RAG missed answers</strong><br>
-    Asked AnythingLLM: "Minimum employees for Export program?"<br>
-    Answer: <span class="warn">"Not found"</span> — even though it's in the document!<br>
-    <strong>Root cause:</strong> RAG splits docs into chunks. The answer chunk wasn't retrieved.<br>
-    <strong>Fix:</strong> Built a direct pipeline injecting FULL criteria into each prompt → <span class="highlight">"Minimum 5 employees"</span>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- SLIDE 11: STEP 6 — GOOD PROMPTS -->
-<!-- ============================================================ -->
-<section>
-  <h2><span class="step-num">6</span> Good Prompts = Good Results</h2>
-  <h3>The RCTF Formula: Role · Context · Task · Format</h3>
-  <br>
-  <div class="side-by-side">
-    <div>
-      <div class="bad-box">
-        <strong class="warn">❌ Bad Prompt</strong>
-        <div class="rtl" style="margin-top: 8px; font-size: 0.85em;">
-          "هل هذا الطلب جيد؟"
-        </div>
-        <p class="small" style="margin-top: 8px;">→ Vague, general answer. Useless for evaluation.</p>
-      </div>
-    </div>
-    <div>
-      <div class="good-box">
-        <strong class="highlight">✅ Good Prompt (RCTF)</strong>
-        <div class="rtl" style="margin-top: 8px; font-size: 0.7em;">
-          <strong>الدور:</strong> أنت مسؤول تقييم في JEDCO تطبّق معايير برنامج تطوير بصرامة.<br>
-          <strong>السياق:</strong> رخصة المهن تنتهي 31/12/2025، توقيع العقد أيلول 2025.<br>
-          <strong>المهمة:</strong> هل يستوفي الطلب شرط صلاحية الرخصة طوال فترة التنفيذ؟<br>
-          <strong>الصيغة:</strong> كلمة واحدة أولاً ثم التوضيح.
-        </div>
-        <p class="small" style="margin-top: 8px;">→ <span class="warn">"غير مستوفي"</span> — الرخصة تنتهي في الشهر الرابع من التنفيذ.</p>
-      </div>
-    </div>
-  </div>
-  <br>
-  <p><strong>Same AI. Same document.</strong> The quality of your question determines the quality of the answer.</p>
-</section>
-
-<!-- ============================================================ -->
-<!-- SLIDE 12: STEP 7 — RUN AND TEST -->
-<!-- ============================================================ -->
-<section>
-  <h2><span class="step-num">7</span> Run and Test</h2>
-  <br>
-  <pre><code>python tools/evaluate-pipeline.py --model qwen3:8b --summary</code></pre>
-  <br>
-  <table>
-    <thead>
-      <tr><th>#</th><th>Application</th><th>Admin Check</th><th>Score</th><th>Recommendation</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Tattweer — Zahraa Textiles</td>
-        <td><span class="highlight">✅ PASS</span></td>
-        <td><strong>93/100</strong></td>
-        <td><span class="highlight">INVITE</span></td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Start Business — Ahmad (Sweets)</td>
-        <td><span class="accent">⚠️ INCOMPLETE</span></td>
-        <td><strong>80/100</strong></td>
-        <td><span class="highlight">INVITE</span></td>
-      </tr>
-    </tbody>
-  </table>
-  <br>
-  <p>Each application evaluated in <strong>~90 seconds</strong>.</p>
-  <p>The mock applications have <strong>intentional issues</strong> — we check if the AI catches them.</p>
-  <br>
-  <p class="small">
-    ⚠️ Start Business flagged: operating license validity not confirmed for full implementation period.<br>
-    ✅ Tattweer: all documents present, high score on sector priority and employment creation.
-  </p>
-</section>
-
-<!-- ============================================================ -->
-<!-- SLIDE 13: STEP 8 — REPORTS -->
-<!-- ============================================================ -->
-<section>
-  <h2><span class="step-num">8</span> Generate Reports</h2>
-  <br>
-  <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
-    <div class="diagram-box" style="padding: 25px;">
-      <div style="font-size: 2em;">📊</div>
-      <strong>results.json</strong><br>
-      Machine-readable data<br>
-      <span class="small">For systems &amp; databases</span>
-    </div>
-    <div class="diagram-box" style="padding: 25px; border-color: var(--jedco-green);">
-      <div style="font-size: 2em;">🌐</div>
-      <strong>results.html</strong><br>
-      Formatted web report<br>
-      <span class="small">For officers &amp; committees</span>
-    </div>
-    <div class="diagram-box" style="padding: 25px;">
-      <div style="font-size: 2em;">📄</div>
-      <strong>results.pdf</strong><br>
-      Printable version<br>
-      <span class="small">For signatures &amp; archives</span>
-    </div>
-  </div>
-  <br>
-  <p>The officer sees a <strong>formatted, professional report</strong> — not raw AI output.</p>
-  <p>Ranked shortlist · per-application breakdown · flagged issues · recommendations</p>
-  <br>
-  <div class="video-placeholder">📸 Screenshot of the actual HTML report goes here</div>
-</section>
-
-<!-- ============================================================ -->
-<!-- SLIDE 14: WHERE CAN THIS RUN? -->
-<!-- ============================================================ -->
-<section>
-  <h2>Where Can This Run?</h2>
-  <br>
-  <table>
-    <thead>
-      <tr><th>Deployment</th><th>Who Uses It</th><th>Data Stays…</th><th>Cost</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>💻 <strong>Your Laptop</strong></td>
-        <td>Just you</td>
-        <td>On your laptop</td>
-        <td><span class="highlight">Free</span></td>
-      </tr>
-      <tr>
-        <td>🏢 <strong>Office LAN</strong></td>
-        <td>Your team</td>
-        <td>In the office</td>
-        <td><span class="highlight">Free</span> (existing hardware)</td>
-      </tr>
-      <tr>
-        <td>🖥️ <strong>JEDCO Server</strong></td>
-        <td>All JEDCO staff</td>
-        <td>On JEDCO infrastructure</td>
-        <td>~8,000 JOD hardware</td>
-      </tr>
-      <tr>
-        <td>🌐 <strong>Internet</strong></td>
-        <td>Applicants + staff</td>
-        <td>On rented server</td>
-        <td>~20 JOD/month</td>
-      </tr>
-    </tbody>
-  </table>
-  <br>
-  <p style="font-size: 0.9em;"><strong>Start on your laptop today. Scale when ready.</strong></p>
-</section>
-
-<!-- ============================================================ -->
-<!-- SLIDE 15: THE APPLICANT'S EXPERIENCE -->
-<!-- ============================================================ -->
-<section>
-  <h2>The Applicant's Experience</h2>
-  <h3>Web Portal Vision</h3>
-  <br>
-  <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px;">
-    <div class="diagram-box" style="font-size: 0.6em;">
-      <div style="font-size: 2em;">📤</div>
-      Applicant<br>uploads PDF
-    </div>
-    <span class="arrow">→</span>
-    <div class="diagram-box" style="font-size: 0.6em;">
-      <div style="font-size: 2em;">✅</div>
-      System checks<br>documents
-    </div>
-    <span class="arrow">→</span>
-    <div class="diagram-box" style="font-size: 0.6em; border-color: var(--jedco-orange);">
-      <div style="font-size: 2em;">⚠️</div>
-      "Missing<br>license"
-    </div>
-    <span class="arrow">→</span>
-    <div class="diagram-box" style="font-size: 0.6em;">
-      <div style="font-size: 2em;">📤</div>
-      Applicant<br>uploads fix
-    </div>
-    <span class="arrow">→</span>
-    <div class="diagram-box" style="font-size: 0.6em; border-color: var(--jedco-green);">
-      <div style="font-size: 2em;">📊</div>
-      AI pre-screens<br>+ officer reviews
-    </div>
-  </div>
-  <br>
-  <ul>
-    <li>Applicant gets <strong>faster feedback</strong> — knows immediately if documents are missing</li>
-    <li>Officer gets a <strong>head start</strong> — sees AI score + flags before reviewing</li>
-    <li>Every decision includes <strong>what, where, why</strong> — based on the application documents</li>
-    <li>Full <strong>audit trail</strong> — every AI output + officer action is logged</li>
-  </ul>
-</section>
-
-<!-- ============================================================ -->
-<!-- SLIDE 16: SCANNED DOCUMENTS -->
-<!-- ============================================================ -->
-<section>
-  <h2>What About Scanned Documents?</h2>
-  <p>Many applications arrive as scanned paper — images, not text.</p>
-  <br>
-  <div style="text-align: center;">
-    <div style="display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center;">
-      <div class="diagram-box" style="font-size: 0.65em;">
-        <div style="font-size: 1.8em;">📸</div>
-        Scanned<br>Paper PDF
-      </div>
-      <span class="arrow">→</span>
-      <div class="diagram-box" style="font-size: 0.65em; border-color: var(--jedco-orange);">
-        <div style="font-size: 1.8em;">🔍</div>
-        <strong>OCR</strong><br>
-        Image → Text
-      </div>
-      <span class="arrow">→</span>
-      <div class="diagram-box" style="font-size: 0.65em;">
-        <div style="font-size: 1.8em;">📝</div>
-        Arabic<br>Text
-      </div>
-      <span class="arrow">→</span>
-      <div class="diagram-box" style="font-size: 0.65em; border-color: var(--jedco-green);">
-        <div style="font-size: 1.8em;">🤖</div>
-        <strong>AI</strong><br>
-        Evaluate
-      </div>
-      <span class="arrow">→</span>
-      <div class="diagram-box" style="font-size: 0.65em;">
-        <div style="font-size: 1.8em;">📋</div>
-        Report
-      </div>
-    </div>
-  </div>
-  <br>
-  <table>
-    <thead>
-      <tr><th>OCR Tool</th><th>Arabic Support</th><th>Cost</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><strong>Tesseract</strong></td><td>Good</td><td><span class="highlight">Free</span></td></tr>
-      <tr><td><strong>Surya</strong></td><td>Better for Arabic</td><td><span class="highlight">Free</span></td></tr>
-    </tbody>
-  </table>
-  <br>
-  <p>Same pipeline — <strong>one extra step</strong> at the beginning. Everything else stays the same.</p>
-</section>
-
-<!-- ============================================================ -->
-<!-- SLIDE 17: DON'T FEAR THE CODE -->
-<!-- ============================================================ -->
-<section>
-  <h2>Don't Be Afraid of the Code</h2>
-  <br>
-  <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 20px;">
-    <div class="diagram-box" style="padding: 20px; border-color: var(--jedco-green);">
-      <h3 style="margin: 0;">What Goes IN</h3>
-      <p style="font-size: 0.8em;">Documents<br>Criteria<br>A good prompt</p>
-    </div>
-    <div class="diagram-box" style="padding: 20px; background: #2c3e50; color: white;">
-      <h3 style="margin: 0; color: white;">The Code</h3>
-      <p style="font-size: 0.8em;">You don't need<br>to understand it.<br>Like Excel formulas.</p>
-    </div>
-    <div class="diagram-box" style="padding: 20px; border-color: var(--jedco-green);">
-      <h3 style="margin: 0;">What Comes OUT</h3>
-      <p style="font-size: 0.8em;">Scores<br>Flags<br>Recommendations</p>
-    </div>
-  </div>
-  <br>
-  <ul>
-    <li>You care about the <strong>result</strong>, not the syntax</li>
-    <li>If the output is wrong → <strong>fix the prompt</strong>, not the code</li>
-    <li>The coding agent handles the technical part — you handle the domain expertise</li>
-  </ul>
-  <br>
-  <p class="small" style="font-size: 0.7em; font-style: italic;">
-    You don't need to understand how a car engine works to drive.<br>
-    You need to know where you're going.
-  </p>
-</section>
-
-<!-- ============================================================ -->
-<!-- SLIDE 18: SUMMARY & NEXT STEPS -->
-<!-- ============================================================ -->
-<section>
-  <h2>Summary &amp; Next Steps</h2>
-  <br>
-  <div class="side-by-side">
-    <div>
-      <h3>What We Proved</h3>
+    <!-- SLIDE 3: WHAT WE BUILT -->
+    <div class="swiper-slide">
+      <h2>What We Built</h2>
+      <p>A working system that:</p>
       <ul>
-        <li>✅ Build an AI evaluation system with <strong>free tools</strong> on one laptop</li>
-        <li>✅ A coding agent built it — <strong>plain language instructions</strong></li>
-        <li>✅ Reads Arabic applications, applies <strong>JEDCO's own rules</strong></li>
-        <li>✅ All data stays local — <strong>nothing goes to the cloud</strong></li>
-        <li>✅ Produces formatted reports — <strong>HTML, PDF, JSON</strong></li>
+        <li>📄 <strong>Reads</strong> grant applications in Arabic</li>
+        <li>✅ <strong>Checks</strong> documents against eligibility criteria</li>
+        <li>📊 <strong>Scores</strong> applications using JEDCO's own rubric</li>
+        <li>⚠️ <strong>Flags</strong> compliance issues (expired licenses, missing docs)</li>
+        <li>📋 <strong>Produces</strong> a ranked report with recommendations</li>
+      </ul>
+      <div class="tags">
+        <span class="tag tag-local">Runs on this laptop</span>
+        <span class="tag tag-local">No internet needed</span>
+        <span class="tag tag-local">Data never leaves the room</span>
+      </div>
+      <div class="placeholder">📸 Screenshot of results.html report goes here</div>
+    </div>
+
+    <!-- SLIDE 4: AGENT BUILT AGENT -->
+    <div class="swiper-slide center">
+      <h2>The Key Insight</h2>
+      <h1>An Agent Built an Agent</h1>
+      <div class="flow">
+        <div class="box" style="background:#eaf2f8;"><div class="icon">👤</div><strong>YOU</strong><div class="sub">Plain language instructions</div></div>
+        <span class="arrow">→</span>
+        <div class="box" style="background:#d5f5e3;"><div class="icon">🤖</div><strong>Agent 1: Copilot</strong><div class="sub">Writes code</div></div>
+        <span class="arrow">→</span>
+        <div class="box" style="background:#fdebd0;"><div class="icon">⚙️</div><strong>Agent 2: Pipeline</strong><div class="sub">Reads &amp; scores apps</div></div>
+        <span class="arrow">→</span>
+        <div class="box" style="background:#fadbd8;"><div class="icon">📋</div><strong>Report</strong><div class="sub">Human reviews &amp; decides</div></div>
+      </div>
+      <p><strong>You didn't write code.</strong> You wrote instructions. The AI wrote the code that powers the evaluation.</p>
+    </div>
+
+    <!-- SLIDE 5: ALL FREE -->
+    <div class="swiper-slide center">
+      <h2>Everything Is Free</h2>
+      <table>
+        <thead><tr><th>Tool</th><th>What It Does</th><th>Cost</th></tr></thead>
+        <tbody>
+          <tr><td><strong>VS Code</strong></td><td>Code editor — your workspace</td><td class="highlight">Free</td></tr>
+          <tr><td><strong>GitHub Copilot Free</strong></td><td>Coding agent — writes code from instructions</td><td class="highlight">Free</td></tr>
+          <tr><td><strong>Ollama</strong></td><td>Runs AI models locally</td><td class="highlight">Free</td></tr>
+          <tr><td><strong>Qwen3 8B</strong></td><td>Arabic + English model (5.2 GB)</td><td class="highlight">Free</td></tr>
+          <tr><td><strong>Python</strong></td><td>Runs the evaluation pipeline</td><td class="highlight">Free</td></tr>
+          <tr><td><strong>Git + GitHub</strong></td><td>Hosts and shares the project</td><td class="highlight">Free</td></tr>
+        </tbody>
+      </table>
+      <div class="big">$0</div>
+      <p class="small">Total cost of AI tools used in this project</p>
+    </div>
+
+    <!-- SLIDE 6: INSTALL AI -->
+    <div class="swiper-slide">
+      <h2><span class="step">1</span> Install the AI Brain</h2>
+      <div class="split">
+        <div>
+          <h3>Download Ollama</h3>
+          <p>Visit <strong>ollama.com</strong> → download → install. Takes 5 minutes.</p>
+          <h3>Pull the Model</h3>
+          <pre>ollama pull qwen3:8b</pre>
+          <p class="small">Downloads a 5.2 GB AI model to your computer. ~10 min.</p>
+          <h3>Test It</h3>
+          <pre>ollama run qwen3:8b "ما هي شروط برنامج تطوير؟"</pre>
+        </div>
+        <div class="center">
+          <div class="box" style="max-width:100%; padding: 20px;">
+            <div class="icon">🧠</div>
+            <strong>Ollama + Qwen3</strong><br><br>
+            The AI runs on <em>your</em> computer.<br>
+            <span class="highlight">Nothing goes to the internet.</span>
+          </div>
+          <div class="placeholder">🎥 Video: Installing Ollama — coming soon</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 7: INSTALL COPILOT -->
+    <div class="swiper-slide">
+      <h2><span class="step">2</span> Install the Builder (Copilot)</h2>
+      <div class="split">
+        <div>
+          <p><strong>VS Code</strong> = free code editor by Microsoft.</p>
+          <p><strong>GitHub Copilot</strong> = AI assistant inside VS Code.</p>
+          <h3>Setup (5 minutes)</h3>
+          <ol>
+            <li>Download VS Code → <strong>code.visualstudio.com</strong></li>
+            <li>Install the GitHub Copilot extension</li>
+            <li>Sign in with a free GitHub account</li>
+            <li>Open the chat panel → start talking</li>
+          </ol>
+          <p>This is <strong>Agent 1</strong>. You tell it what you want. It writes the code.</p>
+        </div>
+        <div>
+          <div class="placeholder" style="padding: 30px;">
+            📸 Screenshot: VS Code + Copilot chat<br><br>
+            <em>You type: "Create a Python script that reads JEDCO applications and scores them"</em><br><br>
+            <em>Copilot writes the entire script</em>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 8: MOCK DATA -->
+    <div class="swiper-slide">
+      <h2><span class="step">3</span> We Had No Data — So We Made It</h2>
+      <div class="split">
+        <div>
+          <h3 class="accent">The Prompt We Gave</h3>
+          <div class="good" style="font-size: clamp(0.65rem, 1.4vw, 0.82rem);">
+            "Create a realistic mock application for JEDCO's Start Business program.
+            Include: applicant data, budget table in JOD, action plan, expected impact,
+            document checklist. All in Arabic. Use fake names. Match JEDCO's actual form."
+          </div>
+        </div>
+        <div>
+          <h3>What the AI Created</h3>
+          <div class="rtl" style="font-size: clamp(0.65rem, 1.4vw, 0.82rem); background: #f8f9fa; padding: 10px; border-radius: 8px;">
+            <strong>اسم المشروع:</strong> مصنع البسطة — حلويات أردنية<br>
+            <strong>القطاع:</strong> صناعي — صناعات غذائية<br>
+            <strong>الإجمالي:</strong> ٥٠,٠٠٠ دينار<br>
+            <strong>المنحة (٧٠%):</strong> ٣٥,٠٠٠ دينار<br>
+            <strong>فرص العمل:</strong> ٦ موظفين<br>
+            <em>+ جدول تنفيذ + وثائق + إقرار...</em>
+          </div>
+        </div>
+      </div>
+      <p>Real applications are confidential. AI created <strong>realistic mock data</strong> matching JEDCO's format — safe to test with.</p>
+    </div>
+
+    <!-- SLIDE 9: FEED RULES -->
+    <div class="swiper-slide">
+      <h2><span class="step">4</span> Feed It Your Rules</h2>
+      <div class="flow">
+        <div class="box"><div class="icon">📑</div><strong>JEDCO PDFs</strong></div>
+        <span class="arrow">+</span>
+        <div class="box"><div class="icon">📋</div><strong>Eligibility Criteria</strong></div>
+        <span class="arrow">+</span>
+        <div class="box"><div class="icon">⚖️</div><strong>Scoring Rubric</strong></div>
+        <span class="arrow">→</span>
+        <div class="box" style="background:#eaf2f8;"><div class="icon">📖</div><strong>Structured Reference</strong></div>
+      </div>
+      <p><strong>The AI doesn't invent rules.</strong> It applies <em>your</em> rules to <em>your</em> applications.</p>
+      <div style="background: #f8f9fa; padding: 10px; border-radius: 8px; font-size: clamp(0.7rem, 1.5vw, 0.85rem);">
+        <strong>Example criteria fed to the AI:</strong><br>
+        ✗ Company age &lt; 2 years → ineligible | ✗ Employees &lt; 5 or &gt; 250 → ineligible<br>
+        ✗ License must be valid for full 12-month implementation<br>
+        Score: Financial (25) + Technical (40) + Sector (20) + Impact (15) = 100
+      </div>
+    </div>
+
+    <!-- SLIDE 10: FIXING PROBLEMS -->
+    <div class="swiper-slide">
+      <h2><span class="step">5</span> It Didn't Work Perfectly — We Fixed It</h2>
+      <p class="small">Every problem had a solution. This is normal — even experts iterate.</p>
+      <div class="fix">
+        <strong class="accent">Problem 1: AI thinking out loud</strong><br>
+        Qwen3 wraps reasoning in &lt;think&gt;...&lt;/think&gt; tags, cluttering the output.<br>
+        <strong>Fix:</strong> Strip &lt;think&gt; blocks → clean output.
+      </div>
+      <div class="fix">
+        <strong class="accent">Problem 2: Inconsistent format</strong><br>
+        Sometimes "Score: 80/100", sometimes a paragraph.<br>
+        <strong>Fix:</strong> Demand JSON → <code>{"score": 80, "recommendation": "INVITE"}</code>
+      </div>
+      <div class="fix">
+        <strong class="accent">Problem 3: Inconsistent eligibility checks</strong><br>
+        Without clear structure, AI answers varied by phrasing.<br>
+        <strong>Fix:</strong> Inject FULL eligibility criteria into <em>every</em> prompt — no chunk splitting, no guessing.
+      </div>
+    </div>
+
+    <!-- SLIDE 11: GOOD PROMPTS -->
+    <div class="swiper-slide">
+      <h2><span class="step">6</span> Good Prompts = Good Results</h2>
+      <h3>The RCTF Formula: Role · Context · Task · Format</h3>
+      <div class="split">
+        <div>
+          <div class="bad">
+            <strong class="warn">❌ Bad Prompt</strong>
+            <p class="rtl" style="margin-top: 6px;">"هل هذا الطلب جيد؟"</p>
+            <p class="small">→ Vague answer. Useless for evaluation.</p>
+          </div>
+        </div>
+        <div>
+          <div class="good">
+            <strong class="highlight">✅ Good Prompt (RCTF)</strong>
+            <div class="rtl" style="font-size: clamp(0.6rem, 1.3vw, 0.78rem); margin-top: 6px;">
+              <strong>الدور:</strong> مسؤول تقييم JEDCO — معايير تطوير بصرامة<br>
+              <strong>السياق:</strong> الرخصة تنتهي 31/12/2025، التوقيع أيلول 2025<br>
+              <strong>المهمة:</strong> هل الرخصة صالحة طوال ١٢ شهر تنفيذ؟<br>
+              <strong>الصيغة:</strong> كلمة واحدة أولاً ثم التوضيح
+            </div>
+            <p class="small">→ <span class="warn">"غير مستوفي"</span> — تنتهي في الشهر الرابع</p>
+          </div>
+        </div>
+      </div>
+      <p><strong>Same AI. Same document.</strong> The quality of your question determines the quality of the answer.</p>
+    </div>
+
+    <!-- SLIDE 12: RUN & TEST -->
+    <div class="swiper-slide">
+      <h2><span class="step">7</span> Run and Test</h2>
+      <pre>python tools/evaluate-pipeline.py --model qwen3:8b --summary</pre>
+      <table>
+        <thead><tr><th>#</th><th>Application</th><th>Admin Check</th><th>Score</th><th>Result</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>1</td><td>Tattweer — Zahraa Textiles</td>
+            <td><span class="highlight">✅ PASS</span></td>
+            <td><strong>93/100</strong></td>
+            <td><span class="highlight">INVITE</span></td>
+          </tr>
+          <tr>
+            <td>2</td><td>Start Business — Ahmad (Sweets)</td>
+            <td><span class="accent">⚠️ INCOMPLETE</span></td>
+            <td><strong>80/100</strong></td>
+            <td><span class="highlight">INVITE</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Each application evaluated in <strong>~90 seconds</strong>.</p>
+      <p class="small">
+        ⚠️ Start Business flagged: license validity not confirmed for full period.<br>
+        ✅ Tattweer: all docs present, high score on sector + employment.
+      </p>
+    </div>
+
+    <!-- SLIDE 13: REPORTS -->
+    <div class="swiper-slide center">
+      <h2><span class="step">8</span> Generate Reports</h2>
+      <div class="boxes">
+        <div class="box"><div class="icon">📊</div><strong>results.json</strong><div class="sub">Machine-readable data</div></div>
+        <div class="box" style="border-color: var(--green);"><div class="icon">🌐</div><strong>results.html</strong><div class="sub">Web report for officers</div></div>
+        <div class="box"><div class="icon">📄</div><strong>results.pdf</strong><div class="sub">Printable for archives</div></div>
+      </div>
+      <p>Officers see a <strong>formatted, professional report</strong> — not raw AI output.</p>
+      <p class="small">Ranked shortlist · per-application breakdown · flagged issues · recommendations</p>
+      <div class="placeholder">📸 Screenshot of actual HTML report goes here</div>
+    </div>
+
+    <!-- SLIDE 14: WHERE DOES IT RUN -->
+    <div class="swiper-slide">
+      <h2>Where Can This Run?</h2>
+      <table>
+        <thead><tr><th>Deployment</th><th>Who Uses It</th><th>Data Stays…</th><th>Cost</th></tr></thead>
+        <tbody>
+          <tr><td>💻 <strong>Your Laptop</strong></td><td>Just you</td><td>On your laptop</td><td class="highlight">Free</td></tr>
+          <tr><td>🏢 <strong>Office LAN</strong></td><td>Your team</td><td>In the office</td><td class="highlight">Free</td></tr>
+          <tr><td>🖥️ <strong>JEDCO Server</strong></td><td>All staff</td><td>JEDCO infrastructure</td><td>~8,000 JOD</td></tr>
+          <tr><td>🌐 <strong>Internet</strong></td><td>Applicants + staff</td><td>Rented server</td><td>~20 JOD/month</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size: clamp(1rem, 2.5vw, 1.3rem); font-weight: bold; color: var(--blue); margin-top: 1em;">
+        Start on your laptop today. Scale when ready.
+      </p>
+    </div>
+
+    <!-- SLIDE 15: APPLICANT PORTAL -->
+    <div class="swiper-slide">
+      <h2>The Applicant's Experience</h2>
+      <h3>Web Portal Vision</h3>
+      <div class="flow">
+        <div class="box"><div class="icon">📤</div><strong>Upload PDF</strong></div>
+        <span class="arrow">→</span>
+        <div class="box"><div class="icon">✅</div><strong>Doc Check</strong></div>
+        <span class="arrow">→</span>
+        <div class="box red"><div class="icon">⚠️</div><strong>"Missing license"</strong></div>
+        <span class="arrow">→</span>
+        <div class="box"><div class="icon">📤</div><strong>Applicant fixes</strong></div>
+        <span class="arrow">→</span>
+        <div class="box" style="border-color:var(--green);"><div class="icon">📊</div><strong>AI + Officer review</strong></div>
+      </div>
+      <ul>
+        <li>Applicant gets <strong>faster feedback</strong> — knows if docs are missing immediately</li>
+        <li>Officer gets a <strong>head start</strong> — AI score + flags before reviewing</li>
+        <li>Every decision shows <strong>what, where, why</strong> — based on documents</li>
+        <li>Full <strong>audit trail</strong> — every AI output + officer action logged</li>
       </ul>
     </div>
-    <div>
-      <h3>What's Coming</h3>
-      <ul>
-        <li>🎥 Video tutorials for each step</li>
-        <li>🌐 Web portal prototype (applicant upload → officer review)</li>
-        <li>🔍 Arabic OCR for scanned documents</li>
-        <li>🔗 Integration with JEDCO's existing systems</li>
-      </ul>
-      <br>
-      <div class="diagram-box" style="width: 100%; box-sizing: border-box;">
-        <strong>Project Repository</strong><br>
-        <span style="font-size: 0.85em;">github.com/shdaifat/AgenticGovernment</span>
+
+    <!-- SLIDE 16: SCANNED DOCS -->
+    <div class="swiper-slide">
+      <h2>What About Scanned Documents?</h2>
+      <p>Many applications arrive as scanned paper — images, not text.</p>
+      <div class="flow">
+        <div class="box"><div class="icon">📸</div><strong>Scanned PDF</strong></div>
+        <span class="arrow">→</span>
+        <div class="box" style="border-color:var(--orange);"><div class="icon">🔍</div><strong>OCR</strong><div class="sub">Image → Text</div></div>
+        <span class="arrow">→</span>
+        <div class="box"><div class="icon">📝</div><strong>Arabic Text</strong></div>
+        <span class="arrow">→</span>
+        <div class="box" style="border-color:var(--green);"><div class="icon">🤖</div><strong>AI Evaluate</strong></div>
+        <span class="arrow">→</span>
+        <div class="box"><div class="icon">📋</div><strong>Report</strong></div>
       </div>
+      <table>
+        <thead><tr><th>OCR Tool</th><th>Arabic Support</th><th>Cost</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Tesseract</strong></td><td>Good</td><td class="highlight">Free</td></tr>
+          <tr><td><strong>Surya</strong></td><td>Better for Arabic</td><td class="highlight">Free</td></tr>
+        </tbody>
+      </table>
+      <p>Same pipeline — <strong>one extra step</strong> at the start. Everything else stays the same.</p>
     </div>
+
+    <!-- SLIDE 17: DON'T FEAR CODE -->
+    <div class="swiper-slide center">
+      <h2>Don't Be Afraid of the Code</h2>
+      <div class="boxes">
+        <div class="box" style="border-color:var(--green);">
+          <h3 style="margin: 0;">What Goes IN</h3>
+          <p>Documents<br>Criteria<br>A good prompt</p>
+        </div>
+        <div class="box" style="background:#2c3e50; color:white; border-color:#2c3e50;">
+          <h3 style="margin: 0; color:white;">The Code</h3>
+          <p style="color:#ecf0f1;">You don't need<br>to understand it.<br>Like Excel formulas.</p>
+        </div>
+        <div class="box" style="border-color:var(--green);">
+          <h3 style="margin: 0;">What Comes OUT</h3>
+          <p>Scores<br>Flags<br>Recommendations</p>
+        </div>
+      </div>
+      <ul style="max-width: 600px; margin: 0.5em auto;">
+        <li>You care about the <strong>result</strong>, not the syntax</li>
+        <li>Output wrong? → <strong>Fix the prompt</strong>, not the code</li>
+        <li>The coding agent handles the technical part — you handle domain expertise</li>
+      </ul>
+      <p class="small" style="font-style: italic; margin-top: 0.8em;">
+        You don't need to understand how a car engine works to drive.<br>
+        You need to know where you're going.
+      </p>
+    </div>
+
+    <!-- SLIDE 18: SUMMARY -->
+    <div class="swiper-slide">
+      <h2>Summary &amp; Next Steps</h2>
+      <div class="split">
+        <div>
+          <h3>What We Proved</h3>
+          <ul>
+            <li>✅ AI evaluation system with <strong>free tools</strong>, one laptop</li>
+            <li>✅ A coding agent built it — <strong>plain language</strong></li>
+            <li>✅ Reads Arabic apps, applies <strong>JEDCO's rules</strong></li>
+            <li>✅ All data stays local — <strong>no cloud</strong></li>
+            <li>✅ Produces formatted <strong>HTML, PDF, JSON</strong> reports</li>
+          </ul>
+        </div>
+        <div>
+          <h3>What's Coming</h3>
+          <ul>
+            <li>🎥 Video tutorials for each step</li>
+            <li>🌐 Web portal prototype</li>
+            <li>🔍 Arabic OCR for scanned documents</li>
+            <li>🔗 Integration with JEDCO systems</li>
+          </ul>
+          <div class="box" style="margin-top: 1em; max-width: 100%;">
+            <strong>Project Repository</strong><br>
+            <span style="font-size: 0.9em;">github.com/shdaifat/AgenticGovernment</span>
+          </div>
+        </div>
+      </div>
+      <p style="font-size: clamp(0.9rem, 2.2vw, 1.2rem); font-weight: bold; color: var(--blue); margin-top: 1em; text-align: center;">
+        AI is a tool you choose to use when it helps.<br>
+        The key skill is knowing how to ask the right questions.
+      </p>
+    </div>
+
   </div>
-  <br>
-  <p style="font-size: 1.1em; font-weight: bold; color: var(--jedco-blue);">
-    AI is a tool you can choose to use when it helps.<br>
-    The key skill is knowing how to ask the right questions.
-  </p>
-</section>
 
-</div><!-- /slides -->
-</div><!-- /reveal -->
+  <!-- Navigation -->
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-pagination"></div>
+</div>
 
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-  Reveal.initialize({
-    hash: true,
-    slideNumber: true,
-    transition: 'slide',
-    width: 1200,
-    height: 700,
-    margin: 0.04,
-    center: true,
-    embedded: false
-  });
+const swiper = new Swiper('.swiper', {
+  direction: 'vertical',
+  slidesPerView: 1,
+  spaceBetween: 0,
+  mousewheel: true,
+  keyboard: true,
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev'
+  },
+  loop: false
+});
 </script>
 </body>
 </html>

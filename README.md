@@ -36,7 +36,7 @@ A 2-hour hands-on workshop introducing [JEDCO](https://www.jedco.gov.jo) staff t
 | 0 | How AI Works (New Hire Analogy) | 10 min | AI read everything, experienced nothing |
 | 1 | What is an AI Agent? | 15 min | General concepts, government examples |
 | 2 | Document Writing Demo | 25 min | Draft a funding decision letter in Arabic |
-| 3 | Application Review Demo | 25 min | Review a mock Tattweer/Tamkeen application via AnythingLLM |
+| 3 | Application Review Demo | 25 min | Review a mock Tattweer/Tamkeen application via the evaluation pipeline |
 | 4 | RCTF Prompt Formula | 20 min | Examples from JEDCO program contexts |
 | 5 | PC Agent Live Demo | 20 min | Automate repetitive application processing steps |
 | 6 | Safe AI in Government + Q&A | 15 min | Jordan data protection + government AI principles |
@@ -50,7 +50,7 @@ A 2-hour hands-on workshop introducing [JEDCO](https://www.jedco.gov.jo) staff t
 | **qwen2.5:7b** | Fallback model (4.7 GB) | Proven, fast, Arabic support |
 | **gemma3:4b-it-qat** | Lightweight model (4.0 GB) | Vision support, 128K context |
 | **gemma4:e4b** | Experimental (9.6 GB) | 128K context, thinking, partial VRAM on 6GB GPU |
-| **AnythingLLM** | Document Q&A | Upload and query JEDCO application documents |
+| **Python + Ollama** | Evaluation Pipeline | Direct document evaluation with Qwen3 |
 | **faster-whisper** | Arabic speech-to-text | `pip install faster-whisper`, runs on CUDA |
 
 ## Arabic Language Pipeline
@@ -88,8 +88,7 @@ secrets/     # ⚠️ Gitignored — never commit credentials here
 
 - [ ] Install Ollama — download at [ollama.com](https://ollama.com)
 - [ ] Pull the model: `ollama pull qwen3:8b` (5.2 GB)
-- [ ] Install AnythingLLM Desktop
-- [ ] Upload `assets/jedco-docs/` files to AnythingLLM workspace
+- [ ] Run the evaluation pipeline: `python tools/evaluate-pipeline.py --model qwen3:8b`
 - [ ] Run smoke test: `ollama run qwen3:8b "مرحبا، ما هو دورك؟"`
 - [ ] See [`tools/setup-guide-AR.md`](tools/setup-guide-AR.md) or [`tools/setup-guide-EN.md`](tools/setup-guide-EN.md) for full instructions
 

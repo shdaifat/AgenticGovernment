@@ -118,12 +118,10 @@
   - Some Arabic characters were garbled in the output
   - **Fix:** Added `ensure_ascii=False` to JSON output and UTF-8 encoding everywhere
 
-  **Problem 4: AnythingLLM (RAG) missed answers**
-  - We asked AnythingLLM "What is the minimum number of employees for the Export program?"
-  - Answer: "Not found in the provided context" — even though it WAS in the document
-  - **Root cause:** RAG splits documents into chunks. The relevant chunk wasn't retrieved.
-  - **Fix:** We built a direct pipeline that injects the FULL criteria text into each prompt
-  - **Lesson:** Same model, same document — architecture determines accuracy
+  **Problem 3: Eligibility checks lacked context**
+  - Without full criteria in the prompt, AI made inconsistent eligibility decisions
+  - **Fix:** We pass the ENTIRE eligibility rubric with every prompt — no missing context, no guessing
+  - **Lesson:** Better structure beats complex frameworks. Direct > RAG.
 
 - **Talking point:** "Every problem had a fix. The coding agent helped us find it. This is normal — even experts iterate."
 

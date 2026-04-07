@@ -1,5 +1,5 @@
 # Training Slide Outline — Agentic Government / JEDCO
-## Duration: 2 hours | Model: qwen3:8b | Tools: Ollama + AnythingLLM
+## Duration: 2 hours | Model: qwen3:8b | Tools: Ollama + Python
 
 ---
 
@@ -52,7 +52,7 @@
 ### Slides:
 1. **Task**: Write a formal rejection letter in Arabic
 2. **Live Demo**:
-   - Open Ollama / AnythingLLM
+   - Open Ollama
    - Type a starting prompt first → limited result
    - Type an RCTF prompt → excellent result
 3. **Side-by-side comparison**: starting prompt vs RCTF prompt
@@ -182,7 +182,7 @@ Format: formal letter with JEDCO header.
 ---
 
 ## Materials Needed
-- [ ] Laptop with Ollama + qwen3:8b + AnythingLLM
+- [ ] Laptop with Ollama + qwen3:8b + Python
 - [ ] Display / projector
 - [ ] Printed RCTF reference card (handouts/RCTF-cheatsheet-EN.txt)
-- [ ] JEDCO docs loaded in AnythingLLM
+- [ ] JEDCO docs available in assets/jedco-docs/

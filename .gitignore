@@ -43,9 +43,8 @@ yarn.lock
 *.bin
 models/
 
-# === AnythingLLM / n8n / Flowise local data ===
+# === Local orchestration tools / n8n / Flowise local data ===
 storage/
-anythingllm_storage/
 flowise_storage/
 n8n_data/
 
