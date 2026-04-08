@@ -218,9 +218,12 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
           <p class="small">Supports PDF, TXT, DOCX — up to several MB on the free tier.</p>
           <h3>Ask Gemini to Summarize</h3>
           <div class="rtl" style="background: #1e1e2e; color: #cdd6f4; padding: 10px 14px; border-radius: 8px; margin: 0.5em 0; font-family: 'Cascadia Code', Consolas, monospace; font-size: clamp(0.72rem, 1.6vw, 0.9rem); border-left: 4px solid var(--green);">
-            لخّص شروط الأهلية لبرنامج تطوير من JEDCO.<br>
-            ما هي المتطلبات الإلزامية للشركة للتقديم؟<br>
-            اعرض النتيجة كقائمة مرقّمة باللغة العربية.
+            اذهب إلى هذا الرابط واقرأ محتواه:<br>
+            jedco.gov.jo → الخدمات الإلكترونية<br>
+            → "ارفع قدراتك بالتسويق"<br><br>
+            استخرج شروط الأهلية الإلزامية في جدول:<br>
+            رقم | الشرط | المتطلب | نتيجة عدم الاستيفاء<br><br>
+            لا تضف معلومات من خارج الصفحة.
           </div>
         </div>
         <div class="center">
@@ -239,69 +242,80 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
     <!-- SLIDE 7: STEP 2 — CHATGPT GENERATE MOCK APPLICATIONS -->
     <div class="swiper-slide">
       <h2><span class="step">2</span> Generate Mock Applications with ChatGPT</h2>
+      <p>Go to <strong>chatgpt.com</strong> → paste Gemini's criteria table → ask for 2 applications:</p>
       <div class="split">
         <div>
-          <h3>Open ChatGPT — No Installation</h3>
-          <p>Go to <strong>chatgpt.com</strong> → sign in with a free account.</p>
-          <h3>Paste Gemini's Summary → Ask for 2 Applications</h3>
-          <div class="rtl" style="background: #1e1e2e; color: #cdd6f4; padding: 10px 14px; border-radius: 8px; font-family: 'Cascadia Code', Consolas, monospace; font-size: clamp(0.68rem, 1.5vw, 0.85rem); border-left: 4px solid var(--green);">
-            بناءً على شروط برنامج تطوير التالية: [الصق ملخص Gemini هنا]<br><br>
-            أنشئ طلبَيْن وهميَّيْن باللغة العربية:<br>
-            • الطلب الأول: يجب أن يكون ناجحاً (يستوفي جميع الشروط)<br>
-            • الطلب الثاني: يجب أن يرسب (عمر الشركة 18 شهراً فقط)<br><br>
-            لكل طلب: اسم الشركة، القطاع، بيانات المتقدم، وصف المشروع، قائمة المستندات.
+          <h3 class="highlight">✅ Application 1 — PASS (أدفانز-ج)</h3>
+          <div class="good" dir="rtl" style="font-size: clamp(0.62rem, 1.35vw, 0.78rem);">
+            <strong>الشركة الأردنية للصناعات المتقدمة</strong><br>
+            صاحبها: محمد سامي الخطيب<br>
+            تأسست: 15/03/2022 — العمر: <strong>4 سنوات</strong> ✅<br>
+            الموظفون: <strong>18</strong> ✅ | القطاع: <strong>صناعي</strong> ✅<br>
+            المشروع: منصة تجارة إلكترونية للتصدير إلى الخليج وشمال أفريقيا<br>
+            التمويل المطلوب: 10,500 د.أ (70% من 15,000)
           </div>
         </div>
-        <div class="center">
-          <div class="box" style="max-width:100%; padding: 16px; border-color: #10a37f;">
-            <div class="icon">💬</div>
-            <strong>ChatGPT</strong><br>
-            <span class="small">by OpenAI</span><br><br>
-            Excellent at generating<br>realistic Arabic content
-          </div>
-          <div style="margin-top: 12px; padding: 10px; background: #eafaf1; border-radius: 8px; font-size: clamp(0.7rem, 1.5vw, 0.85rem);">
-            ✅ Application 1: <strong>PASS</strong> (all criteria met)<br>
-            ❌ Application 2: <strong>FAIL</strong> (company age: 18 months)
+        <div>
+          <h3 class="warn">❌ Application 2 — FAIL (سوا)</h3>
+          <div class="bad" dir="rtl" style="font-size: clamp(0.62rem, 1.35vw, 0.78rem);">
+            <strong>خدمات التواصل الذكي "سوا"</strong><br>
+            صاحبتها: رنا جمال العبداللات<br>
+            تأسست: 10/02/2025 — العمر: <strong>14 شهراً</strong> ❌<br>
+            الموظفون: 6 ✅ | القطاع: <strong>خدمي</strong> ✅<br>
+            المشروع: خطة تسويقية رقمية متكاملة<br>
+            التمويل المطلوب: 8,400 د.أ (70% من 12,000)
           </div>
         </div>
       </div>
+      <p class="small" style="margin-top:0.6em;"><strong>Teaching point:</strong> ChatGPT invented the names, numbers, and budgets — but you controlled what matters. You told it which application should pass and exactly why the second one fails. That is prompt engineering for content generation.</p>
     </div>
 
     <!-- SLIDE 7b: STEP 3 — EVALUATE WITH GEMINI -->
     <div class="swiper-slide">
       <h2><span class="step">3</span> Evaluate the Applications in Gemini</h2>
-      <p>Back to Gemini — upload the criteria file again, then paste a ChatGPT application and ask:</p>
-      <div class="rtl" style="background: #1e1e2e; color: #cdd6f4; padding: 12px 16px; border-radius: 8px; margin: 0.6em 0; font-family: 'Cascadia Code', Consolas, monospace; font-size: clamp(0.72rem, 1.6vw, 0.88rem); border-left: 4px solid var(--green);">
-        أنت مسؤول تقييم في JEDCO تطبّق معايير برنامج تطوير بصرامة.<br><br>
-        [الصق نص الطلب هنا]<br><br>
-        قيّم هذا الطلب بالتنسيق التالي بالضبط:<br>
-        DOCUMENTS_PRESENT: نعم/لا<br>
-        COMPANY_TYPE_OK: نعم/لا<br>
+      <p>New Gemini conversation → paste the criteria table from Step 1 → then paste an application and use this prompt:</p>
+      <div class="rtl" style="background: #1e1e2e; color: #cdd6f4; padding: 10px 14px; border-radius: 8px; margin: 0.5em 0; font-family: 'Cascadia Code', Consolas, monospace; font-size: clamp(0.68rem, 1.5vw, 0.84rem); border-left: 4px solid var(--green);">
+        أنت مسؤول تقييم في JEDCO تطبّق شروط برنامج "ارفع قدراتك بالتسويق" بصرامة.<br>
+        فيما يلي طلب مقدَّم — قيّمه بالتنسيق التالي بالضبط ولا تضف أي كلام آخر:<br><br>
+        REGISTERED_OK: نعم/لا<br>
         AGE_OK: نعم/لا<br>
-        LICENSE_VALID: نعم/لا<br>
+        OWNERSHIP_OK: نعم/لا<br>
+        EMPLOYEES_OK: نعم/لا<br>
+        FUNDING_RATIO_OK: نعم/لا<br>
+        PREV_GRANTS_OK: نعم/لا<br>
         STAGE1_RESULT: PASS/FAIL<br>
         STAGE1_NOTES: [سبب القرار في جملة واحدة]
       </div>
-      <div class="split" style="margin-top: 0.8em;">
+      <div class="split">
         <div>
-          <h3 class="highlight">✅ Application 1 — PASS</h3>
-          <div class="good" style="font-size: clamp(0.65rem, 1.4vw, 0.82rem);" dir="rtl">
-            DOCUMENTS_PRESENT: نعم<br>
-            AGE_OK: نعم<br>
-            STAGE1_RESULT: <strong>PASS</strong>
+          <h3 class="highlight">✅ أدفانز-ج — PASS</h3>
+          <div class="good" style="font-size: clamp(0.62rem, 1.35vw, 0.78rem);" dir="rtl">
+            REGISTERED_OK: نعم<br>
+            AGE_OK: نعم &nbsp;<span class="small">(4 سنوات ≥ 2)</span><br>
+            OWNERSHIP_OK: نعم<br>
+            EMPLOYEES_OK: نعم &nbsp;<span class="small">(18 موظف)</span><br>
+            FUNDING_RATIO_OK: نعم &nbsp;<span class="small">(70%)</span><br>
+            PREV_GRANTS_OK: نعم<br>
+            STAGE1_RESULT: <strong>PASS</strong><br>
+            STAGE1_NOTES: يستوفي الطلب جميع شروط الأهلية
           </div>
         </div>
         <div>
-          <h3 class="warn">❌ Application 2 — FAIL</h3>
-          <div class="bad" style="font-size: clamp(0.65rem, 1.4vw, 0.82rem);" dir="rtl">
-            AGE_OK: لا<br>
+          <h3 class="warn">❌ سوا — FAIL</h3>
+          <div class="bad" style="font-size: clamp(0.62rem, 1.35vw, 0.78rem);" dir="rtl">
+            REGISTERED_OK: نعم<br>
+            AGE_OK: <strong>لا</strong> &nbsp;<span class="small">(14 شهراً &lt; 24 شهراً)</span><br>
+            OWNERSHIP_OK: نعم<br>
+            EMPLOYEES_OK: نعم<br>
+            FUNDING_RATIO_OK: نعم<br>
+            PREV_GRANTS_OK: نعم<br>
             STAGE1_RESULT: <strong>FAIL</strong><br>
-            STAGE1_NOTES: عمر الشركة 18 شهراً، أقل من الحد الأدنى (سنتان)
+            STAGE1_NOTES: عمر الشركة 14 شهراً، أقل من الحد الأدنى المطلوب (سنتان)
           </div>
         </div>
       </div>
-      <p style="font-size: clamp(1rem, 2.2vw, 1.2rem); font-weight: bold; color: var(--orange); margin-top: 0.6em;">
-        It works! But now imagine doing this for 100 applications →
+      <p style="font-size: clamp(0.95rem, 2vw, 1.1rem); font-weight: bold; color: var(--orange); margin-top: 0.5em;">
+        Gemini caught the exact rule violation — from a real JEDCO website. Now imagine 100 applications →
       </p>
     </div>
 
@@ -330,9 +344,9 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
         </div>
       </div>
       <div style="background: #fef9e7; border-left: 4px solid var(--orange); padding: 12px 16px; border-radius: 6px; margin: 0.8em 0;">
-        <strong>The scaling problem:</strong> The criteria document is 3 pages long.<br>
-        Each new Gemini conversation starts <em>empty</em> — you must paste the criteria every time.<br>
-        <strong>100 applications × 3 pages of rules = paste 300 pages manually?</strong>
+        <strong>The scaling problem:</strong> برنامج "ارفع قدراتك بالتسويق" has 6 eligibility rules.<br>
+        Every new Gemini conversation starts <em>empty</em> — the rules must be pasted again every time.<br>
+        <strong>6 rules × 100 applications × repeated pasting = impossible to do manually.</strong>
       </div>
       <p style="font-size: clamp(1rem, 2.2vw, 1.2rem); font-weight: bold; color: var(--blue); margin-top: 0.4em;">
         The pipeline injects the rules automatically — every time, for every application →
