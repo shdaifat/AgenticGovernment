@@ -1,9 +1,49 @@
 # Presentation Plan — How We Built an AI Grant Evaluation System from Scratch
 
 > **Audience:** Non-technical JEDCO staff and government decision-makers
-> **Format:** HTML slides (reveal.js), hosted on GitHub Pages
+> **Format:** HTML slides (Swiper.js), hosted on GitHub Pages
 > **Language:** English with Arabic examples — switch to full Arabic version later
 > **Goal:** Show step-by-step how anyone with a computer can build this — and that an AI agent helped build it
+
+---
+
+## Training Flow Summary (Revised April 2026)
+
+The training now uses a **3-phase approach**:
+
+1. **Phase 1 — Manual with Gemini (free, web-based):** Trainees use Gemini.google.com (free Google account) to manually test the eligibility evaluation. Upload documents, ask questions in structured format, see the correct output. No installation needed.
+
+2. **Phase 2 — Discover the Scaling Problem:** After seeing how it works manually, the trainee realizes: 100 applications × 3 pages of criteria × copy-paste = hours of work. This is the "aha moment."
+
+3. **Phase 3 — Automate with the Pipeline:** The Python pipeline does exactly what the trainee just did manually in Gemini — but automatically, for all 100 applications at once.
+
+### Why Gemini (not ChatGPT or Ollama) for Phase 1?
+
+| Tool | File Upload (Free) | Arabic Quality | Installation | Cost |
+|------|-------------------|---------------|--------------|------|
+| **Gemini** ✅ | ✅ PDF + TXT, generous free tier | Excellent | None — browser | Free (Google account) |
+| ChatGPT (free) | ❌ Limited on free tier | Very good | None — browser | Free (OpenAI account) |
+| Claude.ai (free) | ✅ But message limits | Very good | None — browser | Free (Anthropic account) |
+| Ollama (local) | ❌ GUI file attach is limited | Good (Qwen3) | Yes — 5 minutes | Free but needs hardware |
+
+**Winner for training: Gemini** — free, file upload built in, excellent Arabic, no install, familiar Google brand.
+
+### Documents to Use in Training
+
+Located in `assets/jedco-docs/`:
+- **Criteria file:** `JEDCO-eligibility-criteria-reference-v2-AR.txt` — upload this to Gemini
+- **Mock application 1:** `mock-application-start-business-AR.txt` — test application
+- **Mock application 2:** `mock-application-tattweer-AR.txt` — test application
+- **PDF (optional):** `العرض_التوضيحي_للبرنامج.pdf` — can be uploaded directly as PDF
+
+### Generating a New Mock Application (in Gemini)
+Ask Gemini to generate one before testing eligibility:
+```
+أنشئ طلب وهمي لبرنامج تطوير من JEDCO.
+يشمل: بيانات المتقدم، وصف المشروع، جدول ميزانية، خطة عمل، وقائمة المستندات.
+الشركة عمرها 18 شهراً فقط. الطلب باللغة العربية. استخدم أسماء وأرقام وهمية.
+```
+This creates an intentionally failing application (age < 2 years) to demonstrate detection.
 
 ---
 
@@ -50,50 +90,80 @@
 #### Slide 5 — Everything Is Free
 | Tool | What it does | Cost |
 |------|-------------|------|
+| Gemini | Manual testing — upload documents, ask questions | Free (Google account) |
 | VS Code | Code editor / agent workspace | Free |
 | GitHub Copilot (Free tier) | Coding agent — writes code from instructions | Free |
-| Ollama | Runs AI models locally | Free |
+| Ollama | Runs AI models locally (offline automation) | Free |
 | Qwen3 8B | Arabic + English language model | Free |
 | Python | Runs the pipeline | Free |
 | Git + GitHub | Hosts and shares the project | Free |
+
+- **Key message:** Gemini for manual testing. Ollama for automated pipeline. Both free.
 
 ---
 
 ### ACT 2: HOW WE BUILT IT — STEP BY STEP (10 slides)
 
-#### Slide 6 — Step 1: Install the AI Brain
-- Download Ollama (ollama.com) — 5 minutes
-- Pull the model: `ollama pull qwen3:8b` — 10 minutes
-- Test it: `ollama run qwen3:8b "ما هي شروط أهلية برنامج تطوير؟"`
-- **Visual:** Terminal screenshot showing Ollama running
-- **Talking point:** "This is the AI. It runs on YOUR computer. Nothing goes to the internet."
+#### Slide 6 — Step 1: Open Gemini (No Install Needed)
+- Go to **gemini.google.com** — free, just sign in with Google
+- This is your AI assistant for the first test
+- **Visual:** Gemini interface in a browser
+- **Talking point:** "Same idea as ChatGPT or WhatsApp — you type, it answers. No installation. Nothing to download."
 
-#### Slide 7 — Step 2: Install the Builder (Copilot)
-- Open VS Code → install GitHub Copilot extension → sign in (free)
-- Open the chat panel → start giving instructions
-- **Visual:** VS Code with Copilot chat panel open
-- **Talking point:** "This is Agent 1. You talk to it. It writes code."
+#### Slide 6b — Upload the JEDCO Criteria to Gemini
+- In Gemini, click the **paperclip / attach** button
+- Upload: `JEDCO-eligibility-criteria-reference-v2-AR.txt`
+- Now Gemini "knows" JEDCO's rules for THIS conversation
+- **Visual:** Gemini chat with the file attached showing
+- **Talking point:** "We're giving Gemini the rulebook. From now on, every answer it gives is based on JEDCO's actual criteria — not its general knowledge."
+
+#### Slide 7 — Step 2: Generate a Mock Application
+- Ask Gemini to create a test application before evaluating:
+  ```
+  أنشئ طلب وهمي لبرنامج تطوير من JEDCO.
+  يشمل: بيانات المتقدم، وصف المشروع، جدول ميزانية، خطة عمل.
+  الشركة عمرها 18 شهراً. الطلب باللغة العربية.
+  استخدم أسماء وأرقام وهمية.
+  ```
+- Gemini creates a complete, realistic Arabic application
+- Save it or copy-paste it — you'll use it for the next test
+- **Visual:** Gemini output showing a mock application
+- **Talking point:** "We use Copilot in VS Code for code. We use Gemini here for content. Both are AI — different tools for different tasks."
 
 #### Slide 7b — Test Manually First (Like Using ChatGPT)
-- **Before automating, let's verify the AI works for evaluation tasks**
-- Open Ollama interactive mode: `ollama run qwen3:8b`
-- Test with a natural question:
+- Now paste the mock application into Gemini and ask:
   ```
-  >>> You are a JEDCO evaluator. Does this company with 3 employees 
-      qualify for Tattweer?
+  أنت مسؤول تقييم في JEDCO تطبّق معايير برنامج تطوير بصرامة.
+  
+  [الصق نص الطلب هنا]
+  
+  قيّم هذا الطلب بالتنسيق التالي:
+  DOCUMENTS_PRESENT: نعم/لا
+  COMPANY_TYPE_OK: نعم/لا
+  AGE_OK: نعم/لا
+  LICENSE_VALID: نعم/لا
+  STAGE1_RESULT: PASS/FAIL
+  STAGE1_NOTES: [سبب القرار]
   ```
-- Ollama responds correctly: "No, Tattweer requires minimum 5 employees..."
-- **The problem we're trying to solve:**
-  - This works great! But now imagine:
-  - 100 applications to evaluate
-  - Type the same prompt 100 times?
-  - Copy-paste answers into a spreadsheet?
-- **Transition:** "This is why we automate →"
-- **Talking point:** "Manual testing proves the concept. Now let's eliminate the repetition."
+- Gemini replies with the structured evaluation — **STAGE1_RESULT: FAIL** (age 18 months < 24 months minimum)
+- **Visual:** Gemini response showing the structured output
+- **Talking point:** "Notice the format. We told it EXACTLY how to answer. This is prompt engineering — the same skill that makes the pipeline work."
+
+#### Slide 7c — The Criteria Problem: Why This Doesn't Scale
+- **What just happened (show side-by-side):**
+  - ✅ Without criteria uploaded → Gemini gave a wrong/vague answer
+  - ✅ With criteria uploaded + structured prompt → Gemini gave FAIL with correct reason
+- **The problem:**
+  - The criteria file is 3 pages long
+  - Each conversation in Gemini starts fresh — the criteria don't carry over
+  - For 100 applications: paste 3 pages of rules + application text + prompt × 100 = impossible
+- **The question:** "What if we could automate exactly what you just did in Gemini?"
+- **Answer:** That's the Python pipeline →
+- **Talking point:** "The AI is already doing the right thing. We just need to stop doing it manually."
 
 #### Slide 8 — Step 3: We Had No Data — So We Made It
 - Real JEDCO applications are confidential
-- We told Copilot: "Create a realistic mock application for JEDCO's Start Business program"
+- We told Copilot (in VS Code): "Create a realistic mock application for JEDCO's Start Business program"
 - It generated: applicant details, budget, action plan, documents checklist
 - All in Arabic, matching JEDCO's actual format
 - **Show:** Side-by-side: the prompt we gave vs. the mock application it created
@@ -261,30 +331,39 @@
 ## Technical Notes for Building the Presentation
 
 ### Format
-- **reveal.js** — HTML slide framework, works in any browser
+- **Swiper.js 11** — HTML slide framework, vertical navigation, works in any browser
 - Single file: `docs/index.html`
 - Host via GitHub Pages → `shdaifat.github.io/AgenticGovernment`
 - Mobile-friendly, supports Arabic RTL
 
 ### Content to Capture Before Building
-- [ ] Screenshot: empty desktop (starting point)
+- [ ] Screenshot: Gemini with `JEDCO-eligibility-criteria-reference-v2-AR.txt` file attached
+- [ ] Screenshot: Gemini generating a mock application (Arabic output)
+- [ ] Screenshot: Gemini receiving the structured RCTF prompt
+- [ ] Screenshot: Gemini returning `STAGE1_RESULT: FAIL` output (structured)
+- [ ] Screenshot: Gemini without criteria giving wrong/vague answer (contrast slide)
 - [ ] Screenshot: VS Code with Copilot chat showing a prompt
-- [ ] Screenshot: terminal running `ollama pull qwen3:8b`
 - [ ] Screenshot: terminal running `evaluate-pipeline.py`
 - [ ] Screenshot: results.html report
-- [ ] Screenshot: the `<think>` tag problem (before/after)
-- [ ] Screenshot: AnythingLLM "not found" vs pipeline correct answer
 
 ### Slides That Need Real Output Examples
-- Slide 8: exact prompt used to create mock application + excerpt of output
+- Slide 7 (Generate mock): Gemini prompt + full mock application output
+- Slide 7b (Test manually): RCTF prompt shown + Gemini structured response
+- Slide 7c (Criteria problem): side-by-side without/with criteria outputs
 - Slide 10: actual `<think>` tag example, actual JSON format fix
 - Slide 11: actual RCTF prompt and actual AI response (Arabic)
 - Slide 12: actual pipeline terminal output
 - Slide 13: actual results.html screenshot
 
+### Key URLs for Training
+- Gemini: https://gemini.google.com (file upload, free)
+- ChatGPT alternative: https://chatgpt.com (free tier, limited upload)
+- Ollama (for automation phase): https://ollama.com
+
 ### Video Placeholders (for later)
-- [ ] Video: Installing Ollama and pulling a model
-- [ ] Video: Using Copilot to create a file from scratch
+- [ ] Video: Opening Gemini, uploading criteria file, testing a prompt
+- [ ] Video: Asking Gemini to generate a mock application
+- [ ] Video: Using Copilot in VS Code to create a file from scratch
 - [ ] Video: Running the evaluation pipeline
 - [ ] Video: Reading the HTML report
 - [ ] Video: Writing a good prompt vs bad prompt

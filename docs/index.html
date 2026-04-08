@@ -172,17 +172,20 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
     <!-- SLIDE 4: AGENT BUILT AGENT -->
     <div class="swiper-slide center">
       <h2>The Key Insight</h2>
-      <h1>An Agent Built an Agent</h1>
-      <div class="flow">
-        <div class="box" style="background:#eaf2f8;"><div class="icon">👤</div><strong>YOU</strong><div class="sub">Plain language instructions</div></div>
+      <h1>AI Tools, Chained Together</h1>
+      <div class="flow" style="flex-wrap: wrap; justify-content: center;">
+        <div class="box" style="background:#eaf2f8;"><div class="icon">👤</div><strong>YOU</strong><div class="sub">Instructions in plain language</div></div>
         <span class="arrow">→</span>
-        <div class="box" style="background:#d5f5e3;"><div class="icon">🤖</div><strong>Agent 1: Copilot</strong><div class="sub">Writes code</div></div>
+        <div class="box" style="background:#e8f0fe; border-color:#4285F4;"><div class="icon">🔵</div><strong>Gemini</strong><div class="sub">Reads JEDCO docs · evaluates</div></div>
         <span class="arrow">→</span>
-        <div class="box" style="background:#fdebd0;"><div class="icon">⚙️</div><strong>Agent 2: Pipeline</strong><div class="sub">Reads &amp; scores apps</div></div>
+        <div class="box" style="background:#e6f9f1; border-color:#10a37f;"><div class="icon">💬</div><strong>ChatGPT</strong><div class="sub">Generates mock applications</div></div>
+        <span class="arrow">→</span>
+        <div class="box" style="background:#fdebd0;"><div class="icon">⚙️</div><strong>Pipeline</strong><div class="sub">Automates all of the above</div></div>
         <span class="arrow">→</span>
         <div class="box" style="background:#fadbd8;"><div class="icon">📋</div><strong>Report</strong><div class="sub">Human reviews &amp; decides</div></div>
       </div>
-      <p><strong>You didn't write code.</strong> You wrote instructions. The AI wrote the code that powers the evaluation.</p>
+      <p><strong>No subscriptions. No installations.</strong> Gemini and ChatGPT run in your browser — free Google and OpenAI accounts only.</p>
+      <p class="small" style="margin-top: 0.5em;">The pipeline replaces the manual steps with automation — same logic, 100× faster.</p>
     </div>
 
     <!-- SLIDE 5: ALL FREE -->
@@ -191,123 +194,176 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
       <table>
         <thead><tr><th>Tool</th><th>What It Does</th><th>Cost</th></tr></thead>
         <tbody>
-          <tr><td><strong>VS Code</strong></td><td>Code editor — your workspace</td><td class="highlight">Free</td></tr>
-          <tr><td><strong>GitHub Copilot Free</strong></td><td>Coding agent — writes code from instructions</td><td class="highlight">Free</td></tr>
-          <tr><td><strong>Ollama</strong></td><td>Runs AI models locally</td><td class="highlight">Free</td></tr>
-          <tr><td><strong>Qwen3 8B</strong></td><td>Arabic + English model (5.2 GB)</td><td class="highlight">Free</td></tr>
-          <tr><td><strong>Python</strong></td><td>Runs the evaluation pipeline</td><td class="highlight">Free</td></tr>
+          <tr><td><strong>Gemini</strong> <span class="small">(gemini.google.com)</span></td><td>Manual testing — upload docs, ask questions</td><td class="highlight">Free (Google account)</td></tr>
+          <tr><td><strong>ChatGPT</strong> <span class="small">(chatgpt.com)</span></td><td>Generate mock applications + content creation</td><td class="highlight">Free (OpenAI account)</td></tr>
+          <tr><td><strong>VS Code + Copilot Free</strong></td><td>Coding agent — writes code from instructions</td><td class="highlight">Free</td></tr>
+          <tr><td><strong>Ollama + Qwen3 8B</strong></td><td>Offline AI model — powers the pipeline</td><td class="highlight">Free</td></tr>
+          <tr><td><strong>Python</strong></td><td>Runs the evaluation pipeline automatically</td><td class="highlight">Free</td></tr>
           <tr><td><strong>Git + GitHub</strong></td><td>Hosts and shares the project</td><td class="highlight">Free</td></tr>
         </tbody>
       </table>
       <div class="big">$0</div>
-      <p class="small">Total cost of AI tools used in this project</p>
+      <p class="small">Total cost of AI tools used in this project · Gemini &amp; ChatGPT for training · Ollama for automation</p>
     </div>
 
-    <!-- SLIDE 6: INSTALL AI -->
+    <!-- SLIDE 6: STEP 1 — GEMINI READ JEDCO DOCS -->
     <div class="swiper-slide">
-      <h2><span class="step">1</span> Install the AI Brain</h2>
+      <h2><span class="step">1</span> Read the Program Docs in Gemini</h2>
       <div class="split">
         <div>
-          <h3>Download &amp; Install Ollama</h3>
-          <p>Visit <strong>ollama.com</strong> → download → install. Takes 5 minutes.</p>
-          <h3>Download the AI Model</h3>
-          <p>Open Ollama → go to <strong>Models</strong> → search <strong>qwen3:8b</strong> → click <strong>Download</strong>.</p>
-          <p class="small">~5.2 GB · downloads once, runs forever · no internet needed after.</p>
-          <h3>Start Chatting</h3>
-          <p>Select <strong>Qwen3 8B</strong> from the model list → open the chat → type your question.</p>
+          <h3>Open Gemini — No Installation</h3>
+          <p>Go to <strong>gemini.google.com</strong> and sign in with your Google account.</p>
+          <h3>Upload the JEDCO Document</h3>
+          <p>Click the <strong>paperclip (📎)</strong> button → upload the program PDF or TXT file.</p>
+          <p class="small">Supports PDF, TXT, DOCX — up to several MB on the free tier.</p>
+          <h3>Ask Gemini to Summarize</h3>
+          <div class="rtl" style="background: #1e1e2e; color: #cdd6f4; padding: 10px 14px; border-radius: 8px; margin: 0.5em 0; font-family: 'Cascadia Code', Consolas, monospace; font-size: clamp(0.72rem, 1.6vw, 0.9rem); border-left: 4px solid var(--green);">
+            لخّص شروط الأهلية لبرنامج تطوير من JEDCO.<br>
+            ما هي المتطلبات الإلزامية للشركة للتقديم؟<br>
+            اعرض النتيجة كقائمة مرقّمة باللغة العربية.
+          </div>
         </div>
         <div class="center">
-          <div class="box" style="max-width:100%; padding: 20px;">
-            <div class="icon">🧠</div>
-            <strong>Ollama + Qwen3</strong><br><br>
-            The AI runs on <em>your</em> computer.<br>
-            <span class="highlight">Nothing goes to the internet.</span>
+          <div class="box" style="max-width:100%; padding: 16px; border-color: #4285F4;">
+            <div class="icon">🔵</div>
+            <strong>Gemini</strong><br>
+            <span class="small">by Google</span><br><br>
+            No install · No download<br>
+            Just a browser + Google account
           </div>
-          <a href="https://ollama.com" target="_blank" rel="noopener" style="display:inline-block; margin-top: 12px; padding: 10px 20px; background: var(--blue); color: white; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: clamp(0.8rem, 1.8vw, 1rem);">🌐 ollama.com — Download Here</a>
+          <a href="https://gemini.google.com" target="_blank" rel="noopener" style="display:inline-block; margin-top: 12px; padding: 10px 20px; background: #4285F4; color: white; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: clamp(0.8rem, 1.8vw, 1rem);">🌐 gemini.google.com</a>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 7: INSTALL COPILOT -->
+    <!-- SLIDE 7: STEP 2 — CHATGPT GENERATE MOCK APPLICATIONS -->
     <div class="swiper-slide">
-      <h2><span class="step">2</span> Install the Builder (Copilot)</h2>
+      <h2><span class="step">2</span> Generate Mock Applications with ChatGPT</h2>
       <div class="split">
         <div>
-          <p><strong>VS Code</strong> = free code editor by Microsoft.</p>
-          <p><strong>GitHub Copilot</strong> = AI assistant inside VS Code.</p>
-          <h3>Setup (5 minutes)</h3>
-          <ol>
-            <li>Download VS Code → <strong>code.visualstudio.com</strong></li>
-            <li>Install the GitHub Copilot extension</li>
-            <li>Sign in with a free GitHub account</li>
-            <li>Open the chat panel → start talking</li>
-          </ol>
-          <p>This is <strong>Agent 1</strong>. You tell it what you want. It writes the code.</p>
+          <h3>Open ChatGPT — No Installation</h3>
+          <p>Go to <strong>chatgpt.com</strong> → sign in with a free account.</p>
+          <h3>Paste Gemini's Summary → Ask for 2 Applications</h3>
+          <div class="rtl" style="background: #1e1e2e; color: #cdd6f4; padding: 10px 14px; border-radius: 8px; font-family: 'Cascadia Code', Consolas, monospace; font-size: clamp(0.68rem, 1.5vw, 0.85rem); border-left: 4px solid var(--green);">
+            بناءً على شروط برنامج تطوير التالية: [الصق ملخص Gemini هنا]<br><br>
+            أنشئ طلبَيْن وهميَّيْن باللغة العربية:<br>
+            • الطلب الأول: يجب أن يكون ناجحاً (يستوفي جميع الشروط)<br>
+            • الطلب الثاني: يجب أن يرسب (عمر الشركة 18 شهراً فقط)<br><br>
+            لكل طلب: اسم الشركة، القطاع، بيانات المتقدم، وصف المشروع، قائمة المستندات.
+          </div>
+        </div>
+        <div class="center">
+          <div class="box" style="max-width:100%; padding: 16px; border-color: #10a37f;">
+            <div class="icon">💬</div>
+            <strong>ChatGPT</strong><br>
+            <span class="small">by OpenAI</span><br><br>
+            Excellent at generating<br>realistic Arabic content
+          </div>
+          <div style="margin-top: 12px; padding: 10px; background: #eafaf1; border-radius: 8px; font-size: clamp(0.7rem, 1.5vw, 0.85rem);">
+            ✅ Application 1: <strong>PASS</strong> (all criteria met)<br>
+            ❌ Application 2: <strong>FAIL</strong> (company age: 18 months)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 7b: STEP 3 — EVALUATE WITH GEMINI -->
+    <div class="swiper-slide">
+      <h2><span class="step">3</span> Evaluate the Applications in Gemini</h2>
+      <p>Back to Gemini — upload the criteria file again, then paste a ChatGPT application and ask:</p>
+      <div class="rtl" style="background: #1e1e2e; color: #cdd6f4; padding: 12px 16px; border-radius: 8px; margin: 0.6em 0; font-family: 'Cascadia Code', Consolas, monospace; font-size: clamp(0.72rem, 1.6vw, 0.88rem); border-left: 4px solid var(--green);">
+        أنت مسؤول تقييم في JEDCO تطبّق معايير برنامج تطوير بصرامة.<br><br>
+        [الصق نص الطلب هنا]<br><br>
+        قيّم هذا الطلب بالتنسيق التالي بالضبط:<br>
+        DOCUMENTS_PRESENT: نعم/لا<br>
+        COMPANY_TYPE_OK: نعم/لا<br>
+        AGE_OK: نعم/لا<br>
+        LICENSE_VALID: نعم/لا<br>
+        STAGE1_RESULT: PASS/FAIL<br>
+        STAGE1_NOTES: [سبب القرار في جملة واحدة]
+      </div>
+      <div class="split" style="margin-top: 0.8em;">
+        <div>
+          <h3 class="highlight">✅ Application 1 — PASS</h3>
+          <div class="good" style="font-size: clamp(0.65rem, 1.4vw, 0.82rem);" dir="rtl">
+            DOCUMENTS_PRESENT: نعم<br>
+            AGE_OK: نعم<br>
+            STAGE1_RESULT: <strong>PASS</strong>
+          </div>
+        </div>
+        <div>
+          <h3 class="warn">❌ Application 2 — FAIL</h3>
+          <div class="bad" style="font-size: clamp(0.65rem, 1.4vw, 0.82rem);" dir="rtl">
+            AGE_OK: لا<br>
+            STAGE1_RESULT: <strong>FAIL</strong><br>
+            STAGE1_NOTES: عمر الشركة 18 شهراً، أقل من الحد الأدنى (سنتان)
+          </div>
+        </div>
+      </div>
+      <p style="font-size: clamp(1rem, 2.2vw, 1.2rem); font-weight: bold; color: var(--orange); margin-top: 0.6em;">
+        It works! But now imagine doing this for 100 applications →
+      </p>
+    </div>
+
+    <!-- SLIDE 7c: THE CRITERIA PROBLEM -->
+    <div class="swiper-slide">
+      <h2>The Problem: Every Evaluation Needs the Full Rulebook</h2>
+      <div class="split">
+        <div>
+          <h3 class="warn">❌ What Happened Without the Criteria</h3>
+          <div class="bad" dir="rtl" style="font-size: clamp(0.68rem, 1.5vw, 0.85rem);">
+            <strong>السؤال:</strong> هل شركة عمرها 18 شهراً مؤهلة لتطوير؟<br><br>
+            <strong>Gemini بدون ملف المعايير:</strong><br>
+            "يعتمد ذلك على نوع البرنامج وطبيعة النشاط..."
+            <br><span class="small">(إجابة مبهمة — غير مفيدة للتقييم)</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="highlight">✅ With Criteria File Uploaded</h3>
+          <div class="good" dir="rtl" style="font-size: clamp(0.68rem, 1.5vw, 0.85rem);">
+            <strong>Gemini مع ملف المعايير:</strong><br>
+            AGE_OK: لا<br>
+            STAGE1_RESULT: FAIL<br>
+            STAGE1_NOTES: عمر الشركة أقل من 2 سنوات
+            <br><span class="small">(إجابة محددة — قابلة للاستخدام مباشرة)</span>
+          </div>
+        </div>
+      </div>
+      <div style="background: #fef9e7; border-left: 4px solid var(--orange); padding: 12px 16px; border-radius: 6px; margin: 0.8em 0;">
+        <strong>The scaling problem:</strong> The criteria document is 3 pages long.<br>
+        Each new Gemini conversation starts <em>empty</em> — you must paste the criteria every time.<br>
+        <strong>100 applications × 3 pages of rules = paste 300 pages manually?</strong>
+      </div>
+      <p style="font-size: clamp(1rem, 2.2vw, 1.2rem); font-weight: bold; color: var(--blue); margin-top: 0.4em;">
+        The pipeline injects the rules automatically — every time, for every application →
+      </p>
+    </div>
+
+    <!-- SLIDE 8: COPILOT BUILDS THE PIPELINE -->
+    <div class="swiper-slide">
+      <h2><span class="step">4</span> Now Automate It — With VS Code + Copilot</h2>
+      <div class="split">
+        <div>
+          <p>You just did 3 steps manually in Gemini + ChatGPT.<br>Now tell <strong>GitHub Copilot</strong> to automate all of them:</p>
+          <div class="good" style="font-size: clamp(0.65rem, 1.4vw, 0.82rem);">
+            "Write a Python script that reads JEDCO applications, injects the eligibility criteria, sends each one to the AI model, and produces a ranked HTML report."
+          </div>
+          <p class="small" style="margin-top: 0.5em;">Copilot writes the entire script. You describe the problem — it writes the code.</p>
         </div>
         <div>
           <div class="placeholder" style="padding: 30px;">
             📸 Screenshot: VS Code + Copilot chat<br><br>
-            <em>You type: "Create a Python script that reads JEDCO applications and scores them"</em><br><br>
-            <em>Copilot writes the entire script</em>
+            <em>You type the problem in plain language</em><br><br>
+            <em>Copilot writes evaluate-pipeline.py</em>
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- SLIDE 7b: TEST MANUALLY FIRST -->
-    <div class="swiper-slide">
-      <h2>Test Manually First<br>(Like Using ChatGPT)</h2>
-      <p>Before automating, let's test the AI manually:</p>
-      <div style="background: #eaf2f8; border-left: 4px solid var(--blue); padding: 10px 14px; border-radius: 6px; margin: 0.5em 0; font-size: clamp(0.75rem, 1.7vw, 0.92rem);">
-        🖥️ Open <strong>Ollama</strong> → select <strong>Qwen3 8B</strong> → type in the chat box
-      </div>
-      <p class="small">Just like ChatGPT — type your question, press Enter:</p>
-      <div class="rtl" style="background: #1e1e2e; color: #cdd6f4; padding: 12px 16px; border-radius: 8px; margin: 0.6em 0; font-family: 'Cascadia Code', Consolas, monospace; font-size: clamp(0.8rem, 1.8vw, 1rem); border-left: 4px solid var(--green);">
-        أنت مسؤول تقييم في JEDCO.<br>
-        شركة عمرها 18 شهر. هل تستوفي شرط السن (الحد الأدنى سنتان)؟
-      </div>
-      <img src="images/ollama-interactive-test.png" style="max-width: 30%; height: auto; border-radius: 8px; margin: 1em 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: block;" alt="Ollama interactive chat test">
-      <p style="margin-top: 1em;"><strong>This works!</strong> The AI answers correctly. Arabic questions, JEDCO logic, all working. But now imagine:</p>
-      <ul>
-        <li>100 applications to evaluate</li>
-        <li>Type the same prompt 100 times?</li>
-        <li>Copy-paste answers into a spreadsheet?</li>
-      </ul>
-      <p style="font-size: clamp(1rem, 2.2vw, 1.2rem); font-weight: bold; color: var(--orange); margin-top: 0.6em;">
-        This is why we automate →
-      </p>
-    </div>
-
-    <!-- SLIDE 8: MOCK DATA -->
-    <div class="swiper-slide">
-      <h2><span class="step">3</span> We Had No Data — So We Made It</h2>
-      <div class="split">
-        <div>
-          <h3 class="accent">The Prompt We Gave</h3>
-          <div class="good" style="font-size: clamp(0.65rem, 1.4vw, 0.82rem);">
-            "Create a realistic mock application for JEDCO's Start Business program.
-            Include: applicant data, budget table in JOD, action plan, expected impact,
-            document checklist. All in Arabic. Use fake names. Match JEDCO's actual form."
-          </div>
-        </div>
-        <div>
-          <h3>What the AI Created</h3>
-          <div class="rtl" style="font-size: clamp(0.65rem, 1.4vw, 0.82rem); background: #f8f9fa; padding: 10px; border-radius: 8px;">
-            <strong>اسم المشروع:</strong> مصنع البسطة — حلويات أردنية<br>
-            <strong>القطاع:</strong> صناعي — صناعات غذائية<br>
-            <strong>الإجمالي:</strong> ٥٠,٠٠٠ دينار<br>
-            <strong>المنحة (٧٠%):</strong> ٣٥,٠٠٠ دينار<br>
-            <strong>فرص العمل:</strong> ٦ موظفين<br>
-            <em>+ جدول تنفيذ + وثائق + إقرار...</em>
-          </div>
-        </div>
-      </div>
-      <p>Real applications are confidential. AI created <strong>realistic mock data</strong> matching JEDCO's format — safe to test with.</p>
+      <p><strong>This is Agent 1.</strong> VS Code + GitHub Copilot (free tier) — no coding experience needed.</p>
     </div>
 
     <!-- SLIDE 9: FEED RULES -->
     <div class="swiper-slide">
-      <h2><span class="step">4</span> Feed It Your Rules</h2>
+      <h2><span class="step">5</span> Feed It Your Rules</h2>
       <div class="flow">
         <div class="box"><div class="icon">📑</div><strong>JEDCO PDFs</strong></div>
         <span class="arrow">+</span>
@@ -328,7 +384,7 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
 
     <!-- SLIDE 10: FIXING PROBLEMS -->
     <div class="swiper-slide">
-      <h2><span class="step">5</span> It Didn't Work Perfectly — We Fixed It</h2>
+      <h2><span class="step">6</span> It Didn't Work Perfectly — We Fixed It</h2>
       <p class="small">Every problem had a solution. This is normal — even experts iterate.</p>
       <div class="fix">
         <strong class="accent">Problem 1: AI thinking out loud</strong><br>
@@ -349,7 +405,7 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
 
     <!-- SLIDE 11: GOOD PROMPTS -->
     <div class="swiper-slide">
-      <h2><span class="step">6</span> Good Prompts = Good Results</h2>
+      <h2><span class="step">7</span> Good Prompts = Good Results</h2>
       <h3>The RCTF Formula: Role · Context · Task · Format</h3>
       <div class="split">
         <div>
@@ -377,7 +433,7 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
 
     <!-- SLIDE 12: RUN & TEST -->
     <div class="swiper-slide">
-      <h2><span class="step">7</span> Run and Test</h2>
+      <h2><span class="step">8</span> Run and Test</h2>
       <pre>python tools/evaluate-pipeline.py --model qwen3:8b --summary</pre>
       <table>
         <thead><tr><th>#</th><th>Application</th><th>Admin Check</th><th>Score</th><th>Result</th></tr></thead>
@@ -409,13 +465,13 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
       <p>Remember testing manually with Ollama?</p>
       <div class="split" style="text-align: center; gap: 20px; margin: 1.2em 0;">
         <div style="flex: 1;">
-          <h3 class="accent">Manual (What You Did)</h3>
+          <h3 class="accent">Manual (What You Did in Gemini)</h3>
           <div style="background: #fadbd8; padding: 15px; border-radius: 8px;">
-            <div style="font-size: 1.2em; margin: 8px 0;">💻</div>
-            Open Ollama chat<br>
-            <div style="font-size: 0.9em; margin-top: 4px;">Type prompts</div><br>
-            Read answers<br>
-            Copy to spreadsheet<br>
+            <div style="font-size: 1.2em; margin: 8px 0;">🔵</div>
+            Open Gemini<br>
+            <div style="font-size: 0.9em; margin-top: 4px;">Upload criteria file</div><br>
+            Paste application text<br>
+            Read &amp; copy answer<br>
             × 100 applications = <strong>hours</strong>
           </div>
         </div>
@@ -425,20 +481,20 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
           <div style="background: #eafaf1; padding: 15px; border-radius: 8px;">
             <div style="font-size: 1.2em; margin: 8px 0;">⚡</div>
             Read 100 applications<br>
-            <div style="font-size: 0.9em; margin-top: 4px;">Send same prompts to Ollama</div><br>
-            Collect all answers<br>
-            Format into reports<br>
+            <div style="font-size: 0.9em; margin-top: 4px;">Injects criteria automatically</div><br>
+            Sends same prompt to Ollama<br>
+            Formats all answers into reports<br>
             × 100 applications = <strong>minutes</strong>
           </div>
         </div>
       </div>
       <p style="margin-top: 1em;"><strong>Same tests. Same AI. Same logic.</strong><br>
-      <span class="small">Python just removes the manual repetition.</span></p>
+      <span class="small">Python does exactly what you just did in Gemini — but automatically, for all 100 applications.</span></p>
     </div>
 
     <!-- SLIDE 13: REPORTS -->
     <div class="swiper-slide center">
-      <h2><span class="step">8</span> Generate Reports</h2>
+      <h2><span class="step">9</span> Generate Reports</h2>
       <div class="boxes">
         <div class="box"><div class="icon">📊</div><strong>results.json</strong><div class="sub">Machine-readable data</div></div>
         <div class="box" style="border-color: var(--green);"><div class="icon">🌐</div><strong>results.html</strong><div class="sub">Web report for officers</div></div>
