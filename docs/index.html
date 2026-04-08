@@ -330,53 +330,64 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
       </div>
     </div>
 
-    <!-- SLIDE 7b: STEP 3 — EVALUATE WITH GEMINI -->
+    <!-- SLIDE 7b: STEP 3 — GEMINI EVALUATION PROMPT -->
     <div class="swiper-slide">
-      <h2><span class="step">3</span> Evaluate the Applications in Gemini</h2>
-      <p>New Gemini conversation → paste the criteria table from Step 1 → then paste an application and use this prompt:</p>
-      <div class="rtl" style="background: #1e1e2e; color: #cdd6f4; padding: 10px 14px; border-radius: 8px; margin: 0.5em 0; font-family: 'Cascadia Code', Consolas, monospace; font-size: clamp(0.68rem, 1.5vw, 0.84rem); border-left: 4px solid var(--green);">
-        أنت مسؤول تقييم في JEDCO تطبّق شروط برنامج "ارفع قدراتك بالتسويق" بصرامة.<br>
-        فيما يلي طلب مقدَّم — قيّمه بالتنسيق التالي بالضبط ولا تضف أي كلام آخر:<br><br>
-        REGISTERED_OK: نعم/لا<br>
-        AGE_OK: نعم/لا<br>
-        OWNERSHIP_OK: نعم/لا<br>
-        EMPLOYEES_OK: نعم/لا<br>
-        FUNDING_RATIO_OK: نعم/لا<br>
-        PREV_GRANTS_OK: نعم/لا<br>
-        STAGE1_RESULT: PASS/FAIL<br>
-        STAGE1_NOTES: [سبب القرار في جملة واحدة]
+      <h2><span class="step">3</span> قيّم الطلبات في Gemini — أعطِه هذا الأمر</h2>
+      <p class="small">محادثة Gemini جديدة ← الصق جدول الشروط الستة من الخطوة الأولى ← الصق نص الطلب ← ثم أضف هذا في النهاية:</p>
+      <div class="rtl" style="background: #1e1e2e; color: #cdd6f4; padding: 14px 18px; border-radius: 8px; margin: 0.5em 0; font-family: 'Cascadia Code', Consolas, monospace; font-size: clamp(0.68rem, 1.5vw, 0.85rem); border-left: 4px solid #4285F4; line-height: 1.9;">
+        أنت موظف تقييم في المؤسسة الأردنية لتطوير المشاريع الاقتصادية (JEDCO).<br>
+        مهمتك تطبيق شروط برنامج "ارفع قدراتك بالتسويق" بصرامة تامة على الطلب المقدَّم أعلاه.<br><br>
+        قواعد العمل:<br>
+        - إذا لم يستوفِ الطلب أي شرط إلزامي → رفض فوري، لا داعي لفحص باقي الشروط<br>
+        - لا تضف رأياً شخصياً أو تقييماً خارج الشروط المحددة<br>
+        - لا تكتب أي كلام قبل أو بعد التنسيق المطلوب<br><br>
+        أجب بهذا التنسيق بالضبط:<br><br>
+        تسجيل_الشركة: نعم/لا<br>
+        عمر_الشركة: نعم/لا<br>
+        الملكية: نعم/لا<br>
+        عدد_الموظفين: نعم/لا<br>
+        نسبة_التمويل: نعم/لا<br>
+        ملفات_سابقة: نعم/لا<br>
+        نتيجة_المرحلة_الأولى: مقبول/مرفوض<br>
+        ملاحظات: [سبب القرار في جملة واحدة فقط]
       </div>
+    </div>
+
+    <!-- SLIDE 7b-2: GEMINI RESPONSES — PASS + FAIL -->
+    <div class="swiper-slide">
+      <h2><span class="step">3</span> ردّ Gemini — النتيجة الحقيقية</h2>
       <div class="split">
         <div>
-          <h3 class="highlight">✅ أدفانز-ج — PASS</h3>
-          <div class="good" style="font-size: clamp(0.62rem, 1.35vw, 0.78rem);" dir="rtl">
-            REGISTERED_OK: نعم<br>
-            AGE_OK: نعم &nbsp;<span class="small">(4 سنوات ≥ 2)</span><br>
-            OWNERSHIP_OK: نعم<br>
-            EMPLOYEES_OK: نعم &nbsp;<span class="small">(18 موظف)</span><br>
-            FUNDING_RATIO_OK: نعم &nbsp;<span class="small">(70%)</span><br>
-            PREV_GRANTS_OK: نعم<br>
-            STAGE1_RESULT: <strong>PASS</strong><br>
-            STAGE1_NOTES: يستوفي الطلب جميع شروط الأهلية
+          <h3 class="highlight">✅ أدفانز-ج — مقبول</h3>
+          <div class="good" dir="rtl" style="font-size: clamp(0.65rem, 1.45vw, 0.84rem); padding: 12px 14px; line-height: 2;">
+            تسجيل_الشركة: نعم<br>
+            عمر_الشركة: نعم<br>
+            الملكية: نعم<br>
+            عدد_الموظفين: نعم<br>
+            نسبة_التمويل: نعم<br>
+            ملفات_سابقة: نعم<br>
+            نتيجة_المرحلة_الأولى: <strong>مقبول</strong><br>
+            ملاحظات: استوفى الطلب كافة الشروط الإلزاميّة من حيث الأهلية القانونية، عدد الموظفين، والالتزام بالسقف المالي ونسب التمويل المحددة للبرنامج.
           </div>
         </div>
         <div>
-          <h3 class="warn">❌ سوا — FAIL</h3>
-          <div class="bad" style="font-size: clamp(0.62rem, 1.35vw, 0.78rem);" dir="rtl">
-            REGISTERED_OK: نعم<br>
-            AGE_OK: <strong>لا</strong> &nbsp;<span class="small">(14 شهراً &lt; 24 شهراً)</span><br>
-            OWNERSHIP_OK: نعم<br>
-            EMPLOYEES_OK: نعم<br>
-            FUNDING_RATIO_OK: نعم<br>
-            PREV_GRANTS_OK: نعم<br>
-            STAGE1_RESULT: <strong>FAIL</strong><br>
-            STAGE1_NOTES: عمر الشركة 14 شهراً، أقل من الحد الأدنى المطلوب (سنتان)
+          <h3 class="warn">❌ سوا — مرفوض</h3>
+          <div class="bad" dir="rtl" style="font-size: clamp(0.65rem, 1.45vw, 0.84rem); padding: 12px 14px; line-height: 2;">
+            تسجيل_الشركة: نعم<br>
+            عمر_الشركة: <strong>لا</strong><br>
+            الملكية: نعم<br>
+            عدد_الموظفين: نعم<br>
+            نسبة_التمويل: نعم<br>
+            ملفات_سابقة: نعم<br>
+            نتيجة_المرحلة_الأولى: <strong>مرفوض</strong><br>
+            ملاحظات: تم رفض الطلب بسبب عدم استيفاء شرط العمر التشغيلي الأدنى للشركة، حيث أن عمرها أقل من سنتين عند التقدم للمنحة.
           </div>
         </div>
       </div>
-      <p style="font-size: clamp(0.95rem, 2vw, 1.1rem); font-weight: bold; color: var(--orange); margin-top: 0.5em;">
-        Gemini caught the exact rule violation — from a real JEDCO website. Now imagine 100 applications →
-      </p>
+      <div style="margin-top: 0.8em; background: #fef9e7; border-left: 4px solid var(--orange); padding: 10px 14px; border-radius: 6px; font-size: clamp(0.7rem, 1.55vw, 0.88rem);" dir="rtl">
+        <strong>لاحظوا:</strong> فتحنا محادثة Gemini جديدة لكل طلب — لأن Gemini لا يتذكر. كل محادثة تبدأ فارغة. لذلك أعدنا لصق الشروط مع كل طلب.<br>
+        <strong>تخيلوا 100 طلب.</strong> هذا بالضبط ما يحله البرنامج التلقائي ←
+      </div>
     </div>
 
     <!-- SLIDE 7c: THE CRITERIA PROBLEM -->
