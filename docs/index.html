@@ -390,38 +390,38 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
       </div>
     </div>
 
-    <!-- SLIDE 7c: THE CRITERIA PROBLEM -->
-    <div class="swiper-slide">
-      <h2>The Problem: Every Evaluation Needs the Full Rulebook</h2>
-      <div class="split">
-        <div>
-          <h3 class="warn">❌ What Happened Without the Criteria</h3>
-          <div class="bad" dir="rtl" style="font-size: clamp(0.68rem, 1.5vw, 0.85rem);">
-            <strong>السؤال:</strong> هل شركة عمرها 18 شهراً مؤهلة لتطوير؟<br><br>
-            <strong>Gemini بدون ملف المعايير:</strong><br>
-            "يعتمد ذلك على نوع البرنامج وطبيعة النشاط..."
-            <br><span class="small">(إجابة مبهمة — غير مفيدة للتقييم)</span>
+    <!-- SLIDE 7c: IMAGINE 100 APPLICATIONS -->
+    <div class="swiper-slide center">
+      <h2>الآن تخيّلوا...</h2>
+      <div class="big" style="font-size: clamp(3rem, 10vw, 7rem); color: var(--blue); margin: 0.2em 0;">100</div>
+      <h2 style="color: var(--orange);">طلب</h2>
+      <div style="margin: 1em auto; max-width: 680px; text-align: right; direction: rtl;">
+        <div style="display: flex; flex-direction: column; gap: 10px; font-size: clamp(0.8rem, 1.9vw, 1.05rem);">
+          <div style="background: #fadbd8; padding: 10px 16px; border-radius: 8px; border-right: 4px solid var(--red);">
+            ❌ &nbsp;100 محادثة Gemini جديدة — Gemini لا يتذكر
           </div>
-        </div>
-        <div>
-          <h3 class="highlight">✅ With Criteria File Uploaded</h3>
-          <div class="good" dir="rtl" style="font-size: clamp(0.68rem, 1.5vw, 0.85rem);">
-            <strong>Gemini مع ملف المعايير:</strong><br>
-            AGE_OK: لا<br>
-            STAGE1_RESULT: FAIL<br>
-            STAGE1_NOTES: عمر الشركة أقل من 2 سنوات
-            <br><span class="small">(إجابة محددة — قابلة للاستخدام مباشرة)</span>
+          <div style="background: #fadbd8; padding: 10px 16px; border-radius: 8px; border-right: 4px solid var(--red);">
+            ❌ &nbsp;الصق الشروط الستة في كل مرة = 100 × لصق
+          </div>
+          <div style="background: #fadbd8; padding: 10px 16px; border-radius: 8px; border-right: 4px solid var(--red);">
+            ❌ &nbsp;الصق نص الطلب = 100 × لصق
+          </div>
+          <div style="background: #fadbd8; padding: 10px 16px; border-radius: 8px; border-right: 4px solid var(--red);">
+            ❌ &nbsp;انسخ النتيجة يدوياً إلى جدول Excel = 100 × نسخ
+          </div>
+          <div style="background: #fef9e7; padding: 10px 16px; border-radius: 8px; border-right: 4px solid var(--orange); font-weight: bold;">
+            ⏱️ &nbsp;الوقت المقدَّر: يومان كاملان لموظف واحد
           </div>
         </div>
       </div>
-      <div style="background: #fef9e7; border-left: 4px solid var(--orange); padding: 12px 16px; border-radius: 6px; margin: 0.8em 0;">
-        <strong>The scaling problem:</strong> برنامج "ارفع قدراتك بالتسويق" has 6 eligibility rules.<br>
-        Every new Gemini conversation starts <em>empty</em> — the rules must be pasted again every time.<br>
-        <strong>6 rules × 100 applications × repeated pasting = impossible to do manually.</strong>
+      <div style="margin-top: 0.8em; background: #eafaf1; border-radius: 12px; padding: 16px 24px; border: 2px solid var(--green); max-width: 600px; margin-left: auto; margin-right: auto;">
+        <p style="font-size: clamp(1rem, 2.3vw, 1.3rem); font-weight: bold; color: var(--green); margin: 0;" dir="rtl">
+          ✅ البرنامج التلقائي يفعل كل هذا في 90 دقيقة →
+        </p>
+        <p style="font-size: clamp(0.75rem, 1.6vw, 0.9rem); color: var(--gray); margin: 4px 0 0 0;" dir="rtl">
+          نفس الشروط · نفس المنطق · نفس التنسيق · بدون تدخل بشري
+        </p>
       </div>
-      <p style="font-size: clamp(1rem, 2.2vw, 1.2rem); font-weight: bold; color: var(--blue); margin-top: 0.4em;">
-        The pipeline injects the rules automatically — every time, for every application →
-      </p>
     </div>
 
     <!-- SLIDE 8: COPILOT BUILDS THE PIPELINE -->
