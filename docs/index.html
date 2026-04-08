@@ -253,35 +253,99 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
       <p style="font-weight:bold; color:var(--orange); margin-top:0.4em; font-size:clamp(0.85rem, 1.9vw, 1rem);">Now copy this table → open ChatGPT → Step 2 →</p>
     </div>
 
-    <!-- SLIDE 7: STEP 2 — CHATGPT GENERATE MOCK APPLICATIONS -->
+    <!-- SLIDE 7: STEP 2 — CHATGPT PROMPT + OVERVIEW -->
     <div class="swiper-slide">
       <h2><span class="step">2</span> Generate Mock Applications with ChatGPT</h2>
-      <p>Go to <strong>chatgpt.com</strong> → paste Gemini's criteria table → ask for 2 applications:</p>
+      <p>Open <a href="https://chatgpt.com" target="_blank" rel="noopener" style="color:#10a37f;font-weight:600;">chatgpt.com</a> → paste Gemini's 6-rule table → then add:</p>
+      <div class="rtl" style="background: #1e1e2e; color: #cdd6f4; padding: 12px 16px; border-radius: 8px; margin: 0.5em 0; font-family: 'Cascadia Code', Consolas, monospace; font-size: clamp(0.68rem, 1.5vw, 0.84rem); border-left: 4px solid #10a37f; line-height:1.8;">
+        أنشئ طلبَي منحة وهميَّين باللغة العربية بناءً على الشروط أعلاه:<br><br>
+        الطلب الأول: شركة صناعية، عمرها 4 سنوات، 18 موظفاً — يجب أن يكون مؤهلاً (PASS)<br>
+        الطلب الثاني: شركة خدمية، عمرها 14 شهراً، 6 موظفين — يجب أن يُرفض (FAIL)<br><br>
+        لكل طلب: اسم الشركة، صاحبها، تاريخ التأسيس، عدد الموظفين،<br>
+        وصف المشروع، جدول الميزانية، قائمة الوثائق.
+      </div>
+      <div class="split" style="margin-top:0.6em;">
+        <div style="background:#eafaf1; border-radius:8px; padding:10px 14px; border-left:3px solid var(--green);">
+          <strong class="highlight">✅ Application 1 — PASS</strong>
+          <p dir="rtl" style="font-size:clamp(0.65rem,1.4vw,0.82rem); margin-top:4px;">أدفانز-ج | صناعي | 4 سنوات | 18 موظف<br>منصة تصدير رقمية للخليج وشمال أفريقيا<br>إجمالي: 15,000 د.أ | JEDCO: 10,500 د.أ</p>
+        </div>
+        <div style="background:#fdedec; border-radius:8px; padding:10px 14px; border-left:3px solid var(--red);">
+          <strong class="warn">❌ Application 2 — FAIL</strong>
+          <p dir="rtl" style="font-size:clamp(0.65rem,1.4vw,0.82rem); margin-top:4px;">سوا | خدمي | 14 شهراً ← سبب الرفض<br>خطة تسويق رقمي متكاملة<br>إجمالي: 12,000 د.أ | JEDCO: 8,400 د.أ</p>
+        </div>
+      </div>
+      <p class="small" style="margin-top:0.5em;">ChatGPT invented the details — you controlled what matters. Next slides show the full applications →</p>
+    </div>
+
+    <!-- SLIDE 7-A: APPLICATION 1 FULL — أدفانز-ج (PASS) -->
+    <div class="swiper-slide">
+      <h2 class="highlight">✅ Application 1 — أدفانز-ج (PASS)</h2>
       <div class="split">
         <div>
-          <h3 class="highlight">✅ Application 1 — PASS (أدفانز-ج)</h3>
-          <div class="good" dir="rtl" style="font-size: clamp(0.62rem, 1.35vw, 0.78rem);">
-            <strong>الشركة الأردنية للصناعات المتقدمة</strong><br>
-            صاحبها: محمد سامي الخطيب<br>
-            تأسست: 15/03/2022 — العمر: <strong>4 سنوات</strong> ✅<br>
-            الموظفون: <strong>18</strong> ✅ | القطاع: <strong>صناعي</strong> ✅<br>
-            المشروع: منصة تجارة إلكترونية للتصدير إلى الخليج وشمال أفريقيا<br>
-            التمويل المطلوب: 10,500 د.أ (70% من 15,000)
+          <div class="good" dir="rtl" style="font-size:clamp(0.62rem,1.35vw,0.8rem); padding:10px 14px;">
+            <strong>الشركة الأردنية للصناعات المتقدمة "أدفانز-ج"</strong><br>
+            الصاحب: محمد سامي الخطيب<br>
+            التأسيس: 15/03/2022 &nbsp;|&nbsp; العمر: <strong>4 سنوات ✅</strong><br>
+            الموظفون (ضمان اجتماعي): <strong>18 ✅</strong><br>
+            القطاع: صناعي ✅ &nbsp;|&nbsp; الملكية: خاصة 100%، أردنية 100% ✅<br>
+            ملفات JEDCO سابقة: لا يوجد ✅<br><br>
+            <strong>المشروع:</strong> منصة تجارة إلكترونية متعددة اللغات لتصدير المنتجات الصناعية إلى الخليج وشمال أفريقيا، تشمل نظام إدارة مخزون، بوابة دفع آمنة، وتدريب فريق المبيعات.
           </div>
         </div>
         <div>
-          <h3 class="warn">❌ Application 2 — FAIL (سوا)</h3>
-          <div class="bad" dir="rtl" style="font-size: clamp(0.62rem, 1.35vw, 0.78rem);">
-            <strong>خدمات التواصل الذكي "سوا"</strong><br>
-            صاحبتها: رنا جمال العبداللات<br>
-            تأسست: 10/02/2025 — العمر: <strong>14 شهراً</strong> ❌<br>
-            الموظفون: 6 ✅ | القطاع: <strong>خدمي</strong> ✅<br>
-            المشروع: خطة تسويقية رقمية متكاملة<br>
-            التمويل المطلوب: 8,400 د.أ (70% من 12,000)
+          <table style="font-size:clamp(0.58rem,1.25vw,0.74rem);">
+            <thead><tr><th>البند</th><th>التكلفة</th><th>JEDCO 70%</th><th>الشركة 30%</th></tr></thead>
+            <tbody>
+              <tr><td dir="rtl">منصة تجارة إلكترونية</td><td>6,000</td><td>4,200</td><td>1,800</td></tr>
+              <tr><td dir="rtl">نظام مخزون + ERP</td><td>3,000</td><td>2,100</td><td>900</td></tr>
+              <tr><td dir="rtl">بوابة دفع وتأمين</td><td>1,500</td><td>1,050</td><td>450</td></tr>
+              <tr><td dir="rtl">تكامل شحن دولي</td><td>1,500</td><td>1,050</td><td>450</td></tr>
+              <tr><td dir="rtl">تدريب + دليل تصدير</td><td>2,000</td><td>1,400</td><td>600</td></tr>
+              <tr style="font-weight:bold; background:#d5f5e3;"><td>المجموع</td><td>15,000</td><td>10,500</td><td>4,500</td></tr>
+            </tbody>
+          </table>
+          <div style="margin-top:8px; font-size:clamp(0.58rem,1.2vw,0.72rem);" dir="rtl">
+            <strong>الوثائق:</strong> سجل صناعي · شهادة ضريبة · عقد تأسيس · كشف ضمان اجتماعي · كشف بنكي 6 أشهر · عرض فني من المورد · إقرار إنهاء ملفات سابقة
           </div>
         </div>
       </div>
-      <p class="small" style="margin-top:0.6em;"><strong>Teaching point:</strong> ChatGPT invented the names, numbers, and budgets — but you controlled what matters. You told it which application should pass and exactly why the second one fails. That is prompt engineering for content generation.</p>
+    </div>
+
+    <!-- SLIDE 7-B: APPLICATION 2 FULL — سوا (FAIL) -->
+    <div class="swiper-slide">
+      <h2 class="warn">❌ Application 2 — سوا (FAIL)</h2>
+      <div class="split">
+        <div>
+          <div class="bad" dir="rtl" style="font-size:clamp(0.62rem,1.35vw,0.8rem); padding:10px 14px;">
+            <strong>خدمات التواصل الذكي "سوا"</strong><br>
+            الصاحبة: رنا جمال العبداللات<br>
+            التأسيس: 10/02/2025 &nbsp;|&nbsp; العمر: <strong>14 شهراً ❌</strong><br>
+            <span style="background:#fadbd8; padding:2px 6px; border-radius:4px;">الحد الأدنى سنتان — هذا الطلب يُرفض هنا</span><br><br>
+            الموظفون (ضمان اجتماعي): 6 ✅<br>
+            القطاع: خدمي ✅ &nbsp;|&nbsp; الملكية: خاصة 100%، أردنية 100% ✅<br>
+            ملفات JEDCO سابقة: لا يوجد ✅<br><br>
+            <strong>المشروع:</strong> خطة تسويقية رقمية متكاملة تشمل دراسة سوقية، استراتيجية علامة تجارية، حملات سوشال ميديا، وتدريب فريق التسويق.
+          </div>
+        </div>
+        <div>
+          <table style="font-size:clamp(0.58rem,1.25vw,0.74rem);">
+            <thead><tr><th>البند</th><th>التكلفة</th><th>JEDCO 70%</th><th>الشركة 30%</th></tr></thead>
+            <tbody>
+              <tr><td dir="rtl">دراسة سوقية وبحث تنافسي</td><td>2,500</td><td>1,750</td><td>750</td></tr>
+              <tr><td dir="rtl">استراتيجية العلامة التجارية</td><td>3,000</td><td>2,100</td><td>900</td></tr>
+              <tr><td dir="rtl">حملات سوشال + محتوى</td><td>4,000</td><td>2,800</td><td>1,200</td></tr>
+              <tr><td dir="rtl">تدريب + نظام قياس الأداء</td><td>2,500</td><td>1,750</td><td>750</td></tr>
+              <tr style="font-weight:bold; background:#fadbd8;"><td>المجموع</td><td>12,000</td><td>8,400</td><td>3,600</td></tr>
+            </tbody>
+          </table>
+          <div style="margin-top:8px; font-size:clamp(0.58rem,1.2vw,0.72rem);" dir="rtl">
+            <strong>الوثائق:</strong> سجل تجاري · شهادة ضريبة · إثبات ملكية · كشف ضمان اجتماعي · كشف بنكي · عرض من وكالة تسويق · سير ذاتية للإدارة
+          </div>
+          <div style="margin-top:8px; background:#fef9e7; border-left:3px solid var(--orange); padding:8px 10px; border-radius:4px; font-size:clamp(0.62rem,1.35vw,0.78rem);">
+            <strong>سبب الرفض:</strong> عمر الشركة 14 شهراً — الحد الأدنى المطلوب 24 شهراً. لا حاجة لفحص باقي الشروط.
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- SLIDE 7b: STEP 3 — EVALUATE WITH GEMINI -->
