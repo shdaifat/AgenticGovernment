@@ -108,11 +108,11 @@ Trainees watch the trainer use VS Code + Copilot to automate the same process:
 
 ---
 
-### ACT 3: FROM MANUAL TO AUTOMATED (Slides 8–12) 🔄 NEEDS REWRITE
+### ACT 3: FROM MANUAL TO AUTOMATED (Slides 8–12) 🔄 REWRITING
 
-> **⚠️ DECISION NEEDED:** Choose ONE primary automation path below.
-> All 3 paths share slides 8 and 9 (concept + cloud warning).
-> They diverge at slide 10 (the tool).
+> **✅ DECISION MADE (April 2026):** Open WebUI as primary tool + Python batch script for demo.
+> DocETL dropped (requires OpenAI API key, Ollama support experimental).
+> VS Code shown briefly as "how I built all of this" — not trainee exercise.
 
 ---
 
@@ -242,7 +242,16 @@ Trainees watch the trainer use VS Code + Copilot to automate the same process:
 | Intimidation factor | Low | Very low | High |
 | Best for | Batch evaluation | Ad-hoc questions | Building systems |
 
-**Recommendation:** PATH A (DocETL) as main, mention PATH B (Open WebUI) as alternative for ad-hoc use, show PATH C (VS Code) briefly as "how I built all of this."
+**✅ DECISION:** PATH B (Open WebUI) as main + simple Python batch script for 100-app demo.
+
+**Why this combination:**
+- Open WebUI = familiar ChatGPT interface, Ollama native, no API keys, fully offline
+- 131k GitHub stars = battle-tested, huge community, Arabic-friendly
+- Knowledge/RAG = upload JEDCO rules once, every conversation uses them
+- Model presets = create "مُقيّم JEDCO" agent, employees open → paste app → get answer
+- Python script (trainer demo) = shows batch capability without requiring trainees to code
+- DocETL dropped: UI requires OpenAI API key, Ollama support is experimental with caveats
+- VS Code kept as brief demo only: "this is how I built these slides"
 
 ---
 
@@ -323,10 +332,11 @@ Trainees watch the trainer use VS Code + Copilot to automate the same process:
 
 ## Next Steps (in order)
 
-1. **⬜ DECIDE:** Choose PATH A, B, or C for automation section
+1. **✅ DECIDE:** Open WebUI + Python batch script (April 9, 2026)
 2. **⬜ Generate 20 mock applications** → commit to `applications/`
-3. **⬜ Rewrite slides 8–12** based on chosen path
-4. **⬜ Build working demo** (DocETL config / Open WebUI setup / Python script)
-5. **⬜ Update slides 13–18** (add Excel output, update deployment table)
-6. **⬜ Capture screenshots** for chosen tool
-7. **⬜ Push and test live**
+3. **⬜ Rewrite slides 8–12** (vibe coding → cloud warning → Open WebUI → batch demo → comparison)
+4. **⬜ Create Python batch evaluation script** → `tools/batch_evaluate.py`
+5. **⬜ Create Open WebUI docker-compose** → `tools/docker-compose.yml`
+6. **⬜ Update slides 13–18** (add Excel output, update deployment table)
+7. **⬜ Capture screenshots** for Open WebUI
+8. **⬜ Push and test live**
