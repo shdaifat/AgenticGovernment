@@ -108,57 +108,141 @@ Trainees watch the trainer use VS Code + Copilot to automate the same process:
 
 ---
 
-### ACT 3: VIBE CODING — From Manual to Automated (Slides 8–12) 🔄 NEEDS REWRITE
+### ACT 3: FROM MANUAL TO AUTOMATED (Slides 8–12) 🔄 NEEDS REWRITE
 
-**Current slides 8–12 are outdated.** Replace with the following new flow:
+> **⚠️ DECISION NEEDED:** Choose ONE primary automation path below.
+> All 3 paths share slides 8 and 9 (concept + cloud warning).
+> They diverge at slide 10 (the tool).
 
-#### Slide 8 — "ما شاهدتموه اليوم هو Vibe Coding" (NEW)
+---
+
+#### SHARED SLIDES (all paths)
+
+**Slide 8 — "ما شاهدتموه اليوم هو Vibe Coding"**
 - You already watched me build this presentation using Copilot
-- I described what I wanted → Copilot wrote the HTML/CSS/Arabic
-- I checked, adjusted, pushed → the slides you're reading now
-- Same pattern: describe the problem → AI writes the solution → you verify
+- Same pattern you used with Gemini: describe → AI does → you verify
 - **This is vibe coding. You don't write code — you describe what you want.**
 
-#### Slide 9 — "الأدوات المطلوبة" — Setup (NEW)
-- Table:
-  | Tool | What | Where | Cost |
-  |------|------|-------|------|
-  | VS Code | محرر الأكواد | code.visualstudio.com | مجاني |
-  | GitHub Copilot | مساعد ذكي داخل VS Code | Extensions tab | مجاني (2000 إكمال/شهر) |
-  | Python | يشغّل البرنامج | python.org | مجاني |
-- Simple install steps (or pre-installed on training laptops)
-
-#### Slide 10 — "⚠️ تحذير: بياناتكم تذهب للسحابة" — Cloud Warning (NEW)
-- Copilot / ChatGPT / Gemini = cloud-based
-- Your prompts and code ARE sent to external servers
+**Slide 9 — "⚠️ تحذير: بياناتكم تذهب للسحابة"**
+- Copilot / ChatGPT / Gemini = cloud-based LLMs
+- Your prompts and data ARE sent to external servers
 - **NEVER use real applicant data** — names, IDs, financials
-- That's exactly why we generate **mock data**
-- Later: mention Ollama as the offline alternative for real data
+- That's why we generate **mock data** for training
+- For real data: use Ollama (local, offline) — data never leaves the building
 - **هذا هو الفرق بين التدريب والتطبيق الحقيقي**
 
-#### Slide 11 — "تمرين: أنشئ 20 طلباً وهمياً" — Generate Mock Data (NEW)
-- Open Copilot in VS Code
-- Paste the 6 JEDCO rules
-- Prompt (Arabic): "أنشئ 20 طلب منحة وهمي بالعربية كملفات نصية منفصلة. خليط من مقبول ومرفوض. نوّع أسباب الرفض."
-- Copilot generates 20 text files → save to `applications/` folder
-- **This is their first real vibe coding moment**
-- The 20 applications will be pre-generated and committed to the repo for reference
+---
 
-#### Slide 12 — "تمرين: قيّم الـ 20 طلباً تلقائياً" — Run Automation (NEW)
-- Prompt Copilot: "اكتب برنامج Python يقرأ جميع الطلبات من مجلد applications/ ويقيّم كل طلب حسب شروط JEDCO الستة ويخرج النتائج كتقرير HTML وملف Excel"
+#### PATH A: DocETL (Browser UI — Test 1, Run 1000) ⭐ RECOMMENDED
+
+> **Best for:** Non-technical trainees. Zero code. Generic for any task.
+> **Trainee experience:** Open browser → upload files → write prompt → test on 1 → run on 1000 → download Excel
+> **Setup:** Docker + Ollama on trainer's laptop or LAN server
+
+**Why DocETL:**
+- Generic framework — works for ANY document + ANY prompt + ANY criteria
+- Visual browser UI, no VS Code, no terminal
+- "Test on 1, then batch 1000" is the core workflow
+- Connects to Ollama (local LLM) — data stays on machine
+- Free, open source (docetl.org)
+
+**Slide 10A — "الأداة: DocETL — جرّب على واحد، طبّق على ألف"**
+- What is DocETL: a browser tool for batch document processing with AI
+- Show the UI: upload area, prompt editor, output preview
+- Key concept: same prompt you wrote for Gemini works here — but for 1000 files
+- Table:
+  | Gemini (manual) | DocETL (automated) |
+  |---|---|
+  | 1 محادثة = 1 طلب | 1 أمر = 1000 طلب |
+  | لصق الشروط كل مرة | الشروط محفوظة |
+  | نسخ النتيجة يدوياً | تصدير Excel تلقائي |
+  | سحابة (cloud) | محلي (Ollama) |
+
+**Slide 11A — "تمرين: جهّز 20 طلباً وهمياً"**
+- Use ChatGPT or Copilot to generate 20 mock Arabic applications
+- Or: download the 20 pre-generated files from the repo (`applications/` folder)
+- Upload them into DocETL
+
+**Slide 12A — "تمرين: قيّم الـ 20 طلباً في DocETL"**
+- Paste the same Gemini evaluation prompt (slide 7b)
+- Select output format: مقبول/مرفوض + السبب
+- Test on 1 application → verify output matches Gemini's answer
+- Click "Run All" → processes all 20
+- Export Excel → done
+- **Same logic. Same prompt. 20× faster. No code.**
+
+**Slide 12bA — "النتيجة: يدوي مقابل DocETL"**
+- Side by side comparison (same as 12b but DocETL-specific)
+
+---
+
+#### PATH B: Open WebUI (ChatGPT-like Interface on LAN)
+
+> **Best for:** Trainees who liked Gemini/ChatGPT. Feels familiar.
+> **Trainee experience:** Open browser → chat in Arabic → upload files → get answers
+> **Setup:** Docker + Ollama on LAN server
+> **Limitation:** Chat-based, not batch-optimized. Employee processes 1 at a time (but much faster than Gemini because rules are pre-loaded via RAG).
+
+**Slide 10B — "الأداة: Open WebUI — ChatGPT على شبكتكم"**
+- Looks like ChatGPT but runs on your office network
+- Uses Ollama (local) — data never leaves the room
+- Upload JEDCO criteria once → all conversations use them (RAG)
+- Each employee gets a login
+- Free, open source
+
+**Slide 11B — "تمرين: قيّم طلبات في Open WebUI"**
+- Open browser → go to LAN address
+- Type: "قيّم هذا الطلب" + paste application text
+- Get: مقبول/مرفوض + السبب
+- No need to paste criteria every time (pre-loaded)
+
+**Slide 12B — "متى نحتاج أكثر من Open WebUI؟"**
+- Good for: 1-by-1 conversation, ad-hoc questions, exploring
+- Not ideal for: batch 1000 files, automated reports, Excel export
+- For batch: need DocETL or custom pipeline
+
+---
+
+#### PATH C: VS Code + Copilot (Vibe Coding)
+
+> **Best for:** Showing the "future" of how software is built.
+> **Trainee experience:** Watch trainer describe → Copilot writes code → run → results
+> **Setup:** VS Code + Copilot (free tier) + Python
+> **Limitation:** Trainees found this intimidating. Best as demo, not exercise.
+
+**Slide 10C — "الأدوات المطلوبة"**
+- VS Code + Copilot (free) + Python
+- Install steps or pre-installed on training laptops
+
+**Slide 11C — "تمرين: أنشئ 20 طلباً وهمياً بـ Copilot"**
+- Open Copilot chat in VS Code
+- Prompt: "أنشئ 20 طلب منحة وهمي بالعربية..."
+- Copilot generates 20 text files → save to `applications/`
+- First vibe coding moment
+
+**Slide 12C — "تمرين: اكتب برنامج التقييم بـ Copilot"**
+- Prompt: "اكتب برنامج Python يقرأ جميع الطلبات ويقيّم كل طلب حسب شروط JEDCO الستة ويخرج تقرير HTML + Excel"
 - Copilot generates the script
 - Run: `python evaluate.py`
-- Output: HTML report + Excel file with مقبول/مرفوض for all 20
-- **Same logic they did manually in Gemini — but automated**
+- Output: HTML + Excel
 
-#### Slide 12b — "النتيجة: يدوي مقابل تلقائي" (UPDATE existing)
-- Side by side:
-  | يدوي (Gemini) | تلقائي (Python) |
-  |---|---|
-  | 100 محادثة جديدة | أمر واحد |
-  | يومان | 90 دقيقة |
-  | نسخ يدوي للنتائج | تقرير HTML + Excel جاهز |
-  | أخطاء بشرية | نفس المنطق كل مرة |
+---
+
+#### PATH COMPARISON
+
+| Criteria | A: DocETL | B: Open WebUI | C: VS Code |
+|----------|-----------|---------------|------------|
+| Trainee skill needed | Browser only | Browser only | VS Code + terminal |
+| Batch processing (1000) | ✅ Core feature | ❌ 1-by-1 chat | ✅ Script runs all |
+| Prompt experimentation | ✅ Test 1 → run 1000 | ✅ Natural chat | ⚠️ Edit code/prompt |
+| Excel/HTML export | ✅ Built-in | ❌ Manual copy | ✅ Script output |
+| Generic (any task) | ✅ Any doc + any prompt | ✅ Any question | ⚠️ Need new script |
+| Offline (real data safe) | ✅ Ollama | ✅ Ollama | ⚠️ Copilot is cloud |
+| Setup complexity | Docker (1 command) | Docker (1 command) | 3 installs |
+| Intimidation factor | Low | Very low | High |
+| Best for | Batch evaluation | Ad-hoc questions | Building systems |
+
+**Recommendation:** PATH A (DocETL) as main, mention PATH B (Open WebUI) as alternative for ad-hoc use, show PATH C (VS Code) briefly as "how I built all of this."
 
 ---
 
@@ -177,7 +261,7 @@ Trainees watch the trainer use VS Code + Copilot to automate the same process:
 
 ## Repository Assets to Create
 
-### Mock Applications (20 files)
+### Mock Applications (20 files) — NEEDED FOR ALL PATHS
 - **Location:** `applications/` folder in repo root
 - **Format:** Arabic text files, one per application
 - **Mix:** ~12 PASS, ~8 FAIL with varied rejection reasons:
@@ -189,12 +273,27 @@ Trainees watch the trainer use VS Code + Copilot to automate the same process:
   - ملفات سابقة مفتوحة (previous files)
 - **Naming:** `app-01-اسم-الشركة.txt` through `app-20-اسم-الشركة.txt`
 
-### Evaluation Script
-- **Location:** `tools/evaluate.py` (or use existing `evaluate-pipeline.py`)
-- **Input:** reads all `.txt` files from `applications/`
-- **Rules:** hardcoded 6 JEDCO criteria (no API needed for rule-checking)
-- **Output:** `results.html` + `results.xlsx`
-- **Note:** For training, this can use Gemini API or Ollama — decide based on internet access
+### Path-Specific Assets
+
+**If PATH A (DocETL):**
+- `docker-compose.yml` — DocETL + Ollama setup
+- `docetl-pipeline.yaml` — pre-built pipeline config for JEDCO evaluation
+- README with setup instructions
+
+**If PATH B (Open WebUI):**
+- `docker-compose.yml` — Open WebUI + Ollama setup
+- `criteria.txt` — JEDCO rules for RAG upload
+- README with setup instructions
+
+**If PATH C (VS Code):**
+- `tools/evaluate.py` — Python evaluation script
+- Requirements file for dependencies
+- README with setup instructions
+
+### Output Samples (for slides)
+- `results/results.html` — sample HTML report
+- `results/results.xlsx` — sample Excel output
+- Screenshots of the chosen tool in action
 
 ---
 
@@ -217,3 +316,17 @@ Trainees watch the trainer use VS Code + Copilot to automate the same process:
 - [ ] Terminal running `evaluate.py` on 20 applications
 - [ ] HTML report output showing 20 evaluated applications
 - [ ] Excel output with مقبول/مرفوض columns
+- [ ] DocETL browser UI (if PATH A chosen)
+- [ ] Open WebUI chat interface (if PATH B chosen)
+
+---
+
+## Next Steps (in order)
+
+1. **⬜ DECIDE:** Choose PATH A, B, or C for automation section
+2. **⬜ Generate 20 mock applications** → commit to `applications/`
+3. **⬜ Rewrite slides 8–12** based on chosen path
+4. **⬜ Build working demo** (DocETL config / Open WebUI setup / Python script)
+5. **⬜ Update slides 13–18** (add Excel output, update deployment table)
+6. **⬜ Capture screenshots** for chosen tool
+7. **⬜ Push and test live**
