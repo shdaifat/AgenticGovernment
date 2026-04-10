@@ -1,8 +1,25 @@
-# Agentic Government — AI Workshop for JEDCO Staff
+# JEDCO AI Grant Evaluation — Training Materials
 
 > **🇯🇴 [اقرأ هذا الملف بالعربية](README-AR.md)**
 
-A 2-hour hands-on workshop introducing [JEDCO](https://www.jedco.gov.jo) staff to practical AI tools in their daily workflows — document writing, funding application review, and task automation. Local LLM, no data leaves the machine.
+Training slides, mock Arabic applications, and evaluation tools for the JEDCO AI grant management system. A 2-hour hands-on workshop introducing practical AI tools in funding application review, document writing, and task automation.
+
+## Contents
+- `slides/` — Training presentation outlines
+- `docs/` — GitHub Pages (interactive slides)
+- `applications/` — 20 mock Arabic grant applications
+- `tools/` — batch_evaluate.py, evaluate-pipeline.py
+- `handouts/` — Cheatsheets and quick references
+- `demos/` — Demo scripts
+- `assets/` — JEDCO documents and images
+
+## Live Slides
+https://shdaifat.github.io/AgenticGovernment/
+
+## Product Platform
+Product development has moved to a private repository.
+
+---
 
 ## Think of It This Way
 

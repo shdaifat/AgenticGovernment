@@ -62,10 +62,3 @@ desktop.ini
 # === Logs ===
 *.log
 logs/
-results.html
-results.json
-results.pdf
-
-# === Private / confidential ===
-private/
-assets/jedco-docs/JEDCO-AI-Grant-Management-Proposal*
