@@ -212,8 +212,6 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
         <span class="arrow">←</span>
         <div class="box" style="background:#e6f9f1; border-color:#10a37f;"><div class="icon">💬</div><strong>ChatGPT</strong><div class="sub">يولّد طلبات وهمية</div></div>
         <span class="arrow">←</span>
-        <div class="box" style="background:#d6eaf8;"><div class="icon">💬</div><strong>Open WebUI</strong><div class="sub">ذكاء اصطناعي محلي يومي</div></div>
-        <span class="arrow">←</span>
         <div class="box" style="background:#fdebd0;"><div class="icon">⚡</div><strong>Python</strong><div class="sub">١٠٠ طلب بأمر واحد</div></div>
         <span class="arrow">←</span>
         <div class="box" style="background:#fadbd8;"><div class="icon">🌐</div><strong>المنصة</strong><div class="sub">agenticgovernment.net</div></div>
@@ -222,25 +220,7 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
       <p class="small" style="margin-top: 0.5em;">خط الأنابيب يستبدل الخطوات اليدوية بالأتمتة — نفس المنطق، أسرع ١٠٠ مرة.</p>
     </div>
 
-    <!-- شريحة 5: كل شيء مجاني -->
-    <div class="swiper-slide center">
-      <h2>كل شيء مجاني</h2>
-      <table>
-        <thead><tr><th>الأداة</th><th>ماذا تفعل</th><th>التكلفة</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Gemini</strong> <span class="small">(gemini.google.com)</span></td><td>يقرأ موقع JEDCO · يستخرج الشروط · يقيّم الطلبات</td><td class="highlight">مجاني (حساب Google)</td></tr>
-          <tr><td><strong>ChatGPT</strong> <span class="small">(chatgpt.com)</span></td><td>يُنشئ طلبات منحة وهمية للتدريب</td><td class="highlight">مجاني (حساب OpenAI)</td></tr>
-          <tr><td><strong>Open WebUI</strong> <span class="small">(open-webui.com)</span></td><td>واجهة ChatGPT محلية على شبكتكم</td><td class="highlight">مجاني</td></tr>
-          <tr><td><strong>Ollama + Qwen3 8B</strong></td><td>ذكاء اصطناعي محلي — البيانات لا تخرج</td><td class="highlight">مجاني</td></tr>
-          <tr><td><strong>Python</strong></td><td>يقيّم 20+ طلباً دفعة واحدة تلقائياً</td><td class="highlight">مجاني</td></tr>
-          <tr><td><strong>Git + GitHub</strong></td><td>يستضيف ويشارك المشروع</td><td class="highlight">مجاني</td></tr>
-        </tbody>
-      </table>
-      <div class="big">$0</div>
-      <p class="small">إجمالي تكلفة أدوات الذكاء الاصطناعي في هذا المشروع · Gemini وChatGPT للتدريب · Ollama للأتمتة</p>
-    </div>
-
-    <!-- شريحة 6: الخطوة الأولى — أمر Gemini -->
+    <!-- شريحة 5: الخطوة الأولى — أمر Gemini -->
     <div class="swiper-slide">
       <h2><span class="step">1</span> افتح Gemini — أعطِه هذا الأمر</h2>
       <p>اذهب إلى <a href="https://gemini.google.com" target="_blank" rel="noopener" style="color:#4285F4; font-weight:600;">gemini.google.com</a> ← سجّل الدخول بحساب Google ← الصق هذا الأمر بالضبط:</p>
@@ -509,84 +489,9 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
       </div>
     </div>
 
-    <!-- SLIDE 10: OPEN WEBUI -->
-    <div class="swiper-slide">
-      <h2 dir="rtl"><span class="step">4</span> الأداة: Open WebUI — ChatGPT على شبكتكم</h2>
-      <div class="split">
-        <div>
-          <div dir="rtl" style="font-size:clamp(0.75rem, 1.6vw, 0.92rem); line-height: 1.9;">
-            <p><strong>Open WebUI</strong> = واجهة مثل ChatGPT لكن تعمل على شبكتكم الداخلية:</p>
-            <ul style="margin:0.5em 0;">
-              <li>يتصل بـ <strong>Ollama</strong> — البيانات لا تخرج من المبنى</li>
-              <li>ارفعوا شروط JEDCO مرة واحدة ← كل محادثة تستخدمها تلقائياً</li>
-              <li>أنشئوا "مُقيّم JEDCO" كنموذج جاهز ← الموظف يفتح ويلصق الطلب</li>
-              <li>كل موظف بحساب خاص — سجل كامل لكل محادثة</li>
-            </ul>
-            <div class="tags" style="margin-top:0.5em;">
-              <span class="tag tag-free">مجاني</span>
-              <span class="tag tag-local">محلي 100%</span>
-              <span class="tag tag-ai">131,000+ ⭐ على GitHub</span>
-            </div>
-          </div>
-        </div>
-        <div>
-          <table style="font-size:clamp(0.63rem, 1.35vw, 0.78rem);">
-            <thead><tr><th>Gemini (سحابة)</th><th>Open WebUI (محلي)</th></tr></thead>
-            <tbody>
-              <tr><td>بياناتك تذهب لـ Google</td><td class="highlight">بياناتك تبقى عندك</td></tr>
-              <tr><td>الصق الشروط كل مرة</td><td class="highlight">الشروط محفوظة (RAG)</td></tr>
-              <tr><td>محادثة جديدة = من الصفر</td><td class="highlight">نموذج جاهز بالتعليمات</td></tr>
-              <tr><td>يحتاج إنترنت</td><td class="highlight">يعمل بدون إنترنت</td></tr>
-              <tr><td>حساب Google</td><td class="highlight">حسابات لكل الفريق</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <pre style="font-size:clamp(0.6rem,1.3vw,0.75rem); margin-top:0.5em;">docker run -d -p 3000:8080 ghcr.io/open-webui/open-webui:ollama  # أمر واحد فقط</pre>
-    </div>
-
-    <!-- SLIDE 11: EXERCISE — EVALUATE IN OPEN WEBUI -->
-    <div class="swiper-slide">
-      <h2 dir="rtl"><span class="step">5</span> تمرين: قيّم طلباً في Open WebUI</h2>
-      <div style="max-width: 680px; margin: 0 auto;">
-        <div dir="rtl" style="font-size:clamp(0.73rem, 1.55vw, 0.9rem); line-height: 2;">
-          <div style="display:flex; align-items:flex-start; gap:10px; margin-bottom:10px;">
-            <span class="step">١</span>
-            <div>افتحوا المتصفح ← اذهبوا إلى عنوان الشبكة الداخلية<br><code style="background:#eee; padding:2px 8px; border-radius:4px;">http://192.168.1.100:3000</code></div>
-          </div>
-          <div style="display:flex; align-items:flex-start; gap:10px; margin-bottom:10px;">
-            <span class="step">٢</span>
-            <div>اختاروا نموذج <strong>"مُقيّم JEDCO"</strong> من القائمة</div>
-          </div>
-          <div style="display:flex; align-items:flex-start; gap:10px; margin-bottom:10px;">
-            <span class="step">٣</span>
-            <div>الصقوا نص الطلب واكتبوا: <strong>"قيّم هذا الطلب"</strong></div>
-          </div>
-          <div style="display:flex; align-items:flex-start; gap:10px; margin-bottom:10px;">
-            <span class="step">٤</span>
-            <div>النتيجة: <span class="highlight">مقبول</span> أو <span class="warn">مرفوض</span> + السبب</div>
-          </div>
-        </div>
-        <div class="split" style="margin-top:0.6em;">
-          <div class="good" dir="rtl" style="font-size:clamp(0.65rem,1.4vw,0.82rem);">
-            <strong>ما الفرق عن Gemini؟</strong><br>
-            ✅ الشروط محمّلة مسبقاً — لا تحتاج لصقها<br>
-            ✅ البيانات لا تخرج من الشبكة<br>
-            ✅ نفس الواجهة المألوفة — محادثة بالعربي
-          </div>
-          <div class="fix" dir="rtl" style="font-size:clamp(0.65rem,1.4vw,0.82rem);">
-            <strong>لكن...</strong><br>
-            ⚠️ ما زلنا نقيّم طلباً واحداً في كل مرة<br>
-            ⚠️ 100 طلب = 100 محادثة<br>
-            ⚠️ نحتاج حلاً للدفعات الكبيرة ←
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- SLIDE 12: BATCH PROCESSING — PYTHON DEMO -->
     <div class="swiper-slide">
-      <h2 dir="rtl"><span class="step">6</span> الحل: برنامج يقيّم 20 طلباً دفعة واحدة</h2>
+      <h2 dir="rtl"><span class="step">5</span> الحل: برنامج يقيّم ١٠٠ طلب دفعة واحدة</h2>
       <div dir="rtl" style="font-size:clamp(0.73rem, 1.55vw, 0.9rem); line-height: 1.8; max-width: 680px; margin: 0 auto;">
         <p>نفس المنطق. نفس الأمر. نفس Ollama — لكن <strong>تلقائياً لكل الطلبات:</strong></p>
       </div>
@@ -625,22 +530,22 @@ Done! 20 applications evaluated in 47 seconds
           <tr>
             <th>—</th>
             <th style="background:#4285F4;">🔵 Gemini (يدوي)</th>
-            <th style="background:#27ae60;">💬 Open WebUI (محلي)</th>
             <th style="background:#1a5276;">⚡ Python (دفعات)</th>
+            <th style="background:#8e44ad;">🌐 agenticgovernment.net</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td><strong>طلب واحد</strong></td><td>محادثة + لصق الشروط</td><td class="highlight">محادثة — الشروط جاهزة</td><td>أمر واحد</td></tr>
-          <tr><td><strong>100 طلب</strong></td><td class="warn">100 محادثة = يومان</td><td class="warn">100 محادثة = يوم</td><td class="highlight">أمر واحد = 90 دقيقة</td></tr>
-          <tr><td><strong>البيانات</strong></td><td class="warn">سحابة Google</td><td class="highlight">شبكتك الداخلية</td><td class="highlight">جهازك</td></tr>
-          <tr><td><strong>تقرير Excel/HTML</strong></td><td class="warn">نسخ يدوي</td><td class="warn">نسخ يدوي</td><td class="highlight">تلقائي</td></tr>
-          <tr><td><strong>الصعوبة</strong></td><td class="highlight">سهل جداً</td><td class="highlight">سهل</td><td>يحتاج مدرّب</td></tr>
-          <tr><td><strong>أفضل استخدام</strong></td><td>التعلّم والتجربة</td><td>العمل اليومي</td><td>الدفعات الكبيرة</td></tr>
+          <tr><td><strong>طلب واحد</strong></td><td>محادثة + لصق الشروط</td><td>أمر واحد</td><td class="highlight">رفع ملف + نتيجة فورية</td></tr>
+          <tr><td><strong>100 طلب</strong></td><td class="warn">100 محادثة = يومان</td><td class="highlight">أمر واحد = 90 دقيقة</td><td class="highlight">دوري تلقائي</td></tr>
+          <tr><td><strong>البيانات</strong></td><td class="warn">سحابة Google</td><td class="highlight">جهازك</td><td class="highlight">مشفّر وآمن</td></tr>
+          <tr><td><strong>تقرير Excel/HTML</strong></td><td class="warn">نسخ يدوي</td><td class="highlight">تلقائي</td><td class="highlight">تلقائي</td></tr>
+          <tr><td><strong>الصعوبة</strong></td><td class="highlight">سهل جداً</td><td>يحتاج مدرّب</td><td class="highlight">واجهة بسيطة</td></tr>
+          <tr><td><strong>أفضل استخدام</strong></td><td>التعلّم والتجربة</td><td>الدفعات الكبيرة</td><td>الإنتاج والتشغيل اليومي</td></tr>
         </tbody>
       </table>
       <div style="margin-top: 1em; max-width: 600px; margin-left: auto; margin-right: auto;" dir="rtl">
         <p style="font-size:clamp(0.8rem, 1.8vw, 1rem); font-weight:bold; color:var(--blue);">
-          ابدأ بـ Gemini للتعلم ← Open WebUI للعمل اليومي ← Python للدفعات الكبيرة
+          ابدأ بـ Gemini للتعلم ← Python للأتمتة ← agenticgovernment.net للإنتاج
         </p>
         <p class="small">كل أداة لها مكانها. المهم أن تعرف متى تستخدم أيّاً منها.</p>
       </div>
@@ -802,20 +707,20 @@ Done! 20 applications evaluated in 47 seconds
         <div>
           <h3 dir="rtl">ماذا أثبتنا</h3>
           <ul dir="rtl">
-            <li>✅ نظام تقييم بالذكاء الاصطناعي — <strong>أدوات مجانية 100%</strong></li>
+            <li>✅ نظام تقييم بالذكاء الاصطناعي يعمل فعلياً</li>
             <li>✅ تعلّمنا المنطق يدوياً في <strong>Gemini + ChatGPT</strong></li>
-            <li>✅ نقلناه إلى <strong>Open WebUI</strong> — محلي وآمن</li>
-            <li>✅ أتمتنا التقييم لـ <strong>20 طلباً</strong> ببرنامج واحد</li>
+            <li>✅ أتمتنا التقييم لـ <strong>١٠٠ طلب</strong> ببرنامج واحد</li>
             <li>✅ كل شيء بُني بـ <strong>Vibe Coding</strong> — وصف بدل كتابة كود</li>
+            <li>✅ المنصة حية على <strong>agenticgovernment.net</strong></li>
           </ul>
         </div>
         <div>
           <h3 dir="rtl">ما القادم</h3>
           <ul dir="rtl">
-            <li>🏢 تثبيت Open WebUI على شبكة JEDCO الداخلية</li>
+            <li>� توسيع <a href="https://www.agenticgovernment.net" target="_blank" rel="noopener">agenticgovernment.net</a> لخدمات حكومية إضافية</li>
             <li>📋 ربط النظام مع أنظمة JEDCO الإلكترونية</li>
             <li>🔍 OCR للوثائق الممسوحة ضوئياً</li>
-            <li>🌐 بوابة إلكترونية للمتقدمين</li>
+            <li>🏢 نشر حلول مماثلة في جهات حكومية أخرى</li>
           </ul>
           <div class="box" style="margin-top:0.6em; max-width: 100%;">
             <strong>جرّب المنصة الآن</strong><br>
