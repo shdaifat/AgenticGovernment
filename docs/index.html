@@ -222,28 +222,28 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
       <p class="small" style="margin-top: 0.5em;">خط الأنابيب يستبدل الخطوات اليدوية بالأتمتة — نفس المنطق، أسرع ١٠٠ مرة.</p>
     </div>
 
-    <!-- SLIDE 5: ALL FREE -->
+    <!-- شريحة 5: كل شيء مجاني -->
     <div class="swiper-slide center">
-      <h2>Everything Is Free</h2>
+      <h2>كل شيء مجاني</h2>
       <table>
-        <thead><tr><th>Tool</th><th>What It Does</th><th>Cost</th></tr></thead>
+        <thead><tr><th>الأداة</th><th>ماذا تفعل</th><th>التكلفة</th></tr></thead>
         <tbody>
-          <tr><td><strong>Gemini</strong> <span class="small">(gemini.google.com)</span></td><td>يقرأ موقع JEDCO · يستخرج الشروط · يقيّم الطلبات</td><td class="highlight">Free (Google account)</td></tr>
-          <tr><td><strong>ChatGPT</strong> <span class="small">(chatgpt.com)</span></td><td>يُنشئ طلبات منحة وهمية للتدريب</td><td class="highlight">Free (OpenAI account)</td></tr>
-          <tr><td><strong>Open WebUI</strong> <span class="small">(open-webui.com)</span></td><td>واجهة ChatGPT محلية على شبكتكم</td><td class="highlight">Free</td></tr>
-          <tr><td><strong>Ollama + Qwen3 8B</strong></td><td>ذكاء اصطناعي محلي — البيانات لا تخرج</td><td class="highlight">Free</td></tr>
-          <tr><td><strong>Python</strong></td><td>يقيّم 20+ طلباً دفعة واحدة تلقائياً</td><td class="highlight">Free</td></tr>
-          <tr><td><strong>Git + GitHub</strong></td><td>يستضيف ويشارك المشروع</td><td class="highlight">Free</td></tr>
+          <tr><td><strong>Gemini</strong> <span class="small">(gemini.google.com)</span></td><td>يقرأ موقع JEDCO · يستخرج الشروط · يقيّم الطلبات</td><td class="highlight">مجاني (حساب Google)</td></tr>
+          <tr><td><strong>ChatGPT</strong> <span class="small">(chatgpt.com)</span></td><td>يُنشئ طلبات منحة وهمية للتدريب</td><td class="highlight">مجاني (حساب OpenAI)</td></tr>
+          <tr><td><strong>Open WebUI</strong> <span class="small">(open-webui.com)</span></td><td>واجهة ChatGPT محلية على شبكتكم</td><td class="highlight">مجاني</td></tr>
+          <tr><td><strong>Ollama + Qwen3 8B</strong></td><td>ذكاء اصطناعي محلي — البيانات لا تخرج</td><td class="highlight">مجاني</td></tr>
+          <tr><td><strong>Python</strong></td><td>يقيّم 20+ طلباً دفعة واحدة تلقائياً</td><td class="highlight">مجاني</td></tr>
+          <tr><td><strong>Git + GitHub</strong></td><td>يستضيف ويشارك المشروع</td><td class="highlight">مجاني</td></tr>
         </tbody>
       </table>
       <div class="big">$0</div>
-      <p class="small">Total cost of AI tools used in this project · Gemini &amp; ChatGPT for training · Ollama for automation</p>
+      <p class="small">إجمالي تكلفة أدوات الذكاء الاصطناعي في هذا المشروع · Gemini وChatGPT للتدريب · Ollama للأتمتة</p>
     </div>
 
-    <!-- SLIDE 6: STEP 1 — GEMINI PROMPT -->
+    <!-- شريحة 6: الخطوة الأولى — أمر Gemini -->
     <div class="swiper-slide">
-      <h2><span class="step">1</span> Open Gemini — Give It This Prompt</h2>
-      <p>Go to <a href="https://gemini.google.com" target="_blank" rel="noopener" style="color:#4285F4; font-weight:600;">gemini.google.com</a> → sign in with Google → paste this prompt exactly:</p>
+      <h2><span class="step">1</span> افتح Gemini — أعطِه هذا الأمر</h2>
+      <p>اذهب إلى <a href="https://gemini.google.com" target="_blank" rel="noopener" style="color:#4285F4; font-weight:600;">gemini.google.com</a> ← سجّل الدخول بحساب Google ← الصق هذا الأمر بالضبط:</p>
       <div class="prompt-wrap">
         <button class="copy-btn" onclick="copyPrompt(this)">📋 نسخ</button>
         <div class="rtl" style="background: #1e1e2e; color: #cdd6f4; padding: 14px 18px; border-radius: 8px; margin: 0.6em 0; font-family: 'Cascadia Code', Consolas, monospace; font-size: clamp(0.7rem, 1.55vw, 0.88rem); border-left: 4px solid #4285F4; line-height: 1.8;">
@@ -258,13 +258,13 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
         لا تضف معلومات من خارج ما هو موجود في الصفحة.
       </div>
       </div>
-      <p class="small" style="margin-top:0.4em;">Gemini browses the live JEDCO website and reads it — <strong>you don't copy anything manually.</strong></p>
+      <p class="small" style="margin-top:0.4em;">Gemini يتصفح موقع JEDCO الرسمي ويقرأه — <strong>أنت لا تنسخ شيئاً يدوياً.</strong></p>
     </div>
 
-    <!-- SLIDE 6b: STEP 1 — GEMINI OUTPUT -->
+    <!-- شريحة 6ب: ردّ Gemini — الشروط الحقيقية -->
     <div class="swiper-slide">
-      <h2><span class="step">1</span> Gemini's Answer — Real JEDCO Rules</h2>
-      <p class="small" style="margin-bottom:0.5em;">This is what Gemini returned from the official JEDCO website:</p>
+      <h2><span class="step">1</span> ردّ Gemini — شروط JEDCO الحقيقية</h2>
+      <p class="small" style="margin-bottom:0.5em;">هذا ما أعاده Gemini من الموقع الرسمي لـ JEDCO:</p>
       <table style="font-size: clamp(0.6rem, 1.35vw, 0.78rem);">
         <thead><tr><th>#</th><th>الشرط</th><th>المتطلب بالضبط</th><th>نتيجة عدم الاستيفاء</th></tr></thead>
         <tbody>
@@ -287,13 +287,13 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
         </div>
       </div>
       <p class="small" style="margin-top:0.5em; font-style:italic;">"المتقدم المثالي هو شركة أردنية قائمة تسعى لتطوير تنافسيتها عبر التسويق الإلكتروني الموجه للتصدير."</p>
-      <p style="font-weight:bold; color:var(--orange); margin-top:0.4em; font-size:clamp(0.85rem, 1.9vw, 1rem);">Now copy this table → open ChatGPT → Step 2 →</p>
+      <p style="font-weight:bold; color:var(--orange); margin-top:0.4em; font-size:clamp(0.85rem, 1.9vw, 1rem);">انسخ هذا الجدول ← افتح ChatGPT ← الخطوة الثانية ←</p>
     </div>
 
-    <!-- SLIDE 7: STEP 2 — CHATGPT PROMPT + OVERVIEW -->
+    <!-- شريحة 7: الخطوة الثانية — ChatGPT لإنشاء طلبات وهمية -->
     <div class="swiper-slide">
-      <h2><span class="step">2</span> Generate Mock Applications with ChatGPT</h2>
-      <p>Open <a href="https://chatgpt.com" target="_blank" rel="noopener" style="color:#10a37f;font-weight:600;">chatgpt.com</a> → paste Gemini's 6-rule table → then add:</p>
+      <h2><span class="step">2</span> أنشئ طلبات وهمية في ChatGPT</h2>
+      <p>افتح <a href="https://chatgpt.com" target="_blank" rel="noopener" style="color:#10a37f;font-weight:600;">chatgpt.com</a> ← الصق جدول الشروط الستة من Gemini ← ثم أضف:</p>
       <div class="prompt-wrap">
         <button class="copy-btn" onclick="copyPrompt(this)">📋 نسخ</button>
         <div class="rtl" style="background: #1e1e2e; color: #cdd6f4; padding: 12px 16px; border-radius: 8px; margin: 0.5em 0; font-family: 'Cascadia Code', Consolas, monospace; font-size: clamp(0.68rem, 1.5vw, 0.84rem); border-left: 4px solid #10a37f; line-height:1.8;">
@@ -306,20 +306,20 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
       </div>
       <div class="split" style="margin-top:0.6em;">
         <div style="background:#eafaf1; border-radius:8px; padding:10px 14px; border-left:3px solid var(--green);">
-          <strong class="highlight">✅ Application 1 — PASS</strong>
+          <strong class="highlight">✅ الطلب الأول — مقبول</strong>
           <p dir="rtl" style="font-size:clamp(0.65rem,1.4vw,0.82rem); margin-top:4px;">أدفانز-ج | صناعي | 4 سنوات | 18 موظف<br>منصة تصدير رقمية للخليج وشمال أفريقيا<br>إجمالي: 15,000 د.أ | JEDCO: 10,500 د.أ</p>
         </div>
         <div style="background:#fdedec; border-radius:8px; padding:10px 14px; border-left:3px solid var(--red);">
-          <strong class="warn">❌ Application 2 — FAIL</strong>
+          <strong class="warn">❌ الطلب الثاني — مرفوض</strong>
           <p dir="rtl" style="font-size:clamp(0.65rem,1.4vw,0.82rem); margin-top:4px;">سوا | خدمي | 14 شهراً ← سبب الرفض<br>خطة تسويق رقمي متكاملة<br>إجمالي: 12,000 د.أ | JEDCO: 8,400 د.أ</p>
         </div>
       </div>
-      <p class="small" style="margin-top:0.5em;">ChatGPT invented the details — you controlled what matters. Next slides show the full applications →</p>
+      <p class="small" style="margin-top:0.5em;">ChatGPT اخترع التفاصيل — أنت تحكّمت بالمحتوى. الشرائح التالية تعرض الطلبين كاملَين ←</p>
     </div>
 
-    <!-- SLIDE 7-A: APPLICATION 1 VERBATIM — أدفانز-ج (PASS) -->
+    <!-- شريحة 7أ: مخرجات ChatGPT — الطلب الأول (أدفانز-ج) -->
     <div class="swiper-slide">
-      <h2 class="highlight">✅ ChatGPT Output — الطلب الأول (مؤهل PASS)</h2>
+      <h2 class="highlight">✅ مخرجات ChatGPT — الطلب الأول (مؤهل)</h2>
       <div dir="rtl" style="font-size:clamp(0.63rem,1.4vw,0.82rem); line-height:1.75; overflow-y:auto; max-height:75vh;">
         <p><strong>١. اسم الشركة:</strong> الشركة الأردنية للصناعات المتقدمة "أدفانز-ج"</p>
         <p><strong>٢. اسم صاحبها:</strong> محمد سامي الخطيب</p>
@@ -342,9 +342,9 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
       </div>
     </div>
 
-    <!-- SLIDE 7-B: APPLICATION 2 VERBATIM — سوا (FAIL) -->
+    <!-- شريحة 7ب: مخرجات ChatGPT — الطلب الثاني (سوا) -->
     <div class="swiper-slide">
-      <h2 class="warn">❌ ChatGPT Output — الطلب الثاني (مرفوض FAIL)</h2>
+      <h2 class="warn">❌ مخرجات ChatGPT — الطلب الثاني (مرفوض)</h2>
       <div dir="rtl" style="font-size:clamp(0.63rem,1.4vw,0.82rem); line-height:1.75; overflow-y:auto; max-height:75vh;">
         <p><strong>١. اسم الشركة:</strong> خدمات التواصل الذكي "سوا"</p>
         <p><strong>٢. اسم صاحبها:</strong> رنا جمال العبداللات</p>
