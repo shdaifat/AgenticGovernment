@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI-Powered Grant Review — Built from Scratch</title>
+<title>مساعد الحوكمة الذكي — كيف بنينا نظام تقييم المنح بالذكاء الاصطناعي</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -15,7 +15,7 @@
   --gray: #7f8c8d;
   --light: #f8f9fa;
 }
-body { font-family: 'Segoe UI', Tahoma, sans-serif; color: #2c3e50; }
+body { font-family: 'Segoe UI', Tahoma, 'Arial', sans-serif; color: #2c3e50; direction: rtl; }
 
 .swiper {
   width: 100%;
@@ -30,6 +30,8 @@ body { font-family: 'Segoe UI', Tahoma, sans-serif; color: #2c3e50; }
   align-items: stretch;
   padding: 5vh 8vw;
   overflow-y: auto;
+  direction: rtl;
+  text-align: right;
 }
 
 .swiper-slide:nth-child(even) { background: var(--light); }
@@ -38,7 +40,7 @@ h1 { font-size: clamp(1.4rem, 4vw, 2.5rem); color: var(--blue); margin-bottom: 0
 h2 { font-size: clamp(1.1rem, 3vw, 1.8rem); color: var(--blue); margin-bottom: 0.4em; }
 h3 { font-size: clamp(0.9rem, 2.5vw, 1.2rem); color: var(--green); margin-bottom: 0.3em; }
 p, li { font-size: clamp(0.8rem, 2vw, 1.05rem); line-height: 1.5; }
-ul, ol { padding-left: 1.2em; margin: 0.5em 0; }
+ul, ol { padding-right: 1.2em; padding-left: 0; margin: 0.5em 0; }
 li { margin: 0.25em 0; }
 .small { font-size: clamp(0.65rem, 1.5vw, 0.8rem); color: var(--gray); }
 .center { text-align: center; }
@@ -61,8 +63,8 @@ li { margin: 0.25em 0; }
 .flow .arrow { color: var(--green); font-weight: bold; font-size: 1.3em; }
 
 table { border-collapse: collapse; width: 100%; max-width: 700px; margin: 0.8em auto; font-size: clamp(0.7rem, 1.7vw, 0.9rem); }
-th { background: var(--blue); color: white; padding: 6px 10px; text-align: left; }
-td { padding: 5px 10px; border-bottom: 1px solid #ddd; }
+th { background: var(--blue); color: white; padding: 6px 10px; text-align: right; }
+td { padding: 5px 10px; border-bottom: 1px solid #ddd; text-align: right; }
 tr:nth-child(even) { background: #f4f6f7; }
 .highlight { color: var(--green); font-weight: bold; }
 .warn { color: var(--red); font-weight: bold; }
@@ -74,11 +76,18 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
 .split > div { flex: 1; }
 @media (max-width: 600px) { .split { flex-direction: column; } }
 
-.bad { background: #fdedec; border-left: 4px solid var(--red); padding: 10px; border-radius: 4px; margin: 0.4em 0; }
-.good { background: #eafaf1; border-left: 4px solid var(--green); padding: 10px; border-radius: 4px; margin: 0.4em 0; }
-.fix { background: #fef9e7; border-left: 4px solid var(--orange); padding: 10px; border-radius: 4px; margin: 0.5em 0; font-size: clamp(0.7rem, 1.6vw, 0.88rem); }
+.bad { background: #fdedec; border-right: 4px solid var(--red); border-left: none; padding: 10px; border-radius: 4px; margin: 0.4em 0; }
+.good { background: #eafaf1; border-right: 4px solid var(--green); border-left: none; padding: 10px; border-radius: 4px; margin: 0.4em 0; }
+.fix { background: #fef9e7; border-right: 4px solid var(--orange); border-left: none; padding: 10px; border-radius: 4px; margin: 0.5em 0; font-size: clamp(0.7rem, 1.6vw, 0.88rem); }
 
-.step { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: var(--blue); color: white; font-weight: bold; font-size: 0.85rem; margin-right: 8px; flex-shrink: 0; }
+.platform-card { background: white; border-radius: 12px; border: 2px solid #e0e0e0; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); max-width: 680px; margin: 0.8em auto; }
+.platform-bar { background: #1a5276; color: white; padding: 10px 16px; font-size: clamp(0.7rem,1.5vw,0.85rem); display: flex; align-items: center; gap: 8px; }
+.platform-body { padding: 16px; }
+.program-card { background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 16px; margin-bottom: 10px; }
+.program-badge { background: #d5f5e3; color: #1e8449; padding: 2px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; display: inline-block; margin-bottom: 6px; }
+.pipe-dot { background: #d5f5e3; color: #1e8449; padding: 2px 8px; border-radius: 12px; display: inline-block; margin-left: 4px; font-size: 0.75rem; }
+
+.step { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: var(--blue); color: white; font-weight: bold; font-size: 0.85rem; margin-left: 8px; margin-right: 0; flex-shrink: 0; }
 
 .big { font-size: clamp(2rem, 6vw, 4rem); font-weight: 800; color: var(--blue); }
 
@@ -119,6 +128,26 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
     display: none;
   }
 }
+
+.prompt-wrap { position: relative; }
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(255,255,255,0.12);
+  color: #cdd6f4;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 5px;
+  padding: 3px 10px;
+  font-size: clamp(0.6rem, 1.2vw, 0.72rem);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  direction: ltr;
+  white-space: nowrap;
+}
+.copy-btn:hover { background: rgba(255,255,255,0.25); }
+.copy-btn.copied { background: var(--green); color: white; border-color: var(--green); }
 </style>
 </head>
 <body>
@@ -126,68 +155,71 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
 <div class="swiper">
   <div class="swiper-wrapper">
 
-    <!-- SLIDE 1: TITLE -->
+    <!-- شريحة 1: العنوان -->
     <div class="swiper-slide center">
-      <h1>How We Built an AI-Powered<br>Grant Review System</h1>
-      <h3>From Zero — No Subscriptions, No Cloud, Just a Laptop</h3>
+      <h1>كيف بنينا نظام ذكاء اصطناعي<br>لتقييم طلبات المنح</h1>
+      <h3>من الصفر — بلا اشتراكات، بلا سحابة، بلا ميزانية</h3>
       <div class="tags">
-        <span class="tag tag-free">100% Free Tools</span>
-        <span class="tag tag-local">100% Local Data</span>
-        <span class="tag tag-ai">AI-Assisted, Human-Decided</span>
+        <span class="tag tag-free">أدوات مجانية ١٠٠٪</span>
+        <span class="tag tag-local">بيانات محلية ١٠٠٪</span>
+        <span class="tag tag-ai">ذكاء اصطناعي يساعد، والإنسان يقرر</span>
       </div>
-      <p class="small">JEDCO — Jordan Enterprise Development Corporation | April 2026</p>
+      <p class="small">المؤسسة الأردنية لتطوير المشاريع الاقتصادية — JEDCO | أبريل ٢٠٢٦</p>
     </div>
 
-    <!-- SLIDE 2: STARTING POINT -->
+    <!-- شريحة 2: نقطة البداية -->
     <div class="swiper-slide">
-      <h2>What We Started With</h2>
+      <h2>ماذا كان لدينا في البداية</h2>
       <div class="boxes">
-        <div class="box"><div class="icon">💻</div><strong>A Regular Laptop</strong><div class="sub">Intel i7 · 16 GB RAM · NVIDIA RTX 2060</div></div>
-        <div class="box red"><div class="icon">❌</div><strong>No AI Tools</strong><div class="sub">No ChatGPT · No subscriptions</div></div>
-        <div class="box red"><div class="icon">📄</div><strong>No Data</strong><div class="sub">Real applications are confidential</div></div>
-        <div class="box red"><div class="icon">💰</div><strong>No Budget</strong><div class="sub">$0 for AI services</div></div>
+        <div class="box"><div class="icon">💻</div><strong>لاب توب عادي</strong><div class="sub">Intel i7 · 16 GB RAM · RTX 2060</div></div>
+        <div class="box red"><div class="icon">❌</div><strong>لا أدوات ذكاء اصطناعي</strong><div class="sub">لا ChatGPT · لا اشتراكات</div></div>
+        <div class="box red"><div class="icon">📄</div><strong>لا بيانات</strong><div class="sub">الطلبات الحقيقية سرية</div></div>
+        <div class="box red"><div class="icon">💰</div><strong>لا ميزانية</strong><div class="sub">صفر دينار للذكاء الاصطناعي</div></div>
       </div>
-      <p class="small center">Starting point: a blank computer with Windows — nothing else.</p>
+      <p class="small center">نقطة البداية: جهاز كمبيوتر عليه Windows — لا شيء آخر.</p>
     </div>
 
-    <!-- SLIDE 3: WHAT WE BUILT -->
+    <!-- شريحة 3: ما بنيناه -->
     <div class="swiper-slide">
-      <h2>What We Built</h2>
-      <p>A working system that:</p>
+      <h2>ما الذي بنيناه</h2>
+      <p>نظام حقيقي يعمل على:</p>
       <ul>
-        <li>📄 <strong>Reads</strong> grant applications in Arabic</li>
-        <li>✅ <strong>Checks</strong> documents against eligibility criteria</li>
-        <li>📊 <strong>Scores</strong> applications using JEDCO's own rubric</li>
-        <li>⚠️ <strong>Flags</strong> compliance issues (expired licenses, missing docs)</li>
-        <li>📋 <strong>Produces</strong> a ranked report with recommendations</li>
+        <li>📄 <strong>قراءة</strong> طلبات المنح باللغة العربية</li>
+        <li>✅ <strong>فحص</strong> الوثائق مقابل شروط الأهلية</li>
+        <li>📊 <strong>تقييم</strong> الطلبات وفق معايير JEDCO</li>
+        <li>⚠️ <strong>رصد</strong> المشاكل — تراخيص منتهية، وثائق ناقصة</li>
+        <li>📋 <strong>إنتاج</strong> تقرير مرتّب جاهز للمراجعة البشرية</li>
       </ul>
       <div class="tags">
-        <span class="tag tag-local">Runs on this laptop</span>
-        <span class="tag tag-local">No internet needed</span>
-        <span class="tag tag-local">Data never leaves the room</span>
+        <span class="tag tag-local">يعمل على هذا الجهاز</span>
+        <span class="tag tag-local">لا إنترنت مطلوب</span>
+        <span class="tag tag-local">البيانات لا تغادر الغرفة</span>
       </div>
-      <div class="placeholder">📸 Screenshot of results.html report goes here</div>
+      <div class="good" style="margin-top:0.8em;">
+        <strong>والنتيجة النهائية؟</strong> منصة حكومية كاملة على الإنترنت ←
+        <br><a href="https://www.agenticgovernment.net" target="_blank" rel="noopener" style="color:var(--blue);font-weight:bold;font-size:1.05em;">www.agenticgovernment.net</a>
+      </div>
     </div>
 
-    <!-- SLIDE 4: AGENT BUILT AGENT -->
+    <!-- شريحة 4: الفكرة الأساسية -->
     <div class="swiper-slide center">
-      <h2>The Key Insight</h2>
-      <h1>AI Tools, Chained Together</h1>
+      <h2>الفكرة الأساسية</h2>
+      <h1>أدوات ذكاء اصطناعي متسلسلة</h1>
       <div class="flow" style="flex-wrap: wrap; justify-content: center;">
-        <div class="box" style="background:#eaf2f8;"><div class="icon">👤</div><strong>YOU</strong><div class="sub">Instructions in plain language</div></div>
-        <span class="arrow">→</span>
-        <div class="box" style="background:#e8f0fe; border-color:#4285F4;"><div class="icon">🔵</div><strong>Gemini</strong><div class="sub">Reads JEDCO docs · evaluates</div></div>
-        <span class="arrow">→</span>
-        <div class="box" style="background:#e6f9f1; border-color:#10a37f;"><div class="icon">💬</div><strong>ChatGPT</strong><div class="sub">Generates mock applications</div></div>
-        <span class="arrow">→</span>
-        <div class="box" style="background:#d6eaf8;"><div class="icon">💬</div><strong>Open WebUI</strong><div class="sub">Local AI — daily evaluation</div></div>
-        <span class="arrow">→</span>
-        <div class="box" style="background:#fdebd0;"><div class="icon">⚡</div><strong>Batch Script</strong><div class="sub">100 apps → 1 command</div></div>
-        <span class="arrow">→</span>
-        <div class="box" style="background:#fadbd8;"><div class="icon">📋</div><strong>Report</strong><div class="sub">Human reviews &amp; decides</div></div>
+        <div class="box" style="background:#eaf2f8;"><div class="icon">👤</div><strong>أنت</strong><div class="sub">تعليمات بلغة طبيعية</div></div>
+        <span class="arrow">←</span>
+        <div class="box" style="background:#e8f0fe; border-color:#4285F4;"><div class="icon">🔵</div><strong>Gemini</strong><div class="sub">يقرأ موقع JEDCO · يقيّم</div></div>
+        <span class="arrow">←</span>
+        <div class="box" style="background:#e6f9f1; border-color:#10a37f;"><div class="icon">💬</div><strong>ChatGPT</strong><div class="sub">يولّد طلبات وهمية</div></div>
+        <span class="arrow">←</span>
+        <div class="box" style="background:#d6eaf8;"><div class="icon">💬</div><strong>Open WebUI</strong><div class="sub">ذكاء اصطناعي محلي يومي</div></div>
+        <span class="arrow">←</span>
+        <div class="box" style="background:#fdebd0;"><div class="icon">⚡</div><strong>Python</strong><div class="sub">١٠٠ طلب بأمر واحد</div></div>
+        <span class="arrow">←</span>
+        <div class="box" style="background:#fadbd8;"><div class="icon">🌐</div><strong>المنصة</strong><div class="sub">agenticgovernment.net</div></div>
       </div>
-      <p><strong>No subscriptions. No installations.</strong> Gemini and ChatGPT run in your browser — free Google and OpenAI accounts only.</p>
-      <p class="small" style="margin-top: 0.5em;">The pipeline replaces the manual steps with automation — same logic, 100× faster.</p>
+      <p><strong>لا اشتراكات. لا تثبيت معقّد.</strong> Gemini وChatGPT تعملان في المتصفح — حساب Google أو OpenAI مجاني يكفي.</p>
+      <p class="small" style="margin-top: 0.5em;">خط الأنابيب يستبدل الخطوات اليدوية بالأتمتة — نفس المنطق، أسرع ١٠٠ مرة.</p>
     </div>
 
     <!-- SLIDE 5: ALL FREE -->
@@ -212,7 +244,9 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
     <div class="swiper-slide">
       <h2><span class="step">1</span> Open Gemini — Give It This Prompt</h2>
       <p>Go to <a href="https://gemini.google.com" target="_blank" rel="noopener" style="color:#4285F4; font-weight:600;">gemini.google.com</a> → sign in with Google → paste this prompt exactly:</p>
-      <div class="rtl" style="background: #1e1e2e; color: #cdd6f4; padding: 14px 18px; border-radius: 8px; margin: 0.6em 0; font-family: 'Cascadia Code', Consolas, monospace; font-size: clamp(0.7rem, 1.55vw, 0.88rem); border-left: 4px solid #4285F4; line-height: 1.8;">
+      <div class="prompt-wrap">
+        <button class="copy-btn" onclick="copyPrompt(this)">📋 نسخ</button>
+        <div class="rtl" style="background: #1e1e2e; color: #cdd6f4; padding: 14px 18px; border-radius: 8px; margin: 0.6em 0; font-family: 'Cascadia Code', Consolas, monospace; font-size: clamp(0.7rem, 1.55vw, 0.88rem); border-left: 4px solid #4285F4; line-height: 1.8;">
         اذهب إلى الرابط التالي واقرأ محتواه:<br>
         https://www.jedco.gov.jo/AR/ListDetails/دليل_الخدمات/7/28<br><br>
         هذه صفحة برنامج "ارفع قدراتك بالتسويق" من موقع JEDCO الرسمي.<br><br>
@@ -222,6 +256,7 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
         ٣. أضف: قيمة المنحة، مدة التنفيذ، القطاعات المؤهلة.<br>
         ٤. اكتب جملة واحدة تصف المتقدم المثالي.<br><br>
         لا تضف معلومات من خارج ما هو موجود في الصفحة.
+      </div>
       </div>
       <p class="small" style="margin-top:0.4em;">Gemini browses the live JEDCO website and reads it — <strong>you don't copy anything manually.</strong></p>
     </div>
@@ -259,12 +294,15 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
     <div class="swiper-slide">
       <h2><span class="step">2</span> Generate Mock Applications with ChatGPT</h2>
       <p>Open <a href="https://chatgpt.com" target="_blank" rel="noopener" style="color:#10a37f;font-weight:600;">chatgpt.com</a> → paste Gemini's 6-rule table → then add:</p>
-      <div class="rtl" style="background: #1e1e2e; color: #cdd6f4; padding: 12px 16px; border-radius: 8px; margin: 0.5em 0; font-family: 'Cascadia Code', Consolas, monospace; font-size: clamp(0.68rem, 1.5vw, 0.84rem); border-left: 4px solid #10a37f; line-height:1.8;">
+      <div class="prompt-wrap">
+        <button class="copy-btn" onclick="copyPrompt(this)">📋 نسخ</button>
+        <div class="rtl" style="background: #1e1e2e; color: #cdd6f4; padding: 12px 16px; border-radius: 8px; margin: 0.5em 0; font-family: 'Cascadia Code', Consolas, monospace; font-size: clamp(0.68rem, 1.5vw, 0.84rem); border-left: 4px solid #10a37f; line-height:1.8;">
         أنشئ طلبَي منحة وهميَّين باللغة العربية بناءً على الشروط أعلاه:<br><br>
         الطلب الأول: شركة صناعية، عمرها 4 سنوات، 18 موظفاً — يجب أن يكون مؤهلاً (PASS)<br>
         الطلب الثاني: شركة خدمية، عمرها 14 شهراً، 6 موظفين — يجب أن يُرفض (FAIL)<br><br>
         لكل طلب: اسم الشركة، صاحبها، تاريخ التأسيس، عدد الموظفين،<br>
         وصف المشروع، جدول الميزانية، قائمة الوثائق.
+      </div>
       </div>
       <div class="split" style="margin-top:0.6em;">
         <div style="background:#eafaf1; border-radius:8px; padding:10px 14px; border-left:3px solid var(--green);">
@@ -336,7 +374,9 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
     <div class="swiper-slide">
       <h2><span class="step">3</span> قيّم الطلبات في Gemini — أعطِه هذا الأمر</h2>
       <p class="small">محادثة Gemini جديدة ← الصق جدول الشروط الستة من الخطوة الأولى ← الصق نص الطلب ← ثم أضف هذا في النهاية:</p>
-      <div class="rtl" style="background: #1e1e2e; color: #cdd6f4; padding: 14px 18px; border-radius: 8px; margin: 0.5em 0; font-family: 'Cascadia Code', Consolas, monospace; font-size: clamp(0.68rem, 1.5vw, 0.85rem); border-left: 4px solid #4285F4; line-height: 1.9;">
+      <div class="prompt-wrap">
+        <button class="copy-btn" onclick="copyPrompt(this)">📋 نسخ</button>
+        <div class="rtl" style="background: #1e1e2e; color: #cdd6f4; padding: 14px 18px; border-radius: 8px; margin: 0.5em 0; font-family: 'Cascadia Code', Consolas, monospace; font-size: clamp(0.68rem, 1.5vw, 0.85rem); border-left: 4px solid #4285F4; line-height: 1.9;">
         أنت موظف تقييم في المؤسسة الأردنية لتطوير المشاريع الاقتصادية (JEDCO).<br>
         مهمتك تطبيق شروط برنامج "ارفع قدراتك بالتسويق" بصرامة تامة على الطلب المقدَّم أعلاه.<br><br>
         قواعد العمل:<br>
@@ -352,6 +392,7 @@ pre { background: #2c3e50; color: #ecf0f1; padding: 10px 14px; border-radius: 8p
         ملفات_سابقة: نعم/لا<br>
         نتيجة_المرحلة_الأولى: مقبول/مرفوض<br>
         ملاحظات: [سبب القرار في جملة واحدة فقط]
+      </div>
       </div>
     </div>
 
@@ -618,102 +659,145 @@ Done! 20 applications evaluated in 47 seconds
       <div class="placeholder">📸 لقطة شاشة لتقرير HTML الفعلي</div>
     </div>
 
-    <!-- SLIDE 14: WHERE DOES IT RUN -->
+    <!-- شريحة 14: أين يعمل النظام -->
     <div class="swiper-slide">
-      <h2>Where Can This Run?</h2>
+      <h2>أين يمكن تشغيل النظام؟</h2>
       <table>
-        <thead><tr><th>Deployment</th><th>Who Uses It</th><th>Data Stays…</th><th>Cost</th></tr></thead>
+        <thead><tr><th>البيئة</th><th>من يستخدمه</th><th>البيانات تبقى في</th><th>التكلفة</th></tr></thead>
         <tbody>
-          <tr><td>💻 <strong>Your Laptop</strong></td><td>Just you</td><td>On your laptop</td><td class="highlight">Free</td></tr>
-          <tr><td>🏢 <strong>Office LAN</strong></td><td>Your team</td><td>In the office</td><td class="highlight">Free</td></tr>
-          <tr><td>🖥️ <strong>JEDCO Server</strong></td><td>All staff</td><td>JEDCO infrastructure</td><td>~8,000 JOD</td></tr>
-          <tr><td>🌐 <strong>Internet</strong></td><td>Applicants + staff</td><td>Rented server</td><td>~20 JOD/month</td></tr>
+          <tr><td>💻 <strong>لاب توبك</strong></td><td>أنت فقط</td><td>جهازك</td><td class="highlight">مجاني</td></tr>
+          <tr><td>🏢 <strong>شبكة JEDCO الداخلية</strong></td><td>كل الفريق</td><td>داخل المبنى</td><td class="highlight">مجاني</td></tr>
+          <tr><td>🖥️ <strong>خادم JEDCO</strong></td><td>كل الموظفين</td><td>بنية JEDCO</td><td>~٨,٠٠٠ دينار (مرة واحدة)</td></tr>
+          <tr><td>🌐 <strong>الإنترنت</strong></td><td>المتقدمون + الموظفون</td><td>خادم مستأجر</td><td>~٢٠ دينار/شهر</td></tr>
         </tbody>
       </table>
-      <p style="font-size: clamp(1rem, 2.5vw, 1.3rem); font-weight: bold; color: var(--blue); margin-top: 1em;">
-        Start on your laptop today. Scale when ready.
+      <p style="font-size: clamp(1rem, 2.5vw, 1.3rem); font-weight: bold; color: var(--blue); margin-top: 1em; text-align: center;">
+        ابدأ على لاب توبك اليوم. وسّع عندما تكون مستعداً.
       </p>
     </div>
 
-    <!-- SLIDE 15: APPLICANT PORTAL -->
+    <!-- شريحة 15: تجربة المتقدم -->
     <div class="swiper-slide">
-      <h2>The Applicant's Experience</h2>
-      <h3>Web Portal Vision</h3>
+      <h2>تجربة المتقدم — بوابة إلكترونية</h2>
       <div class="flow">
-        <div class="box"><div class="icon">📤</div><strong>Upload PDF</strong></div>
-        <span class="arrow">→</span>
-        <div class="box"><div class="icon">✅</div><strong>Doc Check</strong></div>
-        <span class="arrow">→</span>
-        <div class="box red"><div class="icon">⚠️</div><strong>"Missing license"</strong></div>
-        <span class="arrow">→</span>
-        <div class="box"><div class="icon">📤</div><strong>Applicant fixes</strong></div>
-        <span class="arrow">→</span>
-        <div class="box" style="border-color:var(--green);"><div class="icon">📊</div><strong>AI + Officer review</strong></div>
+        <div class="box"><div class="icon">📤</div><strong>رفع PDF</strong></div>
+        <span class="arrow">←</span>
+        <div class="box"><div class="icon">✅</div><strong>فحص الوثائق</strong></div>
+        <span class="arrow">←</span>
+        <div class="box red"><div class="icon">⚠️</div><strong>"ترخيص ناقص"</strong></div>
+        <span class="arrow">←</span>
+        <div class="box"><div class="icon">📤</div><strong>المتقدم يصحّح</strong></div>
+        <span class="arrow">←</span>
+        <div class="box" style="border-color:var(--green);"><div class="icon">📊</div><strong>AI + موظف</strong></div>
       </div>
       <ul>
-        <li>Applicant gets <strong>faster feedback</strong> — knows if docs are missing immediately</li>
-        <li>Officer gets a <strong>head start</strong> — AI score + flags before reviewing</li>
-        <li>Every decision shows <strong>what, where, why</strong> — based on documents</li>
-        <li>Full <strong>audit trail</strong> — every AI output + officer action logged</li>
+        <li>المتقدم يحصل على <strong>تغذية راجعة سريعة</strong> — يعرف فوراً إذا كانت وثيقة ناقصة</li>
+        <li>الموظف يحصل على <strong>سبق في التقييم</strong> — نتيجة AI + تنبيهات قبل المراجعة</li>
+        <li>كل قرار يوضّح <strong>ماذا، أين، ولماذا</strong> — مستند إلى الوثائق</li>
+        <li><strong>سجل تدقيق كامل</strong> — كل مخرجات AI + كل إجراء للموظف موثّق</li>
       </ul>
     </div>
 
-    <!-- SLIDE 16: SCANNED DOCS -->
+    <!-- شريحة 16: الوثائق الممسوحة -->
     <div class="swiper-slide">
-      <h2>What About Scanned Documents?</h2>
-      <p>Many applications arrive as scanned paper — images, not text.</p>
+      <h2>ماذا عن الوثائق الممسوحة ضوئياً؟</h2>
+      <p>كثير من الطلبات تصل كصور ممسوحة — ليس نصاً.</p>
       <div class="flow">
-        <div class="box"><div class="icon">📸</div><strong>Scanned PDF</strong></div>
-        <span class="arrow">→</span>
-        <div class="box" style="border-color:var(--orange);"><div class="icon">🔍</div><strong>OCR</strong><div class="sub">Image → Text</div></div>
-        <span class="arrow">→</span>
-        <div class="box"><div class="icon">📝</div><strong>Arabic Text</strong></div>
-        <span class="arrow">→</span>
-        <div class="box" style="border-color:var(--green);"><div class="icon">🤖</div><strong>AI Evaluate</strong></div>
-        <span class="arrow">→</span>
-        <div class="box"><div class="icon">📋</div><strong>Report</strong></div>
+        <div class="box"><div class="icon">📸</div><strong>PDF ممسوح</strong></div>
+        <span class="arrow">←</span>
+        <div class="box" style="border-color:var(--orange);"><div class="icon">🔍</div><strong>OCR</strong><div class="sub">صورة → نص</div></div>
+        <span class="arrow">←</span>
+        <div class="box"><div class="icon">📝</div><strong>نص عربي</strong></div>
+        <span class="arrow">←</span>
+        <div class="box" style="border-color:var(--green);"><div class="icon">🤖</div><strong>تقييم AI</strong></div>
+        <span class="arrow">←</span>
+        <div class="box"><div class="icon">📋</div><strong>تقرير</strong></div>
       </div>
-      <table>
-        <thead><tr><th>OCR Tool</th><th>Arabic Support</th><th>Cost</th></tr></thead>
+      <table style="max-width:500px; margin:0.8em auto;">
+        <thead><tr><th>أداة OCR</th><th>دعم العربية</th><th>التكلفة</th></tr></thead>
         <tbody>
-          <tr><td><strong>Tesseract</strong></td><td>Good</td><td class="highlight">Free</td></tr>
-          <tr><td><strong>Surya</strong></td><td>Better for Arabic</td><td class="highlight">Free</td></tr>
+          <tr><td><strong>Tesseract</strong></td><td>جيد</td><td class="highlight">مجاني</td></tr>
+          <tr><td><strong>Surya</strong></td><td>أفضل للعربية</td><td class="highlight">مجاني</td></tr>
         </tbody>
       </table>
-      <p>Same pipeline — <strong>one extra step</strong> at the start. Everything else stays the same.</p>
+      <p>نفس خط الأنابيب — <strong>خطوة إضافية واحدة</strong> في البداية. كل شيء آخر يبقى كما هو.</p>
     </div>
 
-    <!-- SLIDE 17: DON'T FEAR CODE -->
+    <!-- شريحة 17: لا تخف من الكود -->
     <div class="swiper-slide center">
-      <h2>Don't Be Afraid of the Code</h2>
-      <div class="boxes">
+      <h2>لا تخافوا من الكود</h2>
+      <div class="boxes" style="max-width:600px; margin:0.8em auto;">
         <div class="box" style="border-color:var(--green);">
-          <h3 style="margin: 0;">What Goes IN</h3>
-          <p>Documents<br>Criteria<br>A good prompt</p>
+          <h3 style="margin:0;">ما يدخل</h3>
+          <p style="margin-top:8px;">الوثائق<br>معايير التقييم<br>أمر جيد</p>
         </div>
         <div class="box" style="background:#2c3e50; color:white; border-color:#2c3e50;">
-          <h3 style="margin: 0; color:white;">The Code</h3>
-          <p style="color:#ecf0f1;">You don't need<br>to understand it.<br>Like Excel formulas.</p>
+          <h3 style="margin:0; color:white;">الكود</h3>
+          <p style="color:#ecf0f1; margin-top:8px;">لا تحتاج أن تفهمه.<br>مثل معادلات Excel.</p>
         </div>
         <div class="box" style="border-color:var(--green);">
-          <h3 style="margin: 0;">What Comes OUT</h3>
-          <p>Scores<br>Flags<br>Recommendations</p>
+          <h3 style="margin:0;">ما يخرج</h3>
+          <p style="margin-top:8px;">نتائج<br>تنبيهات<br>توصيات</p>
         </div>
       </div>
-      <ul style="max-width: 600px; margin: 0.5em auto;">
-        <li>You care about the <strong>result</strong>, not the syntax</li>
-        <li>Output wrong? → <strong>Fix the prompt</strong>, not the code</li>
-        <li>The coding agent handles the technical part — you handle domain expertise</li>
+      <ul style="max-width:600px; margin:0.5em auto;">
+        <li>أنتم تهتمون بالنتيجة، ليس بالصياغة التقنية</li>
+        <li>المخرج خاطئ؟ ← <strong>صحّح الأمر</strong>، ليس الكود</li>
+        <li>عامل الكود يتولى الجانب التقني — أنتم تتولون الخبرة الميدانية</li>
       </ul>
-      <p class="small" style="font-style: italic; margin-top: 0.8em;">
-        You don't need to understand how a car engine works to drive.<br>
-        You need to know where you're going.
+      <p class="small" style="font-style:italic; margin-top:0.8em;">
+        لا تحتاج أن تفهم كيف يعمل محرك السيارة لكي تقودها.<br>
+        تحتاج أن تعرف إلى أين تذهب.
       </p>
     </div>
 
-    <!-- SLIDE 18: SUMMARY -->
+    <!-- شريحة 18: النتيجة النهائية — منصة حكومية حية -->
     <div class="swiper-slide">
-      <h2 dir="rtl">الخلاصة والخطوات القادمة</h2>
+      <h2 style="text-align:center;">النتيجة النهائية: منصة حكومية حية على الإنترنت</h2>
+      <p style="text-align:center; margin-bottom:0.5em;">كل ما تعلمناه اليوم تحوّل إلى منصة كاملة جاهزة للاستخدام:</p>
+      <div class="platform-card">
+        <div class="platform-bar">
+          <span style="font-size:1.1em;">⚖️</span>
+          <strong>حوكمة</strong>
+          <span style="margin-right:auto; font-size:0.8em; opacity:0.8;">agenticgovernment.net</span>
+        </div>
+        <div class="platform-body">
+          <div style="text-align:center; padding:10px 0; border-bottom:1px solid #eee; margin-bottom:12px;">
+            <h3 style="color:var(--blue); font-size:clamp(0.9rem,2vw,1.2rem); margin-bottom:4px;">مساعد الحوكمة الذكي</h3>
+            <p style="font-size:clamp(0.65rem,1.3vw,0.8rem); color:var(--gray);">منصة متقدمة تعتمد على الذكاء الاصطناعي لدعم اتخاذ القرار، رقمنة السياسات، وتقييم الامتثال بدقة وشفافية.</p>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <div class="program-card" style="flex:1; min-width:160px; border:2px dashed #1a5276; background:#eaf2f8; text-align:center;">
+              <div style="font-size:1.4em;">➕</div>
+              <strong style="font-size:clamp(0.7rem,1.4vw,0.85rem);">إنشاء برنامج جديد</strong>
+              <p style="font-size:clamp(0.6rem,1.2vw,0.72rem); color:var(--gray); margin-top:4px;">ابدأ بتعريف السياسات والشروط</p>
+            </div>
+            <div class="program-card" style="flex:1; min-width:180px;">
+              <div class="program-badge">✅ تم التقييم — ١٢ أبريل ٢٠٢٦</div><br>
+              <strong style="font-size:clamp(0.72rem,1.5vw,0.88rem);">برنامج JEDCO تطوير</strong>
+              <div style="margin-top:6px;">
+                <span class="pipe-dot">✓ رفع</span>
+                <span class="pipe-dot">✓ استخلاص</span>
+                <span class="pipe-dot">✓ تقييم</span>
+              </div>
+              <div style="display:flex; gap:12px; margin-top:6px; font-size:0.72rem; color:var(--gray);">
+                <span>📄 ١ وثيقة</span><span>📋 ٥ طلبات</span><span>📊 ٥ نتائج</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:0.8em;">
+        <a href="https://www.agenticgovernment.net" target="_blank" rel="noopener"
+           style="display:inline-block; background:var(--blue); color:white; padding:10px 28px; border-radius:8px; font-weight:bold; font-size:clamp(0.85rem,1.9vw,1.05rem); text-decoration:none;">
+          🌐 جرّب المنصة الآن: www.agenticgovernment.net
+        </a>
+      </div>
+    </div>
+
+    <!-- شريحة 19: الخلاصة والخطوات القادمة -->
+    <div class="swiper-slide">
+      <h2>الخلاصة والخطوات القادمة</h2>
       <div class="split">
         <div>
           <h3 dir="rtl">ماذا أثبتنا</h3>
@@ -733,6 +817,10 @@ Done! 20 applications evaluated in 47 seconds
             <li>🔍 OCR للوثائق الممسوحة ضوئياً</li>
             <li>🌐 بوابة إلكترونية للمتقدمين</li>
           </ul>
+          <div class="box" style="margin-top:0.6em; max-width: 100%;">
+            <strong>جرّب المنصة الآن</strong><br>
+            <a href="https://www.agenticgovernment.net" target="_blank" rel="noopener" style="color:var(--blue); font-weight:bold;">www.agenticgovernment.net</a>
+          </div>
           <div class="box" style="margin-top: 1em; max-width: 100%;">
             <strong dir="rtl">مستودع المشروع</strong><br>
             <span style="font-size: 0.9em;">github.com/shdaifat/AgenticGovernment</span>
@@ -771,6 +859,40 @@ const swiper = new Swiper('.swiper', {
   },
   loop: false
 });
+
+function copyPrompt(btn) {
+  const block = btn.closest('.prompt-wrap').querySelector('.rtl, pre');
+  // Collect text from child text nodes and <br> elements, skip the button itself
+  let text = '';
+  block.childNodes.forEach(node => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      text += node.textContent;
+    } else if (node.nodeName === 'BR') {
+      text += '\n';
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      text += node.innerText || node.textContent;
+    }
+  });
+  text = text.trim();
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✅ تم النسخ';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '📋 نسخ'; btn.classList.remove('copied'); }, 2000);
+  }).catch(() => {
+    // Fallback for older browsers
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    btn.textContent = '✅ تم النسخ';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '📋 نسخ'; btn.classList.remove('copied'); }, 2000);
+  });
+}
 </script>
 </body>
 </html>
